@@ -12,6 +12,7 @@ export default {
     <section class="note-preview-container">
         <h1>Note Preview</h1>
         <component :is="note.type" :info="note.info"></component>
+    <button class="remove-note" @click="$emit('remove',note.id)">X</button>    
     </section>
     `,
     props:['note'],
