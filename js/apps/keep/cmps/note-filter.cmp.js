@@ -1,18 +1,17 @@
 export default {
     template: `
         <section class="note-filter-container">
-            <input type="text" placeholder="Search notes" @input="onSearchInputChange">
+            <input type="text" placeholder="Search notes" v-model="filterBy.noteText" @input="onSearchInputChange">
         </section>
     `,
-    data(){
+    data() {
         return {
-            filterBy: {noteText: ''}
+            filterBy: { noteText: '' }
         }
     },
     methods: {
-        onSearchInputChange(searchInput) {
-            this.filterBy.noteText = searchInput;
-            this.$emit('filtered', {...this.filterBy});
+        onSearchInputChange() {
+            this.$emit('filtered', { ...this.filterBy });
         }
     }
 }
