@@ -61,30 +61,36 @@ export default {
             this.filterBy = filterBy;
         },
         filterNotesByFilter(notesArray) {
-            let filteredNotes = notesArray;
-
             if (this.filterBy && this.filterBy.noteText) {
-                filteredNotes = notesArray.filter(note => this.matchBetween(note, this.filterBy.noteText));
+                return notesArray.filter(note => this.matchBetween(note, this.filterBy.noteText));
+            } else {
+                return notesArray;
             }
-
-            return filteredNotes;
         },
 
         matchBetween(note, text) {
-            // TODO: add handling in all note types after data structure is decided
+            // TODO: add handling in note types AUDIO, VIDEO, MAP after data structure is decided
+            text = text.toLowerCase();
             switch (note.type) {
                 case keepService.NOTE_TYPES.text:
-                    return note.info.txt.toLowerCase().includes(text.toLowerCase());
+                    return note.info.txt.toLowerCase().includes(text);
                 case keepService.NOTE_TYPES.image:
-                    return note.info.title.toLowerCase().includes(text.toLowerCase());
+                    return note.info.title.toLowerCase().includes(text);
                 case keepService.NOTE_TYPES.todoList:
-                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
+                    let fountMatchInTodo = false;
+                    note.info.todos.forEach((todo) => {
+                        if (todo.txt.toLowerCase().includes(text)) {
+                            fountMatchInTodo = true;
+                            return;
+                        }
+                    });
+                    return fountMatchInTodo;
                 case keepService.NOTE_TYPES.audio:
-                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
+                // return note.info.txt.toLowerCase().includes(text);
                 case keepService.NOTE_TYPES.video:
-                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
+                // return note.info.txt.toLowerCase().includes(text);
                 case keepService.NOTE_TYPES.map:
-                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
+                // return note.info.txt.toLowerCase().includes(text);
                 default:
                     return false;
             }
