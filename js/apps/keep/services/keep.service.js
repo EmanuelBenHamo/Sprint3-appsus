@@ -6,7 +6,7 @@ const NOTES_KEY = 'notes';
 var notesDB = [];
 
 function getNotes() {
-    let notes = localStorage.getItem(NOTES_KEY);
+    let notes = utilService.load(NOTES_KEY);
     
     if(!notes) {
         notes = fakeNotes;
@@ -24,7 +24,7 @@ function addNote(note) {
     return Promise.resolve(note);
 }
 
-function deleteNote(noteId){
+function deleteNote(noteId) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     let deletedNote = notesDB.splice(noteIdx, 1)[0];
     utilService.store(NOTES_KEY, notesDB);
