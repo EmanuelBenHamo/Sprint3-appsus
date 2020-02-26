@@ -20,7 +20,7 @@ function getNotes() {
 
 function addNote(note) {
     notesDB.push(note);
-    utilService.store(NOTES_KEY, notes);
+    utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(note);
 }
 

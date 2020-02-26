@@ -2,13 +2,11 @@ import {keepService} from '../apps/keep/services/keep.service.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 
-
-
 export default {
     template:`
     <section class='keep-app-container'>
         <h1>Keep App!</h1>
-        <note-input></note-input>
+        <note-input @addedNote="onAddedNote"></note-input>
         <note-list v-if="notes" :notes="notes"></note-list>
     </section>
     `,
@@ -24,5 +22,11 @@ export default {
     components: {
         noteList,
         noteInput
+    },
+    methods: {
+        onAddedNote(note) {
+            keepService.addNote(note)
+            .then(addedNote => console.log('note added', JSON.stringify(note)));
+        }
     }
 }
