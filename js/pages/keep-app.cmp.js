@@ -1,4 +1,5 @@
 import {keepService} from '../apps/keep/services/keep.service.js';
+import noteList from '../apps/keep/cmps/note-list.cmp.js';
 import noteText from '../apps/keep/cmps/note-txt.cmp.js';
 
 
@@ -21,6 +22,7 @@ export default {
         .then(notes => this.notes = notes);
     },
     components: {
+        noteList,
         'noteText': noteText,
         // 'noteImg': noteImg,
         // 'noteTodos': noteTodos,
