@@ -7,7 +7,7 @@ export default {
     `,
     data(){
         return{
-            txt:this.info.txt,
+            txt :this.info.txt
         }
     },
     props:['info']

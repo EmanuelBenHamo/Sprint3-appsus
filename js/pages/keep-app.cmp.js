@@ -34,19 +34,19 @@ export default {
         keepService.getNotes()
         .then(notes => this.notes = notes);
     },
-    components: {
-        noteList,   
-    },
     methods:{
         onRemove(noteId){
             keepService.removeNote(noteId)
-        noteList,
-        noteInput
+            .then(deletedNote => console.log('note deleted', JSON.stringify(deletedNote)));
         },
-  
+        
         onAddedNote(note) {
             keepService.addNote(note)
-            .then(addedNote => console.log('note added', JSON.stringify(note)));
+            .then(addedNote => console.log('note added', JSON.stringify(addedNote)));
         }
-    }
+    },
+    components: {
+        noteList,
+        noteInput
+    },
 }
