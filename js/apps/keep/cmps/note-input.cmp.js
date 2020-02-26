@@ -5,12 +5,12 @@ export default {
         <section class="note-input-container">
             <input type="text" :placeholder="inputPlaceholder" v-model="input" @change="onAddedNote">
             <section class="note-type-option-btns-container">
-                <button class="note-type-option-btn note-type-txt-btn" @click="inputType=noteTypes.text">text</button>
-                <button class="note-type-option-btn note-type-img-btn" @click="inputType=noteTypes.image">img</button>
-                <button class="note-type-option-btn note-type-video-btn" @click="inputType=noteTypes.video">video</button>
-                <button class="note-type-option-btn note-type-audio-btn" @click="inputType=noteTypes.audio">audio</button>
-                <button class="note-type-option-btn note-type-todos-btn" @click="inputType=noteTypes.todoList">todos</button>
-                <button class="note-type-option-btn note-type-map-btn" @click="inputType=noteTypes.map">map</button>
+                <button class="note-type-option-btn note-type-txt-btn" @click="onSetInputType(noteTypes.text)">text</button>
+                <button class="note-type-option-btn note-type-img-btn" @click="onSetInputType(noteTypes.image)">img</button>
+                <button class="note-type-option-btn note-type-video-btn" @click="onSetInputType(noteTypes.video)">video</button>
+                <button class="note-type-option-btn note-type-audio-btn" @click="onSetInputType(noteTypes.audio)">audio</button>
+                <button class="note-type-option-btn note-type-todos-btn" @click="onSetInputType(noteTypes.todoList)">todos</button>
+                <button class="note-type-option-btn note-type-map-btn" @click="onSetInputType(noteTypes.map)">map</button>
             </section>
         </section>
     `,
@@ -50,6 +50,10 @@ export default {
             }
 
             this.$emit('addedNote', note);
+            this.input = null;
+        },
+        onSetInputType(inputType) {
+            this.inputType = inputType;
         }
     }
 }
