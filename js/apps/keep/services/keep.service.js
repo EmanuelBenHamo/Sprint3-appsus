@@ -29,9 +29,10 @@ function getNotes() {
 }
 
 function addNote(note) {
-    notesDB.push(note);
+    let formatedNote =_formatNoteByType(note)
+    notesDB.push(formatedNote);
     utilService.store(NOTES_KEY, notesDB);
-    return Promise.resolve(note);
+    return Promise.resolve(formatedNote);
 }
 
 function removeNote(noteId) {
@@ -55,3 +56,55 @@ export const keepService = {
     NOTE_TYPES,
     removeNote
 } 
+
+function _formatNoteByType(note) {
+    switch (note.type) {
+        case NOTE_TYPES.text:
+            return {
+                id: 1001,
+                type: note.type,
+                isPinned: false,
+                info: {
+                    txt: note.txt
+                }
+            };
+        case NOTE_TYPES.image:
+            return {
+                id: 1002,
+                type: note.type,
+                isPinned: false,
+                info: {
+                    url: note.txt,
+                    title: ''
+                }
+            };
+        case NOTE_TYPES.video:
+            return {
+                id: 1004,
+                type: note.type,
+                isPinned: false,
+                info: {
+                    url:note.txt
+                }
+            };
+        case NOTE_TYPES.audio:
+            return 'Enter audio URL...';
+        case NOTE_TYPES.todoList:
+            let splitedtodos = note.txt.split(',')
+            return{
+                id: 1003,
+                type: note.type,
+                isPinned: true,
+                info: {
+                    todos: splitedtodos.map(todo => {
+                        return {
+                            txt: todo,
+                            doneAt: null 
+                        }
+                    }) 
+                }
+            };
+        case NOTE_TYPES.map:
+            return 'Enter location...';
+    }
+}

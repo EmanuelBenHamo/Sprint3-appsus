@@ -1,23 +1,24 @@
 import {keepService} from '../services/keep.service.js';
 
-const noteTypes = keepService.NOTE_TYPES;
+// const noteTypes = keepService.NOTE_TYPES;
 
 export default {
     template: `
         <section class="note-input-container">
             <input type="text" :placeholder="inputPlaceholder" v-model="input" @change="onAddedNote">
             <section class="note-type-option-btns-container">
-                <button class="note-type-option-btn note-type-txt-btn" @click="inputType='noteTypes.text'">text</button>
-                <button class="note-type-option-btn note-type-img-btn" @click="inputType='noteTypes.image'">img</button>
-                <button class="note-type-option-btn note-type-video-btn" @click="inputType='noteTypes.video'">video</button>
-                <button class="note-type-option-btn note-type-audio-btn" @click="inputType='noteTypes.audio'">audio</button>
-                <button class="note-type-option-btn note-type-todos-btn" @click="inputType='noteTypes.todoList'">todos</button>
-                <button class="note-type-option-btn note-type-map-btn" @click="inputType='noteTypes.map'">map</button>
+                <button class="note-type-option-btn note-type-txt-btn" @click="inputType=noteTypes.text">text</button>
+                <button class="note-type-option-btn note-type-img-btn" @click="inputType=noteTypes.image">img</button>
+                <button class="note-type-option-btn note-type-video-btn" @click="inputType=noteTypes.video">video</button>
+                <button class="note-type-option-btn note-type-audio-btn" @click="inputType=noteTypes.audio">audio</button>
+                <button class="note-type-option-btn note-type-todos-btn" @click="inputType=noteTypes.todoList">todos</button>
+                <button class="note-type-option-btn note-type-map-btn" @click="inputType=noteTypes.map">map</button>
             </section>
         </section>
     `,
     data() {
         return {
+            noteTypes: keepService.NOTE_TYPES,
             inputType: null,
             input: null
         }
