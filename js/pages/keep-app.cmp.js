@@ -1,5 +1,3 @@
-// 'use strict';
-
 export default{
     template:`
     <section class='keep-app-container'>
