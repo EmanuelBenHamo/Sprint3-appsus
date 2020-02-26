@@ -1,37 +1,46 @@
 'use strict';
+import {fakeNotes} from './notes-fake-data.js';
+import { utilService } from '../../../services/utils-service.js';
 
-const keepFakeData = [
-    {
-        id: 1001,
-        type: 'noteText',
-        info: {
-            txt: 'My Text is amazing'
-        }
-    },
-    {
-        id: 1002,
-        type: 'noteImg',
-        info: {
-            url: 'https://api.adorable.io/avatars/285/abott@adorable.png',
-            title: 'My pretty face'
-        }
-    },
-    {
-        id: 1003,
-        type: 'noteTodos',
-        info: {
-            todos: [
-                { txt: 'Clean house', doneAt: null },
-                { txt: 'Clean house', doneAt: 187111111 },
-            ]
-        }
-    },      
-]
+const NOTES_KEY = 'notes';
+var notesDB = [];
 
 function getNotes(){
-    return Promise.resolve(keepFakeData);
+    let notes = localStorage.getItem(NOTES_KEY);
+    
+    if(!notes) {
+        notes = fakeNotes;
+        utilService.store(NOTES_KEY, notes);
+    }
+    
+    notesDB = notes;
+    
+    return Promise.resolve(notesDB);
+}
+
+function addNote(note) {
+    notesDB.push(note);
+    utilService.store(NOTES_KEY, notes);
+    return Promise.resolve(notesDB);
+}
+
+function deleteNote(noteId){
+    let noteIdx = notesDB.findIndex(note => note.id === noteId);
+    let deletedNote = notesDB.splice(noteIdx, 1)[0];
+    utilService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
+}
+
+function updateNote(updatedNote) {
+    let noteIdx = notesDB.findIndex(note => note.id === updatedNote.id);
+    notesDB.splice(noteIdx, 1, updatedNote);
+    utilService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
 }
 
 export const keepService = {
     getNotes,
+    addNote,
+    updatedNote,
+    deletedNote
 } 
