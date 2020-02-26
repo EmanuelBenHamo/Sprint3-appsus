@@ -17,7 +17,7 @@ export default {
     methods:{
         setStyle(idx){
             this.isDone = !this.isDone
-            this.$refs[idx][0].style = (this.isDone)?'text-decoration: line-through' : 'text-decoration: none'
+            this.$refs[idx][0].style = (this.isDone)?'text-decoration: line-through' : 'text-decoration: none';
         }
     }
  

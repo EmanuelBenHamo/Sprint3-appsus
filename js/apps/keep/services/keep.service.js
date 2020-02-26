@@ -40,19 +40,32 @@ function removeNote(noteId) {
     return Promise.resolve(removedNote);
 }
 
-function updateNote(updatedNote) {
-    let noteIdx = notesDB.findIndex(note => note.id === updatedNote.id);
+function updateNote(updatedNote, noteIdx) {
     notesDB.splice(noteIdx, 1, updatedNote);
     utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(updatedNote);
 }
 
+function pinNote(noteId){
+    let noteIdx = notesDB.findIndex(note => note.id === noteId);
+    let updatedNote = notesDB[noteIdx];
+    updatedNote.isPinned = !updatedNote.isPinned;
+    updateNote(updatedNote,noteIdx)
+}
+function changeColor({noteId, color}){
+    let noteIdx = notesDB.findIndex(note => note.id === noteId);
+    let updatedNote = notesDB[noteIdx];
+    updatedNote.style = color
+    updateNote(updatedNote,noteIdx)
+}
 export const keepService = {
     getNotes,
     addNote,
     updateNote,
     NOTE_TYPES,
-    removeNote
+    removeNote,
+    pinNote,
+    changeColor
 } 
 
 function _formatNoteByType(note) {
@@ -64,7 +77,8 @@ function _formatNoteByType(note) {
                 isPinned: false,
                 info: {
                     txt: note.txt
-                }
+                },
+                style:null,
             };
         case NOTE_TYPES.image:
             return {
@@ -74,7 +88,8 @@ function _formatNoteByType(note) {
                 info: {
                     url: note.txt,
                     title: ''
-                }
+                },
+                style:null,
             };
         case NOTE_TYPES.video:
             
@@ -84,7 +99,8 @@ function _formatNoteByType(note) {
                 isPinned: false,
                 info: {
                     url:'https://www.youtube.com/embed/' + getVideoId(note.txt)
-                }
+                },
+                style:null,
             };
         case NOTE_TYPES.audio:
             return 'Enter audio URL...';
@@ -101,7 +117,8 @@ function _formatNoteByType(note) {
                             doneAt: null 
                         }
                     }) 
-                }
+                },
+                style:null,
             };
         case NOTE_TYPES.map:
             return 'Enter location...';

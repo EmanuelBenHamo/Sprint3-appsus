@@ -11,11 +11,11 @@ export default {
         <note-input @addedNote="onAddedNote"></note-input>
         <section class="pinnedNotes">
             <h2>Pinned</h2>
-            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemove"></note-list>
+            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor"></note-list>
         </section>
         <section class="unpinnedNotes">
             <h2>Unpinned</h2>
-            <note-list v-if="notes && unpinnedNotes" :notes="unpinnedNotes" @remove="onRemove"></note-list>
+            <note-list v-if="notes && unpinnedNotes" :notes="unpinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor"></note-list>
         </section>
     </section>
     `,
@@ -51,6 +51,12 @@ export default {
             keepService.addNote(note)
                 .then(addedNote => console.log('note added', JSON.stringify(addedNote)));
         },
+        onPinNote(noteId){
+            keepService.pinNote(noteId);
+        },
+        onChangeColor({noteId, color}){
+            keepService.changeColor({noteId, color})
+        },
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
@@ -63,6 +69,7 @@ export default {
 
             return filteredNotes;
         },
+
         matchBetween(note, text) {
             // TODO: add handling in all note types after data structure is decided
             switch (note.type) {
@@ -81,8 +88,11 @@ export default {
                 default:
                     return false;
             }
-        }
+        },
+      
     },
+
+    
     components: {
         noteInput,
         noteFilter,

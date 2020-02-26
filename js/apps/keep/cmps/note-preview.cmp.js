@@ -9,12 +9,21 @@ import noteMap from './note-map.cmp.js';
 
 export default {
     template:`
-    <section class="note-preview-container">
+    <section class="note-preview-container" :style="{'background-color': color}"> 
         <h1>Note Preview</h1>
         <component :is="note.type" :info="note.info"></component>
-    <button class="remove-note" @click="$emit('remove',note.id)">X</button>    
+        <div class="tool-bar">
+            <button class="remove-note" @click="$emit('remove',note.id)">X</button>    
+            <button class="pin-note" @click="$emit('pinNote',note.id)">📌</button>
+            <input type="color" v-model="color" @change="$emit('changeColor', {noteId:note.id, color:color})"/>   
+        </div>
     </section>
     `,
+    data(){
+        return{
+            color:'#ddd'
+        }
+    },
     props:['note'],
     components:{
         noteText,
@@ -23,5 +32,8 @@ export default {
         noteVideo,
         noteAudio,
         noteMap
+    },
+    created(){
+        this.color = this.note.style
     }
 }

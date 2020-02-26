@@ -7,7 +7,8 @@ export const fakeNotes = [
         isPinned: false,
         info: {
             txt: 'My Text is amazing'
-        }
+        },
+        style:null
     },
     {
         id: 1002,
@@ -16,7 +17,8 @@ export const fakeNotes = [
         info: {
             url: 'https://api.adorable.io/avatars/285/abott@adorable.png',
             title: 'My pretty face'
-        }
+        },
+        style:null
     },
     {
         id: 1003,
@@ -28,6 +30,7 @@ export const fakeNotes = [
                 { id: 772, txt: 'Clean house', doneAt: 187111111 },
             ]
         },
+        style:null
     },      
     {
         id: 1004,
@@ -35,7 +38,8 @@ export const fakeNotes = [
         isPinned: false,
         info: {
             url:'https://www.youtube.com/embed/0E8lD2BHw78' 
-        }
+        },
+        style:null
     },      
 ]
 
