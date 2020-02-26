@@ -24,8 +24,8 @@ export const fakeNotes = [
         isPinned: true,
         info: {
             todos: [
-                { txt: 'Clean house', doneAt: null },
-                { txt: 'Clean house', doneAt: 187111111 },
+                { id:45 , txt: 'Cook', doneAt: null },
+                { id: 772, txt: 'Clean house', doneAt: 187111111 },
             ]
         },
     },      
