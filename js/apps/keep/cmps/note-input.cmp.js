@@ -1,16 +1,18 @@
-// TODO: import types of notes as keys
+import {keepService} from '../services/keep.service.js';
+
+const noteTypes = keepService.NOTE_TYPES;
 
 export default {
     template: `
         <section class="note-input-container">
             <input type="text" :placeholder="inputPlaceholder" v-model="input" @change="onAddedNote">
             <section class="note-type-option-btns-container">
-                <button class="note-type-option-btn note-type-txt-btn" @click="inputType='text'">text</button>
-                <button class="note-type-option-btn note-type-img-btn" @click="inputType='img'">img</button>
-                <button class="note-type-option-btn note-type-video-btn" @click="inputType='video'">video</button>
-                <button class="note-type-option-btn note-type-audio-btn" @click="inputType='audio'">audio</button>
-                <button class="note-type-option-btn note-type-todos-btn" @click="inputType='todos'">todos</button>
-                <button class="note-type-option-btn note-type-map-btn" @click="inputType='map'">map</button>
+                <button class="note-type-option-btn note-type-txt-btn" @click="inputType='noteTypes.text'">text</button>
+                <button class="note-type-option-btn note-type-img-btn" @click="inputType='noteTypes.image'">img</button>
+                <button class="note-type-option-btn note-type-video-btn" @click="inputType='noteTypes.video'">video</button>
+                <button class="note-type-option-btn note-type-audio-btn" @click="inputType='noteTypes.audio'">audio</button>
+                <button class="note-type-option-btn note-type-todos-btn" @click="inputType='noteTypes.todoList'">todos</button>
+                <button class="note-type-option-btn note-type-map-btn" @click="inputType='noteTypes.map'">map</button>
             </section>
         </section>
     `,
@@ -21,22 +23,22 @@ export default {
         }
     },
     created() {
-        this.inputType = 'text';
+        this.inputType = noteTypes.text;
     },
     computed: {
         inputPlaceholder() {
             switch (this.inputType) {
-                case 'text':
+                case noteTypes.text:
                     return "what's on your mind...";
-                case 'img':
+                case noteTypes.image:
                     return 'Enter image URL...';
-                case 'video':
+                case noteTypes.video:
                     return 'Enter video URL...';
-                case 'audio':
+                case noteTypes.audio:
                     return 'Enter audio URL...';
-                case 'todos':
+                case noteTypes.todoList:
                     return 'Enter comma seperated list...';
-                case 'map':
+                case noteTypes.map:
                     return 'Enter location...';
             }
         }

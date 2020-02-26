@@ -1,8 +1,18 @@
 'use strict';
-import {fakeNotes} from './notes-fake-data.js';
+import { fakeNotes } from './notes-fake-data.js';
 import { utilService } from '../../../services/utils-service.js';
 
 const NOTES_KEY = 'notes';
+
+const NOTE_TYPES = {
+    text: 'noteText',
+    image: 'noteImg',
+    video: 'noteVideo',
+    audio: 'noteAudio',
+    todoList: 'noteTodos',
+    map: 'noteMap'
+}
+
 var notesDB = [];
 
 function getNotes() {
@@ -42,5 +52,6 @@ export const keepService = {
     getNotes,
     addNote,
     updateNote,
-    deleteNote
+    deleteNote,
+    NOTE_TYPES
 } 

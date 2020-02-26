@@ -1,3 +1,5 @@
+// ATTENTION: make sure that note type is valid, look at NOTE_TYPES object in keep service
+
 export const fakeNotes = [
     {
         id: 1001,
