@@ -61,7 +61,7 @@ function _formatNoteByType(note) {
     switch (note.type) {
         case NOTE_TYPES.text:
             return {
-                id: 1001,
+                id: utilService.randomInt(1,10000),
                 type: note.type,
                 isPinned: false,
                 info: {
@@ -70,7 +70,7 @@ function _formatNoteByType(note) {
             };
         case NOTE_TYPES.image:
             return {
-                id: 1002,
+                id: utilService.randomInt(1,10000),
                 type: note.type,
                 isPinned: false,
                 info: {
@@ -80,7 +80,7 @@ function _formatNoteByType(note) {
             };
         case NOTE_TYPES.video:
             return {
-                id: 1004,
+                id: utilService.randomInt(1,10000),
                 type: note.type,
                 isPinned: false,
                 info: {
@@ -92,7 +92,7 @@ function _formatNoteByType(note) {
         case NOTE_TYPES.todoList:
             let splitedtodos = note.txt.split(',')
             return{
-                id: 1003,
+                id: utilService.randomInt(1,10000),
                 type: note.type,
                 isPinned: true,
                 info: {
