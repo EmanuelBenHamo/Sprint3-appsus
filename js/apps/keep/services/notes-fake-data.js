@@ -34,7 +34,7 @@ export const fakeNotes = [
         type: 'noteVideo',
         isPinned: false,
         info: {
-            url:'https://www.youtube.com/embed/tT37ndnRx2g'
+            url:'https://www.youtube.com/embed/0E8lD2BHw78' 
         }
     },      
 ]

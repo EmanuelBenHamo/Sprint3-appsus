@@ -33,7 +33,7 @@ export default {
            return this.notes.filter(note => !note.isPinned)
         }
     },
-    created(){
+    created(){ 
         keepService.getNotes()
         .then(notes => this.notes = notes);
     },

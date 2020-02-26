@@ -22,9 +22,7 @@ function getNotes() {
         notes = fakeNotes;
         utilService.store(NOTES_KEY, notes);
     }
-    
-    notesDB = notes;
-    
+    notesDB = notes;  
     return Promise.resolve(notesDB);
 }
 
@@ -79,12 +77,13 @@ function _formatNoteByType(note) {
                 }
             };
         case NOTE_TYPES.video:
+            
             return {
                 id: utilService.randomInt(1,10000),
                 type: note.type,
                 isPinned: false,
                 info: {
-                    url:note.txt
+                    url:'https://www.youtube.com/embed/' + getVideoId(note.txt)
                 }
             };
         case NOTE_TYPES.audio:
@@ -107,4 +106,13 @@ function _formatNoteByType(note) {
         case NOTE_TYPES.map:
             return 'Enter location...';
     }
+}
+
+function getVideoId(param){
+    var video_id = param.split('v=')[1];
+var ampersandPosition = video_id.indexOf('&');
+if(ampersandPosition != -1) {
+  video_id = video_id.substring(0, ampersandPosition);
+}
+return video_id
 }
