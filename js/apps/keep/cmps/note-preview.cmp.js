@@ -12,6 +12,8 @@ export default {
     <section class="note-preview-container">
         <h1>Note Preview</h1>
         <component :is="note.type" :info="note.info"></component>
+    
+
     </section>
     `,
     props:['note'],

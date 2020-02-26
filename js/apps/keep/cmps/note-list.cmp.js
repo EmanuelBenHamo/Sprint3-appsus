@@ -6,12 +6,15 @@ export default {
     <section class="note-list-container">
         <h1>Note List</h1>
         <section class="notes-container">
-            <note-preview v-for="note in notes" :note="note" :key="note.id"></note-preview>
+            <note-preview v-for="note in notes" :note="note" :key="note.id">
+            </note-preview>
+      
         </section>
     </section>
     `,
     props:['notes'],
     components:{
         notePreview,
-    }
+    },
+
 }
