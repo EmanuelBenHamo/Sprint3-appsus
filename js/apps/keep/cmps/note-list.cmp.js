@@ -5,16 +5,14 @@ export default {
     template:`
     <section class="note-list-container">
         <h1>Note List</h1>
-        <section class="notes-container">
-            <note-preview v-for="note in notes" :note="note" :key="note.id">
+        <section class="notes-container flex align-center">
+            <note-preview v-for="note in notes" :note="note" :key="note.id" @remove="$emit('remove',$event)">
             </note-preview>
-      
         </section>
     </section>
     `,
     props:['notes'],
     components:{
         notePreview,
-    },
-
+    }
 }

@@ -24,11 +24,11 @@ function addNote(note) {
     return Promise.resolve(note);
 }
 
-function deleteNote(noteId) {
+function removeNote(noteId) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
-    let deletedNote = notesDB.splice(noteIdx, 1)[0];
+    let removedNote = notesDB.splice(noteIdx, 1)[0];
     utilService.store(NOTES_KEY, notesDB);
-    return Promise.resolve(deletedNote);
+    return Promise.resolve(removedNote);
 }
 
 function updateNote(updatedNote) {
@@ -42,5 +42,5 @@ export const keepService = {
     getNotes,
     addNote,
     updateNote,
-    deleteNote
+    removeNote
 } 
