@@ -67,17 +67,17 @@ export default {
             // TODO: add handling in all note types after data structure is decided
             switch (note.type) {
                 case keepService.NOTE_TYPES.text:
-                    return note.info.txt.includes(text);
+                    return note.info.txt.toLowerCase().includes(text.toLowerCase());
                 case keepService.NOTE_TYPES.image:
-                    return note.info.title.includes(text);
+                    return note.info.title.toLowerCase().includes(text.toLowerCase());
                 case keepService.NOTE_TYPES.todoList:
-                // return note.info.txt.includes(text);
+                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
                 case keepService.NOTE_TYPES.audio:
-                // return note.info.txt.includes(text);
+                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
                 case keepService.NOTE_TYPES.video:
-                // return note.info.txt.includes(text);
+                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
                 case keepService.NOTE_TYPES.map:
-                // return note.info.txt.includes(text);
+                // return note.info.txt.toLowerCase().includes(text.toLowerCase());
                 default:
                     return false;
             }
