@@ -1,5 +1,10 @@
 import {keepService} from '../apps/keep/services/keep.service.js';
 import noteText from '../apps/keep/cmps/note-txt.cmp.js';
+import noteImg from '../apps/keep/cmps/note-img.cmp.js';
+import noteTodos from '../apps/keep/cmps/note-todos.cmp.js';
+import noteVideo from '../apps/keep/cmps/note-video.cmp.js';
+import noteAudio from '../apps/keep/cmps/note-audio.cms.js';
+import noteMap from '../apps/keep/cmps/note-map.cmp.js';
 
 
 export default {
@@ -22,10 +27,10 @@ export default {
     },
     components: {
         'noteText': noteText,
-        // 'noteImg': noteImg,
-        // 'noteTodos': noteTodos,
-        // 'noteVideo': noteVideo,
-        // 'noteAudio': noteAudio,
-        // 'noteMap': noteMap
+        'noteImg': noteImg,
+        'noteTodos': noteTodos,
+        'noteVideo': noteVideo,
+        'noteAudio': noteAudio,
+        'noteMap': noteMap
     }
 }
