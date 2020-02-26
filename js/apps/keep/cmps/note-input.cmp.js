@@ -1,6 +1,4 @@
-import {keepService} from '../services/keep.service.js';
-
-// const noteTypes = keepService.NOTE_TYPES;
+import { keepService } from '../services/keep.service.js';
 
 export default {
     template: `
@@ -24,22 +22,22 @@ export default {
         }
     },
     created() {
-        this.inputType = noteTypes.text;
+        this.inputType = this.noteTypes.text;
     },
     computed: {
         inputPlaceholder() {
             switch (this.inputType) {
-                case noteTypes.text:
+                case this.noteTypes.text:
                     return "what's on your mind...";
-                case noteTypes.image:
+                case this.noteTypes.image:
                     return 'Enter image URL...';
-                case noteTypes.video:
+                case this.noteTypes.video:
                     return 'Enter video URL...';
-                case noteTypes.audio:
+                case this.noteTypes.audio:
                     return 'Enter audio URL...';
-                case noteTypes.todoList:
+                case this.noteTypes.todoList:
                     return 'Enter comma seperated list...';
-                case noteTypes.map:
+                case this.noteTypes.map:
                     return 'Enter location...';
             }
         }
