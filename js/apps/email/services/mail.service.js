@@ -24,6 +24,21 @@ function getMails() {
     return Promise.resolve(mailsDB);
 }
 
+function getMailById(mailId){
+    let mail = mailsDB.find(mail => mail.id === mailId);
+    return Promise.resolve(mail);
+}
+
+function getEmptyMail(){
+    return {
+        subject: '',
+        to: '',
+        cc: '',
+        bcc: '',
+        body: ''
+    }
+}
+
 function addMail(mail) {
     mail.id = utilService.makeId(utilService.getRandomInt(5, 10));
     mailsDB.unshift(mail);
@@ -56,6 +71,8 @@ export default {
     MAIL_STATE,
     addMail,
     getMails,
+    getMailById,
+    getEmptyMail,
     updateMail,
     removeMail,
     markMailAsRead
