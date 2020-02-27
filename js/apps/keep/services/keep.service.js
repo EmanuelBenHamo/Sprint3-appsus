@@ -153,7 +153,7 @@ function _getFormattedTodoListNote(note) {
     return {
         id: utilService.randomInt(1, 10000),
         type: note.type,
-        isPinned: true,
+        isPinned: false,
         info: {
             todos: splitedtodos.map(todo => {
                 return {

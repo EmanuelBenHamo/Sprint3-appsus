@@ -11,6 +11,7 @@ export default {
     <section class='keep-app-container'>
         <user-msg></user-msg>
         <h1>Keep App!</h1>
+        <router-link to="/">Home</router-link>
         <note-filter @filtered="setFilter"></note-filter>
         <note-input @addedNote="onAddNote"></note-input>
         <section class="pinnedNotes">
