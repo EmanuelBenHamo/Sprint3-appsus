@@ -26,10 +26,12 @@ export default {
     },
     computed: {
         mailsToShow() {
-            if (!this.filterBy || !this.filterBy.mailTxt) {
-                return this.mails;
+            if (this.filterBy && this.filterBy.mailTxt) {
+                let textToMatch = this.filterBy.mailTxt.toLowerCase();
+                let filteredMails = this.mails.filter(mail => mail.subject.toLowerCase().includes(textToMatch) || mail.body.toLowerCase().includes(textToMatch));
+                return filteredMails;
             }
-            return this.mails.filter(mail => mail.subject.includes(this.filterBy.mailTxt) || mail.body.includes(this.filterBy.mailTxt));
+            return this.mails;
         }
     },
     methods: {
