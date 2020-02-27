@@ -1,13 +1,15 @@
 import { keepService } from '../apps/keep/services/keep.service.js';
+import userMsg from '../apps/keep/cmps/user-msg.cmp.js';
 import noteFilter from '../apps/keep/cmps/note-filter.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
 import noteEdit from '../apps/keep/cmps/note-edit.cmp.js';
-import eventBus from '../services/event-bus-service.js'
+import { eventBus } from '../services/event-bus-service.js'
 
 export default {
     template: `
     <section class='keep-app-container'>
+        <user-msg></user-msg>
         <h1>Keep App!</h1>
         <note-filter @filtered="setFilter"></note-filter>
         <note-input @addedNote="onAddedNote"></note-input>
@@ -44,26 +46,24 @@ export default {
         keepService.getNotes()
         .then(notes => this.notes = notes);
         eventBus.$on('noteUpdate', note => keepService.updateNote(note));
+    },
+    methods: {
+        onRemove(noteId) {
+            keepService.removeNote(noteId)
+                .then(() => { eventBus.$emit('showUserMsg', 'Note deleted successfully') });
         },
-        methods: {
-            onRemove(noteId) {
-                keepService.removeNote(noteId)
-                .then(deletedNote => console.log('note deleted', JSON.stringify(deletedNote)));
-            },
-            
         onAddedNote(note) {
             keepService.addNote(note)
-                .then(addedNote => console.log('note added', JSON.stringify(addedNote)));
+                .then(() => { eventBus.$emit('showUserMsg', 'Note added successfully') });
         },
-        onPinNote(noteId){
+        onPinNote(noteId) {
             keepService.pinNote(noteId);
         },
-        onChangeColor({noteId, color}){
-            keepService.changeColor({noteId, color})
+        onChangeColor({ noteId, color }) {
+            keepService.changeColor({ noteId, color });
         },
-        onSetTodoDone({noteId, todoIdx}){
-            console.log('IM HERE!',todoIdx)
-            keepService.setTodoDone({noteId, todoIdx})
+        onSetTodoDone({ noteId, todoIdx }) {
+            keepService.setTodoDone({ noteId, todoIdx });
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
@@ -75,7 +75,6 @@ export default {
                 return notesArray;
             }
         },
-
         matchBetween(note, text) {
             // TODO: add handling in note types AUDIO, VIDEO, MAP after data structure is decided
             text = text.toLowerCase();
@@ -103,13 +102,13 @@ export default {
                     return false;
             }
         },
-      
-    },    
+
+    },
     components: {
         noteInput,
         noteFilter,
         noteList,
-        noteEdit
-
+        noteEdit,
+        userMsg
     }
 }

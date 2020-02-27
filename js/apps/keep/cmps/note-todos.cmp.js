@@ -1,4 +1,4 @@
-import eventBus from '../../../services/event-bus-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     template: `
@@ -22,11 +22,11 @@ export default {
             else return this.note.info.todos
         }
     },
-    methods:{
-        setDone(idx){
+    methods: {
+        setDone(idx) {
             this.isTodoDone = !this.isTodoDone
             this.setStyle(idx)
-            this.$emit('setTodoDone', {noteId:this.note.id,todoIdx:idx})
+            this.$emit('setTodoDone', { noteId: this.note.id, todoIdx: idx })
         },
         setStyle(idx){
             this.$refs[idx][0].style = (!this.note.info.todos[idx].doneAt)?'text-decoration: line-through' : 'text-decoration: none';

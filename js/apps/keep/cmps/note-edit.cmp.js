@@ -1,5 +1,5 @@
 'use strict';
-import eventBus from '../../../services/event-bus-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     template:`
@@ -14,31 +14,30 @@ export default {
         <textarea v-if="note.type === 'noteText'" v-model="text" ref="input"  @input="onNoteUpdate" >{{text}}</textarea>  
     </section>
     `,
-    data(){
-        return{
-            note:null,
-            text:'',
+    data() {
+        return {
+            note: null,
+            text: ''
         }
     },
-    created(){
+    created() {
         eventBus.$on('noteEdit', note => {
             this.note = note
             this.text = this.note.info.txt;
             // console.log('created',this.text)
         });
 
-        // console.log('this.note',this.note)
+       
     },
-    mounted(){
+    mounted() {
         // this.$refs.input.focus()
     },
-    methods:{
-        onNoteUpdate(){
+    methods: {
+        onNoteUpdate() {
             this.note.info.txt = this.text
-            // console.log(this.note)
             eventBus.$emit('noteUpdate',this.note)
         }
     }
-   
-  
+
+
 }

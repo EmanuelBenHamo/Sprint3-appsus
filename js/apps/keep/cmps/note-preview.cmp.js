@@ -5,12 +5,12 @@ import noteTodos from './note-todos.cmp.js';
 import noteVideo from './note-video.cmp.js';
 import noteAudio from './note-audio.cms.js';
 import noteMap from './note-map.cmp.js';
-import eventBus from '../../../services/event-bus-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 
 
 
 export default {
-    template:`
+    template: `
     <section class="note-preview-container" :style="{'background-color': color}"> 
         <component :is="note.type" :note="note" @setTodoDone="$emit('setTodoDone', $event)"></component>
         <div class="tool-bar">
@@ -22,13 +22,13 @@ export default {
         </div>
     </section>
     `,
-    data(){
-        return{
-            color:'#ddd'
+    data() {
+        return {
+            color: '#ddd'
         }
     },
-    props:['note'],
-    components:{
+    props: ['note'],
+    components: {
         noteText,
         noteImg,
         noteTodos,
@@ -36,11 +36,11 @@ export default {
         noteAudio,
         noteMap,
     },
-    created(){
+    created() {
         this.color = this.note.style
     },
-    methods:{
-        onNoteEdit(){
+    methods: {
+        onNoteEdit() {
             eventBus.$emit('noteEdit', this.note)
         }
     }
