@@ -56,7 +56,7 @@ export default {
     },
    
     components: {
-        mailList,
+        // mailList,
         mailFilter,
         mailCompose
     },
