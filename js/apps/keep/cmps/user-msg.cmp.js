@@ -18,7 +18,7 @@ export default {
     created() {
         eventBus.$on('showUserMsg', (msg) => {
             clearTimeout(this.timeout);
-            this.msg = msg.txt;
+            this.msg = msg;
             this.showMsg = true;
             this.timeout = setTimeout(() => {
                 this.showMsg = false;
