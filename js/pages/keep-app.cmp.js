@@ -63,6 +63,7 @@ export default {
             keepService.changeColor({ noteId, color });
         },
         onNoteTodoStateChange({ noteId, todoIdx }) {
+            //TODO: send the todo id instead of todo index
             keepService.setNoteTodoState({ noteId, todoIdx });
         },
         setFilter(filterBy) {
