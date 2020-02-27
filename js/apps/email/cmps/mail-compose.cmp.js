@@ -2,7 +2,7 @@ import mailService from '../services/mail.service.js';
 
 export default {
     template: `
-        <section class="mail-compose-container">
+        <section v-if="mail" class="mail-compose-container">
             <h2>New Message</h2>
             <form @submit.prevent="submitMail" class="new-msg-form">
                 <button @click.prevent="saveAsDraft">X</button>
@@ -26,24 +26,37 @@ export default {
     `,
     data() {
         return {
-            mail: mailService.getEmptyMail()
+            mail: null
         }
     },
     created() {
-        let mailId = this.$route.params.id;
-         
-         if(mailId) {
-             this.mail = mailService.getMailById(mailId);
-         }
+        this.loadMail();
     },
     methods: {
+        loadMail(){
+            let mailId = this.$route.params.id;
+         
+            if(mailId) {
+                mailService.getMailById(mailId)
+                .then((mail) => {
+                    if(mail.state === mailService.MAIL_STATE.read) {
+                        mail.subject = 'Re:' + mail.subject;
+                    }
+                    this.mail = mail;
+                });
+            } else {
+                mailService.getEmptyMail()
+                .then(emptyMail => this.mail = emptyMail);
+            }
+        },
         submitMail() {
             this.mail.sentAt = Date.now();
             this.mail.state = mailService.MAIL_STATE.sent;
             mailService.addMail(this.mail)
             .then((savedMail) => {
                 console.log('The mail sent successfully', JSON.stringify(savedMail));
-                this.mail = mailService.getEmptyMail();
+                mailService.getEmptyMail()
+                .then(emptyMail => this.mail = emptyMail);
             });
         },
         saveAsDraft() {
@@ -57,7 +70,7 @@ export default {
     },
     watch: {
         '$route.params.id'() {
-            this.mail = mailService.getMailById(mailId);
+            this.loadMail();
         }
     }
 }
