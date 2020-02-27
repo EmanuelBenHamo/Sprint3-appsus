@@ -3,10 +3,15 @@
 import {utilService} from '../../../services/utils-service.js';
 import {fakeMails} from '../services/mail-fake-data.js';
 
+export default {
+    MAIL_STATE,
+    addMail,
+    getMails,
+    updateMail,
+    removeMail
+};
+
 const MAILS_KEY = 'mails';
-
-var mailsDB = [];
-
 const MAIL_STATE = {
     read: 'read',
     unread: 'unread',
@@ -14,13 +19,7 @@ const MAIL_STATE = {
     sent: 'sent'
 }
 
-export const mailService = {
-    MAIL_STATE,
-    addMail,
-    getMails,
-    updateMail,
-    removeMail
-};
+var mailsDB = [];
 
 function getMails() {
     let mails = utilService.load(MAILS_KEY);
