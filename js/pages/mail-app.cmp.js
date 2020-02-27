@@ -1,5 +1,5 @@
 'use strict';
-import {mailService} from '../apps/email/services/mail.service.js'
+import mailService from '../apps/email/services/mail.service.js'
 import mailList from '../../js/apps/email/cmps/mail-list.cmp.js'
 
 export default {
