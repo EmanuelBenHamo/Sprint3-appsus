@@ -3,6 +3,7 @@ import mailService from '../apps/email/services/mail.service.js';
 import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
 // import mailList from '../../js/apps/email/cmps/mail-list.cmp.js';
 import {eventBus} from '../services/event-bus-service.js';
+import mailCompose from '../apps/email/cmps/mail-compose.cmp.js';
 
 export default {
     template: `
@@ -20,7 +21,7 @@ export default {
     data() {
         return {
             mails: null,
-            compose: false,
+            compose: true,
             filterBy: null
         }
     },
@@ -55,7 +56,8 @@ export default {
     },
    
     components: {
-        // mailList,
-        mailFilter
+        mailList,
+        mailFilter,
+        mailCompose
     },
 }
