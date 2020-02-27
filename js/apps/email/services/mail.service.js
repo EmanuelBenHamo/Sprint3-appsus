@@ -7,7 +7,15 @@ const MAILS_KEY = 'mails';
 
 var mailsDB = [];
 
+const MAIL_STATE = {
+    read: 'read',
+    unread: 'unread',
+    draft: 'draft',
+    sent: 'sent'
+}
+
 export const mailService = {
+    MAIL_STATE,
     addMail,
     getMails,
     updateMail,
