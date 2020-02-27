@@ -4,6 +4,7 @@
 }
 .mail-details-container .top-bar{
     margin: 20px 0;
+    background-color: #ddd;
 }
 .mail-details-container{
     padding: 0 120px ;
