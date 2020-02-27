@@ -12,14 +12,14 @@ export default {
         <user-msg></user-msg>
         <h1>Keep App!</h1>
         <note-filter @filtered="setFilter"></note-filter>
-        <note-input @addedNote="onAddedNote"></note-input>
+        <note-input @addedNote="onAddNote"></note-input>
         <section class="pinnedNotes">
             <h2>Pinned</h2>
-            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor" @setTodoDone="onSetTodoDone"></note-list>
+            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemoveNote" @pinNote="onNotePinStateChange" @changeColor="onChangeColor" @setTodoDone="onNoteTodoStateChange"></note-list>
         </section>
         <section class="unpinnedNotes">
             <h2>Unpinned</h2>
-            <note-list v-if="notes && unpinnedNotes" :notes="unpinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor"></note-list>
+            <note-list v-if="notes && unpinnedNotes" :notes="unpinnedNotes" @remove="onRemoveNote" @pinNote="onNotePinStateChange" @changeColor="onChangeColor"></note-list>
         </section>
         <note-edit></note-edit>
     </section>
@@ -49,22 +49,23 @@ export default {
         eventBus.$on('addNewTodo', note => keepService.addNewTodo(note));
     },
     methods: {
-        onRemove(noteId) {
+        onRemoveNote(noteId) {
             keepService.removeNote(noteId)
                 .then(() => { eventBus.$emit('showUserMsg', 'Note deleted successfully') });
         },
-        onAddedNote(note) {
+        onAddNote(note) {
             keepService.addNote(note)
                 .then(() => { eventBus.$emit('showUserMsg', 'Note added successfully') });
         },
-        onPinNote(noteId) {
-            keepService.pinNote(noteId);
+        onNotePinStateChange(noteId) {
+            keepService.toogleNotePinedState(noteId);
         },
         onChangeColor({ noteId, color }) {
             keepService.changeColor({ noteId, color });
         },
-        onSetTodoDone({ noteId, todoIdx }) {
-            keepService.setTodoDone({ noteId, todoIdx });
+        onNoteTodoStateChange({ noteId, todoIdx }) {
+            //TODO: send the todo id instead of todo index
+            keepService.setNoteTodoState({ noteId, todoIdx });
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
