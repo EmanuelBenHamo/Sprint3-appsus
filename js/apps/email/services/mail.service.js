@@ -1,7 +1,7 @@
 'use strict'
 
 import {utilService} from '../../../services/utils-service.js';
-import {fakeMails} from '../services/mail-fake-data.js';\
+import {fakeMails} from '../services/mail-fake-data.js';
 
 const MAILS_KEY = 'mails';
 
