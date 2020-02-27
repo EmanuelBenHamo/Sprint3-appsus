@@ -5,8 +5,6 @@ import noteList from '../apps/keep/cmps/note-list.cmp.js';
 import noteEdit from '../apps/keep/cmps/note-edit.cmp.js';
 import eventBus from '../services/event-bus-service.js'
 
-
-
 export default {
     template: `
     <section class='keep-app-container'>
@@ -106,14 +104,12 @@ export default {
             }
         },
       
-    },
-
-    
+    },    
     components: {
         noteInput,
         noteFilter,
         noteList,
         noteEdit
 
-    },
+    }
 }
