@@ -42,15 +42,15 @@ export default {
     },
     created() {
         keepService.getNotes()
-            .then(notes => this.notes = notes);
+        .then(notes => this.notes = notes);
         eventBus.$on('noteUpdate', note => keepService.updateNote(note));
-    },
-    methods: {
-        onRemove(noteId) {
-            keepService.removeNote(noteId)
-                .then(deletedNote => console.log('note deleted', JSON.stringify(deletedNote)));
         },
-
+        methods: {
+            onRemove(noteId) {
+                keepService.removeNote(noteId)
+                .then(deletedNote => console.log('note deleted', JSON.stringify(deletedNote)));
+            },
+            
         onAddedNote(note) {
             keepService.addNote(note)
                 .then(addedNote => console.log('note added', JSON.stringify(addedNote)));

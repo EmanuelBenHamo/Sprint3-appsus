@@ -1,16 +1,25 @@
 .long-text-container{
     width: 60%;
-    height: 90%;
+    min-height: 80%;
     position: absolute;
     left: 50%;
-    top:50%;
+    top:60%;
     background-color: #bbb;
     box-shadow: 0 0 15px 0 #222;
-    transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%);
+    
 }
 
 .long-text-container textarea{
     all:unset;
     padding-top: 20%;
     font-size: 1.5rem;
+}
+.long-text-container .note-edit{
+    margin-top: 30px;
+}
+.long-text-container input{
+    all:unset;
+    margin: 10px 0;
+    font-size: 1.25rem;
 }
