@@ -40,7 +40,7 @@ function getNotes() {
 
 function addNote(note) {
     let formatedNote = _formatNoteByType(note);
-    notesDB.push(formatedNote);
+    notesDB.unshift(formatedNote);
     utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(formatedNote);
 }
