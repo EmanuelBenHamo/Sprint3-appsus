@@ -27,7 +27,7 @@ export const fakeNotes = [
         info: {
             todos: [
                 { id:45 , txt: 'Cook', doneAt: null },
-                { id: 772, txt: 'Clean house', doneAt: 187111111 },
+                { id: 772, txt: 'Clean house', doneAt: null },
             ]
         },
         style:null

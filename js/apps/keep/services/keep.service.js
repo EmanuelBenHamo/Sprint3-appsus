@@ -41,6 +41,8 @@ function removeNote(noteId) {
 }
 
 function updateNote(updatedNote, noteIdx) {
+    if(!noteIdx) noteIdx = notesDB.findIndex(note => note.id === updatedNote.id); 
+    console.log(noteIdx, updatedNote)
     notesDB.splice(noteIdx, 1, updatedNote);
     utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(updatedNote);
@@ -58,6 +60,18 @@ function changeColor({noteId, color}){
     updatedNote.style = color
     updateNote(updatedNote,noteIdx)
 }
+function setTodoDone({noteId, todoIdx}){
+    let noteIdx = notesDB.findIndex(note => note.id === noteId);
+    let updatedNote = notesDB[noteIdx];
+    updatedNote.info.todos[todoIdx].doneAt = (!updatedNote.info.todos[todoIdx].doneAt) ? Date.now() : null;
+    updateNote(updatedNote,noteIdx)
+ }
+
+function noteUpdate(note){
+    updateNote(note)
+    console.log('IM UPDATING',note)
+}
+
 export const keepService = {
     getNotes,
     addNote,
@@ -65,7 +79,9 @@ export const keepService = {
     NOTE_TYPES,
     removeNote,
     pinNote,
-    changeColor
+    changeColor,
+    setTodoDone,
+    noteUpdate  
 } 
 
 function _formatNoteByType(note) {
@@ -113,6 +129,7 @@ function _formatNoteByType(note) {
                 info: {
                     todos: splitedtodos.map(todo => {
                         return {
+                            id:utilService.randomInt(1,10000),
                             txt: todo,
                             doneAt: null 
                         }

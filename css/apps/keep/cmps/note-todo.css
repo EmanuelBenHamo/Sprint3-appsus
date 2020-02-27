@@ -1,0 +1,15 @@
+.todo-list-container .todo-list {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.todo-list-container .todo-list li {
+    /* max-width: fit-content; */
+    padding: 0 5px;
+    margin-bottom: 5px;
+}
+
+.todo-list-container .todo-list li:hover {
+    cursor: pointer;
+    background-color: azure;
+}

@@ -2,6 +2,10 @@ import { keepService } from '../apps/keep/services/keep.service.js';
 import noteFilter from '../apps/keep/cmps/note-filter.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
+import noteEdit from '../apps/keep/cmps/note-edit.cmp.js';
+import eventBus from '../services/event-bus-service.js'
+
+
 
 export default {
     template: `
@@ -11,12 +15,13 @@ export default {
         <note-input @addedNote="onAddedNote"></note-input>
         <section class="pinnedNotes">
             <h2>Pinned</h2>
-            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor"></note-list>
+            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor" @setTodoDone="onSetTodoDone"></note-list>
         </section>
         <section class="unpinnedNotes">
             <h2>Unpinned</h2>
             <note-list v-if="notes && unpinnedNotes" :notes="unpinnedNotes" @remove="onRemove" @pinNote="onPinNote" @changeColor="onChangeColor"></note-list>
         </section>
+        <note-edit></note-edit>
     </section>
     `,
     data() {
@@ -40,6 +45,7 @@ export default {
     created() {
         keepService.getNotes()
             .then(notes => this.notes = notes);
+        eventBus.$on('noteUpdate', note => keepService.noteUpdate(note))
     },
     methods: {
         onRemove(noteId) {
@@ -56,6 +62,10 @@ export default {
         },
         onChangeColor({noteId, color}){
             keepService.changeColor({noteId, color})
+        },
+        onSetTodoDone({noteId, todoIdx}){
+            console.log('IM HERE!',todoIdx)
+            keepService.setTodoDone({noteId, todoIdx})
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
@@ -102,6 +112,8 @@ export default {
     components: {
         noteInput,
         noteFilter,
-        noteList
+        noteList,
+        noteEdit
+
     },
 }

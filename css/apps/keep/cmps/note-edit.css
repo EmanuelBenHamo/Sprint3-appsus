@@ -1,0 +1,16 @@
+.long-text-container{
+    width: 60%;
+    height: 90%;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    background-color: #bbb;
+    box-shadow: 0 0 15px 0 #222;
+    transform: translate(-50%,-50%)
+}
+
+.long-text-container textarea{
+    all:unset;
+    padding-top: 20%;
+    font-size: 1.5rem;
+}

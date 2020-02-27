@@ -1,10 +1,7 @@
 export default {
     template: `
         <section class="note-text-container" v-if="txt">
-            <h1>I am note-txt cmp of keep app</h1>
-            
-            <!-- <textarea v-model="txt" @input="$emit('changed',txt)"></textarea> -->
-        <p>{{txt}}</p>
+            <p>{{txt}}</p>
         </section>
     `,
     data(){
@@ -12,9 +9,9 @@ export default {
             txt: '',
         }
     },
-    props:['info'],
+    props:['note'],
 
     created(){
-        this.txt = this.info.txt;
+        this.txt = this.note.info.txt;
     }
 }

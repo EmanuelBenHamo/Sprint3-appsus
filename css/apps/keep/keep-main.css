@@ -1,2 +1,4 @@
 @import './cmps/note-preview.css';
 @import './cmps/note-list.css';
+@import './cmps/note-todo.css';
+@import './cmps/note-edit.css';
