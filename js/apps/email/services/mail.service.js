@@ -1,15 +1,7 @@
 'use strict'
 
-import {utilService} from '../../../services/utils-service.js';
-import {fakeMails} from '../services/mail-fake-data.js';
-
-export default {
-    MAIL_STATE,
-    addMail,
-    getMails,
-    updateMail,
-    removeMail
-};
+import { utilService } from '../../../services/utils-service.js';
+import { fakeMails } from '../services/mail-fake-data.js';
 
 const MAILS_KEY = 'mails';
 const MAIL_STATE = {
@@ -51,3 +43,11 @@ function updateMail(updatedMail) {
     utilService.store(MAILS_KEY, mailsDB);
     return Promise.resolve(updatedMail);
 }
+
+export default {
+    MAIL_STATE,
+    addMail,
+    getMails,
+    updateMail,
+    removeMail
+};
