@@ -3,7 +3,7 @@ import noteFilter from '../apps/keep/cmps/note-filter.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
 import noteEdit from '../apps/keep/cmps/note-edit.cmp.js';
-import eventBus from '../services/event-bus-service.js'
+import { eventBus } from '../services/event-bus-service.js'
 
 export default {
     template: `
@@ -55,15 +55,15 @@ export default {
             keepService.addNote(note)
                 .then(addedNote => console.log('note added', JSON.stringify(addedNote)));
         },
-        onPinNote(noteId){
+        onPinNote(noteId) {
             keepService.pinNote(noteId);
         },
-        onChangeColor({noteId, color}){
-            keepService.changeColor({noteId, color})
+        onChangeColor({ noteId, color }) {
+            keepService.changeColor({ noteId, color })
         },
-        onSetTodoDone({noteId, todoIdx}){
-            console.log('IM HERE!',todoIdx)
-            keepService.setTodoDone({noteId, todoIdx})
+        onSetTodoDone({ noteId, todoIdx }) {
+            console.log('IM HERE!', todoIdx)
+            keepService.setTodoDone({ noteId, todoIdx })
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
@@ -103,8 +103,8 @@ export default {
                     return false;
             }
         },
-      
-    },    
+
+    },
     components: {
         noteInput,
         noteFilter,
