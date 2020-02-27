@@ -18,8 +18,9 @@
 .long-text-container .note-edit{
     margin-top: 30px;
 }
-.long-text-container input{
+.long-text-container .note-todo-edit input{
     all:unset;
+    background-color: #ccc;
     margin: 10px 0;
     font-size: 1.25rem;
 }

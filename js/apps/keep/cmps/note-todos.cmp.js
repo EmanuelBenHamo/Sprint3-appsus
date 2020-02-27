@@ -20,7 +20,7 @@ export default {
         textLength(){
             if(this.note.info.todos.length > 7 ) return this.note.info.todos.slice(0,7)
             else return this.note.info.todos
-        }
+        },
     },
     methods: {
         setDone(idx) {

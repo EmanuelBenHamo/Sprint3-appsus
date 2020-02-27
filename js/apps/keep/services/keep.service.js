@@ -23,7 +23,8 @@ export const keepService = {
     removeNote,
     pinNote,
     changeColor,
-    setTodoDone
+    setTodoDone,
+    addNewTodo
 }
 
 function getNotes() {
@@ -75,6 +76,18 @@ function setTodoDone({ noteId, todoIdx }) {
     let updatedNote = notesDB[noteIdx];
     updatedNote.info.todos[todoIdx].doneAt = (!updatedNote.info.todos[todoIdx].doneAt) ? Date.now() : null;
     return updateNote(updatedNote);
+}
+function addNewTodo(note){
+    let noteId = note.id;
+    let noteIdx = notesDB.findIndex(note => note.id === noteId);
+    console.log('Add TODO',noteIdx)
+    
+    note.info.todos.push(_createTodo());
+    let updatedNote = notesDB[noteIdx]
+    return updateNote(updatedNote)
+}
+function _createTodo(){
+    return { id:utilService.randomInt(1,10000) , txt: '', doneAt: null }
 }
 
 function _formatNoteByType(note) {
