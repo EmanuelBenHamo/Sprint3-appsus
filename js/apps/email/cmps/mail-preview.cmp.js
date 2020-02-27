@@ -8,6 +8,8 @@ export default {
         <h1>{{mail.subject}}</h1>
         <p>{{shortBody}}</p>
         <div class="buttons">
+
+            <button class="expend-mail" @click.stop="onExpendMail">&#9744;</button>
             <button class="remove-mail" @click.stop="onRemoveMail">X</button>
         </div>
     </section>
@@ -31,11 +33,15 @@ export default {
     methods:{
         onReadMail(){
             this.isRead = true;
-            eventBus.$emit('isRead', this.mail.id);
+            eventBus.$emit('isRead', this.mail);
             this.preview = !this.preview
+
         },
         onRemoveMail(){
             eventBus.$emit('onRemoveMail',this.mail.id)
+        },
+        onExpendMail(){
+            this.$router.push('/details/'+this.mail.id)
         }
     }   
 }

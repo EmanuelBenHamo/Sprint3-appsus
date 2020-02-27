@@ -44,13 +44,7 @@ function updateMail(updatedMail) {
     utilService.store(MAILS_KEY, mailsDB);
     return Promise.resolve(updatedMail);
 }
-function markMailAsRead(mailId){
-    let mailIdx = mailsDB.findIndex(mail => mail.id === mailId);
-    mailsDB[mailIdx].isRead = true;
-    let updatedMail = mailsDB[mailIdx];
-    updateMail(updatedMail);
-    return Promise.resolve(updatedMail)
-}
+
 
 export default {
     MAIL_STATE,
@@ -58,5 +52,5 @@ export default {
     getMails,
     updateMail,
     removeMail,
-    markMailAsRead
+  
 };

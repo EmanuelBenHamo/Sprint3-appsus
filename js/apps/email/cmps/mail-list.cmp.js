@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="mail-list-container">
             <h1>Mail List</h1>
-            <mail-preview v-for="mail in mails" :mail="mail"></mail-preview>
+            <mail-preview v-for="mail in mails" :key="mail.id" :mail="mail"></mail-preview>
         </section>
         `,
         props:['mails'],
