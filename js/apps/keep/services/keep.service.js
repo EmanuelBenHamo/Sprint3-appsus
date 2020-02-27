@@ -21,9 +21,9 @@ export const keepService = {
     updateNote,
     NOTE_TYPES,
     removeNote,
-    pinNote: toogleNotePinedState,
+    toogleNotePinedState,
     changeColor,
-    setTodoDone: setNoteTodoState
+    setNoteTodoState
 }
 
 function getNotes() {
