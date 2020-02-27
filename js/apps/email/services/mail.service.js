@@ -1,6 +1,6 @@
 'use strict'
 
-import { utilService } from '../../../services/utils-service.js';
+import utilService from '../../../services/utils-service.js';
 import { fakeMails } from '../services/mail-fake-data.js';
 
 const MAILS_KEY = 'mails';
@@ -25,6 +25,7 @@ function getMails() {
 }
 
 function addMail(mail) {
+    mail.id = utilService.makeId(utilService.getRandomInt(5, 10));
     mailsDB.unshift(mail);
     utilService.store(MAILS_KEY, mailsDB);
     return Promise.resolve(mail);
@@ -32,7 +33,7 @@ function addMail(mail) {
 
 function removeMail(mailId) {
     let mailIdx = mailsDB.findIndex(mail => mail.id === mailId);
-    let removedMail = notesDB.splice(mailIdx, 1)[0];
+    let removedMail = mailsDB.splice(mailIdx, 1)[0];
     utilService.store(MAILS_KEY, mailsDB);
     return Promise.resolve(removedMail);
 }

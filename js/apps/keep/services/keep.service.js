@@ -1,6 +1,6 @@
 'use strict';
 import { fakeNotes } from './notes-fake-data.js';
-import { utilService } from '../../../services/utils-service.js';
+import utilService from '../../../services/utils-service.js';
 
 const NOTES_KEY = 'notes';
 
@@ -40,6 +40,7 @@ function getNotes() {
 
 function addNote(note) {
     let formatedNote = _formatNoteByType(note);
+    formatedNote.id = utilService.makeId(utilService.getRandomInt(5, 10));
     notesDB.unshift(formatedNote);
     utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(formatedNote);
@@ -87,7 +88,7 @@ function addNewTodo(note){
     return updateNote(updatedNote)
 }
 function _createTodo(){
-    return { id:utilService.randomInt(1,10000) , txt: '', doneAt: null }
+    return { id:utilService.getRandomInt(1,10000) , txt: '', doneAt: null }
 }
 
 function _formatNoteByType(note) {
@@ -109,7 +110,6 @@ function _formatNoteByType(note) {
 
 function _getFormattedTextNote(note) {
     return {
-        id: utilService.randomInt(1, 10000),
         type: note.type,
         isPinned: false,
         info: {
@@ -121,7 +121,6 @@ function _getFormattedTextNote(note) {
 
 function _getFormattedImageNote(note) {
     return {
-        id: utilService.randomInt(1, 10000),
         type: note.type,
         isPinned: false,
         info: {
@@ -134,7 +133,6 @@ function _getFormattedImageNote(note) {
 
 function _getFormattedVideoNote(note) {
     return {
-        id: utilService.randomInt(1, 10000),
         type: note.type,
         isPinned: false,
         info: {
@@ -151,13 +149,12 @@ function _getFormattedAudioNote(note) {
 function _getFormattedTodoListNote(note) {
     let splitedtodos = note.txt.split(',');
     return {
-        id: utilService.randomInt(1, 10000),
         type: note.type,
         isPinned: false,
         info: {
             todos: splitedtodos.map(todo => {
                 return {
-                    id: utilService.randomInt(1, 10000),
+                    id: utilService.getRandomInt(1, 10000),
                     txt: todo,
                     doneAt: null
                 }

@@ -1,8 +1,11 @@
+import utilService from '../../../services/utils-service.js';
+import utilsService from '../../../services/utils-service.js';
+
 // ATTENTION: make sure that note type is valid, look at NOTE_TYPES object in keep service
 
 export const fakeNotes = [
     {
-        id: 1001,
+        id: utilService.makeId(utilsService.getRandomInt(5, 10)),
         type: 'noteText',
         isPinned: false,
         info: {
@@ -11,7 +14,7 @@ export const fakeNotes = [
         style:null
     },
     {
-        id: 1002,
+        id: utilService.makeId(utilsService.getRandomInt(5, 10)),
         type: 'noteImg',
         isPinned: false,
         info: {
@@ -21,19 +24,19 @@ export const fakeNotes = [
         style:null
     },
     {
-        id: 1003,
+        id: utilService.makeId(utilsService.getRandomInt(5, 10)),
         type: 'noteTodos',
         isPinned: true,
         info: {
             todos: [
-                { id:45 , txt: 'Cook', doneAt: null },
-                { id: 772, txt: 'Clean house', doneAt: null },
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Cook', doneAt: null },
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Clean house', doneAt: null },
             ]
         },
         style:null
     },      
     {
-        id: 1004,
+        id: utilService.makeId(utilsService.getRandomInt(5, 10)),
         type: 'noteVideo',
         isPinned: false,
         info: {

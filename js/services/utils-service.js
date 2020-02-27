@@ -1,9 +1,10 @@
-import {storageService} from './storage.service.js';
+import storageService from './storage.service.js';
 
-export const utilService = {
+export default {
     store,
     load,
-    randomInt
+    getRandomInt,
+    makeId
 }
 
 function store(key, value) {
@@ -14,6 +15,19 @@ function load(key) {
     return storageService.load(key);
 }
 
-function randomInt(min, max){
-    return Math.floor(Math.random() * (max - min) + min )
+function getRandomInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min );
+}
+
+function makeId(length = 5)
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for(var i=0; i < length; i++)
+    {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
 }
