@@ -1,0 +1,27 @@
+.mail-compose-container {
+    /* background-color: red; */
+}
+
+.new-msg-header{
+    background-color: #414141;
+    color: white;
+
+}
+
+.new-msg-form{
+    /* background-color: lightgreen; */
+}
+
+.draft-mail-btn {
+    width: fit-content;
+    padding: 5px;
+}
+
+.new-msg-form label {
+    width: 95vw;
+}
+
+.new-msg-form label input {
+    width: 90%;
+    border: none;
+}
