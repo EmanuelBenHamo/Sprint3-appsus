@@ -2,10 +2,9 @@ import mailService from '../services/mail.service.js';
 
 export default {
     template: `
-        <section v-if="mail" class="mail-compose-container">
-            <h2>New Message</h2>
-            <form @submit.prevent="submitMail" class="new-msg-form">
-                <button @click.prevent="saveAsDraft">X</button>
+        <section v-if="mail" class="flex column align-start mail-compose-container">
+            <h2 class="new-msg-header">New Message</h2>
+            <form @submit.prevent="submitMail" class="flex column new-msg-form">
                 <label class="to-label">
                     To:
                     <input class="to-input" type="text" v-model="mail.to">
@@ -22,6 +21,7 @@ export default {
                 <textarea class="body-input" v-model="mail.body"></textarea>
                 <button type="submit">Send</button>
             </form>
+            <button @click.prevent="saveAsDraft" class="draft-mail-btn">X</button>
         </section>
     `,
     data() {
