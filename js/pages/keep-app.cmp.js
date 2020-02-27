@@ -4,7 +4,7 @@ import noteFilter from '../apps/keep/cmps/note-filter.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
 import noteEdit from '../apps/keep/cmps/note-edit.cmp.js';
-import { eventBus } from '../services/event-bus-service.js'
+import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `

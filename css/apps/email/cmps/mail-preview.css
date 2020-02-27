@@ -1,0 +1,16 @@
+.mail-preview-container{
+    background-color: #eee;
+    border-top:1px solid #ddd;
+    padding: 10px 0;
+}
+.mail-preview-container h1{
+    display: inline;
+    margin-right: 20px;
+}
+.mail-preview-container p{
+    margin: 0;
+}
+
+.mail-preview-container.read{
+    background-color: #aaa ;
+}

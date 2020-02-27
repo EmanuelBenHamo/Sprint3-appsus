@@ -32,7 +32,7 @@ function addMail(mail) {
 
 function removeMail(mailId) {
     let mailIdx = mailsDB.findIndex(mail => mail.id === mailId);
-    let removedMail = notesDB.splice(mailIdx, 1)[0];
+    let removedMail = mailsDB.splice(mailIdx, 1)[0];
     utilService.store(MAILS_KEY, mailsDB);
     return Promise.resolve(removedMail);
 }
@@ -43,11 +43,19 @@ function updateMail(updatedMail) {
     utilService.store(MAILS_KEY, mailsDB);
     return Promise.resolve(updatedMail);
 }
+function markMailAsRead(mailId){
+    let mailIdx = mailsDB.findIndex(mail => mail.id === mailId);
+    mailsDB[mailIdx].isRead = true;
+    let updatedMail = mailsDB[mailIdx];
+    updateMail(updatedMail);
+    return Promise.resolve(updatedMail)
+}
 
 export default {
     MAIL_STATE,
     addMail,
     getMails,
     updateMail,
-    removeMail
+    removeMail,
+    markMailAsRead
 };

@@ -2,6 +2,7 @@
 import mailService from '../apps/email/services/mail.service.js';
 import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
 import mailList from '../../js/apps/email/cmps/mail-list.cmp.js';
+import {eventBus} from '../services/event-bus-service.js';
 
 export default {
     template: `
@@ -22,7 +23,16 @@ export default {
     },
     created() {
         mailService.getMails()
-            .then(mails => this.mails = mails)
+            .then(mails => this.mails = mails);
+        
+        eventBus.$on('isRead', mailId =>{
+            mailService.markMailAsRead(mailId)
+            .then(() => console.log('Mail is read'))
+        })
+        eventBus.$on('onRemoveMail', mailId =>{
+            mailService.removeMail(mailId)
+            .then(() => console.log('Mail has been removed!'))
+        })
     },
     computed: {
         mailsToShow() {
@@ -37,6 +47,7 @@ export default {
             this.filterBy = filterBy;
         }
     },
+   
     components: {
         mailList,
         mailFilter
