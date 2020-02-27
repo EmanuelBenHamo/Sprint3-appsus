@@ -3,16 +3,15 @@ import mailService from '../apps/email/services/mail.service.js';
 import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
 // import mailList from '../../js/apps/email/cmps/mail-list.cmp.js';
 import {eventBus} from '../services/event-bus-service.js';
-import mailCompose from '../apps/email/cmps/mail-compose.cmp.js';
 
 export default {
     template: `
         <section v-if="mails" class="mail-app-container">
             <h1>Welcome to the mail app</h1>
-            <router-link to="/">Home</router-link>
+            <router-link to="/">Home</router-link>|
+            <router-link to="/mail/compose">Compose</router-link>|
+            <router-link to="/mail/compose/1">Compose1</router-link>
             <mail-filter @filtered="setFilter"></mail-filter>
-            <!-- <mail-list :mails="mailsToShow"></mail-list> -->
-            <mail-compose v-if="compose"></mail-compose>
             <section class="main-mail-view">
                 <router-view :mails="mailsToShow"></router-view>
             </section>
@@ -56,8 +55,6 @@ export default {
     },
    
     components: {
-        // mailList,
         mailFilter,
-        mailCompose
     },
 }
