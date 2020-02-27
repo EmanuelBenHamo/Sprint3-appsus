@@ -21,9 +21,9 @@ export const keepService = {
     updateNote,
     NOTE_TYPES,
     removeNote,
-    pinNote,
+    pinNote: toogleNotePinedState,
     changeColor,
-    setTodoDone
+    setTodoDone: setNoteTodoState
 }
 
 function getNotes() {
@@ -58,7 +58,7 @@ function updateNote(updatedNote) {
     return Promise.resolve(updatedNote);
 }
 
-function pinNote(noteId) {
+function toogleNotePinedState(noteId) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     let updatedNote = notesDB[noteIdx];
     updatedNote.isPinned = !updatedNote.isPinned;
@@ -70,7 +70,7 @@ function changeColor({ noteId, color }) {
     updatedNote.style = color;
     return updateNote(updatedNote);
 }
-function setTodoDone({ noteId, todoIdx }) {
+function setNoteTodoState({ noteId, todoIdx }) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     let updatedNote = notesDB[noteIdx];
     updatedNote.info.todos[todoIdx].doneAt = (!updatedNote.info.todos[todoIdx].doneAt) ? Date.now() : null;
