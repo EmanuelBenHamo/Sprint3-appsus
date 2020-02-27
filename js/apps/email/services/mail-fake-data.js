@@ -11,6 +11,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'Wassap',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',
@@ -21,6 +22,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'Ma kore',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',
@@ -31,6 +33,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'My subject',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',
@@ -41,6 +44,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'New things to know',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',
@@ -51,6 +55,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'Sale in zara',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',
@@ -61,6 +66,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'Game on sunday',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',
@@ -71,6 +77,7 @@ export const fakeMails = [
     {
         id: utilService.makeId(utilService.getRandomInt(5, 10)),
         subject: 'Nose hadash',
+        from:'sent person',
         to: 'reciever person',
         cc: 'person for cc',
         bcc: 'persion for bcc',

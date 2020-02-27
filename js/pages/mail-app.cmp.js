@@ -7,7 +7,6 @@ import {eventBus} from '../services/event-bus-service.js';
 export default {
     template: `
         <section v-if="mails" class="mail-app-container">
-            <h1>Welcome to the mail app</h1>
             <router-link to="/">Home</router-link>|
             <router-link to="/mail/compose">Compose</router-link>|
             <router-link to="/mail/compose/1">Compose1</router-link>

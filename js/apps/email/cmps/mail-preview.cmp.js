@@ -41,7 +41,7 @@ export default {
             eventBus.$emit('onRemoveMail',this.mail.id)
         },
         onExpendMail(){
-            this.$router.push('/details/'+this.mail.id)
+            this.$router.push('mail/details/'+this.mail.id)
         }
     }   
 }
