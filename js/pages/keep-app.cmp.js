@@ -45,7 +45,7 @@ export default {
     created() {
         keepService.getNotes()
             .then(notes => this.notes = notes);
-        eventBus.$on('noteUpdate', note => keepService.noteUpdate(note))
+        eventBus.$on('noteUpdate', note => keepService.updateNote(note));
     },
     methods: {
         onRemove(noteId) {

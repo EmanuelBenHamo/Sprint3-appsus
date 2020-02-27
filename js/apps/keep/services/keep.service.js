@@ -23,8 +23,7 @@ export const keepService = {
     removeNote,
     pinNote,
     changeColor,
-    setTodoDone,
-    noteUpdate
+    setTodoDone
 }
 
 function getNotes() {
@@ -39,7 +38,7 @@ function getNotes() {
 }
 
 function addNote(note) {
-    let formatedNote = _formatNoteByType(note)
+    let formatedNote = _formatNoteByType(note);
     notesDB.push(formatedNote);
     utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(formatedNote);
@@ -52,9 +51,8 @@ function removeNote(noteId) {
     return Promise.resolve(removedNote);
 }
 
-function updateNote(updatedNote, noteIdx) {
-    if (!noteIdx) noteIdx = notesDB.findIndex(note => note.id === updatedNote.id);
-    console.log(noteIdx, updatedNote)
+function updateNote(updatedNote) {
+    let noteIdx = notesDB.findIndex(note => note.id === updatedNote.id);
     notesDB.splice(noteIdx, 1, updatedNote);
     utilService.store(NOTES_KEY, notesDB);
     return Promise.resolve(updatedNote);
@@ -64,24 +62,19 @@ function pinNote(noteId) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     let updatedNote = notesDB[noteIdx];
     updatedNote.isPinned = !updatedNote.isPinned;
-    updateNote(updatedNote, noteIdx)
+    return updateNote(updatedNote);
 }
 function changeColor({ noteId, color }) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     let updatedNote = notesDB[noteIdx];
-    updatedNote.style = color
-    updateNote(updatedNote, noteIdx)
+    updatedNote.style = color;
+    return updateNote(updatedNote);
 }
 function setTodoDone({ noteId, todoIdx }) {
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     let updatedNote = notesDB[noteIdx];
     updatedNote.info.todos[todoIdx].doneAt = (!updatedNote.info.todos[todoIdx].doneAt) ? Date.now() : null;
-    updateNote(updatedNote, noteIdx)
-}
-
-function noteUpdate(note) {
-    updateNote(note)
-    console.log('IM UPDATING', note)
+    return updateNote(updatedNote);
 }
 
 function _formatNoteByType(note) {
@@ -164,7 +157,6 @@ function _getFormattedTodoListNote(note) {
 function _getFormattedMapNote(note) {
     return 'Enter location...';
 }
-
 
 function _getVideoId(param) {
     var video_id = param.split('v=')[1];
