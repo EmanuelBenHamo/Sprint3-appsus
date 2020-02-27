@@ -3,5 +3,5 @@
     cursor: pointer;
 }
 .mail-nav-bar-container .nav-bar>li.active{
-    background-color:blue;
+    background-color:#cca;
 }
