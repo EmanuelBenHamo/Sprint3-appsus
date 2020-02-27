@@ -8,7 +8,6 @@ export default {
         <h1>{{mail.subject}}</h1>
         <p>{{shortBody}}</p>
         <div class="buttons">
-
             <button class="expend-mail" @click.stop="onExpendMail">&#9744;</button>
             <button class="remove-mail" @click.stop="onRemoveMail">X</button>
         </div>

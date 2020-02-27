@@ -12,7 +12,7 @@ export default {
             <page-header></page-header>
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter"></mail-filter>
-                <nav-bar></nav-bar>
+                <nav-bar @setMailsStateToShow="setMailsStateToShow"></nav-bar>
                 <section class="main-mail-view">
                     <router-view :mails="mailsToShow"></router-view>
                 </section>
@@ -24,7 +24,8 @@ export default {
         return {
             mails: null,
             compose: true,
-            filterBy: null
+            filterBy: null,
+            mailsStateToShow:'inbox'
         }
     },
     created() {
@@ -41,19 +42,27 @@ export default {
             .then(() => console.log('Mail has been removed!'))
         })
     },
+
     computed: {
         mailsToShow() {
+            let mails = this.mails.filter(mail => {
+             if(mail.state === 'read' || mail.state === 'unread') mail.state = 'inbox';
+                return mail.state === this.mailsStateToShow
+            })
             if (this.filterBy && this.filterBy.mailTxt) {
                 let textToMatch = this.filterBy.mailTxt.toLowerCase();
-                let filteredMails = this.mails.filter(mail => mail.subject.toLowerCase().includes(textToMatch) || mail.body.toLowerCase().includes(textToMatch));
+                let filteredMails = mails.filter(mail => mail.subject.toLowerCase().includes(textToMatch) || mail.body.toLowerCase().includes(textToMatch));
                 return filteredMails;
             }
-            return this.mails;
+            return mails; 
         }
     },
     methods: {
         setFilter(filterBy) {
             this.filterBy = filterBy;
+        },
+        setMailsStateToShow(mailState){
+            this.mailsStateToShow = mailState
         }
     },
    
