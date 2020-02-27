@@ -30,13 +30,15 @@ function getMailById(mailId){
 }
 
 function getEmptyMail(){
-    return {
+    let emptyMail =  {
         subject: '',
         to: '',
         cc: '',
         bcc: '',
         body: ''
-    }
+    };
+
+    return Promise.resolve(emptyMail);
 }
 
 function addMail(mail) {
