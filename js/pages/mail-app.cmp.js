@@ -6,9 +6,10 @@ export default {
     template: `
         <section v-if="mails" class="mail-app-container">
             <h1>Welcome to the mail app</h1>
-        <router-link to="/">Home</router-link>
-        <mail-list :mails="mails"></mail-list>
-        </section>
+            <router-link to="/">Home</router-link>
+            <mail-list :mails="mails"></mail-list>
+            <mail-compose v-if="compose"></mail-compose>
+            </section>
     `,
     data(){
         return{
