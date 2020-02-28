@@ -3,6 +3,7 @@ import { eventBus } from '../../../services/event-bus-service.js'
 export default {
     template: `
         <section class="todo-list-container">
+            <h1>{{note.title}}</h1>
             <ul class="todo-list clean-list flex column" >
                 <li  v-for="(todo, idx) in textLength" @click="setDone(idx)" :style="{'display': todo.display}" :key="todo.id" :ref="idx">{{todo.txt}}</li>
             </ul>
