@@ -9,7 +9,7 @@ new Vue({
     template:
     `<section class="flex column">
         <page-header class="page-header"></page-header>
-        <router-view class="page-content flex grow-1"></router-view>
+        <router-view class="page-content"></router-view>
         <page-footer class="page-footer"></page-footer>
 
     </section>
