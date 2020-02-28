@@ -5,7 +5,7 @@ export default {
     <section class="mail-nav-bar-container">
     <router-link to="/mail/compose" exact>Compose</router-link>
         <ul ref="navList" class="nav-bar clean-list flex column">
-            <li @click="setMailsDirectory('inbox', $event)">Inbox</li>
+            <li @click="setMailsDirectory('inbox', $event)" class="active">Inbox</li>
             <li @click="setMailsDirectory('sent',$event)">Sent</li>
             <li @click="setMailsDirectory('draft', $event)">Draft</li>
             <li @click="setMailsDirectory('stared', $event)">Stared</li>
