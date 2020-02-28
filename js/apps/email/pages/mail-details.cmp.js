@@ -31,10 +31,6 @@ export default {
             }) 
         },
     },
-    created(){
-        // this.currId = this.$route.params.id
-        // console.log(currId)
 
-    },
 
 }
