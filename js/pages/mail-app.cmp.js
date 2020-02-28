@@ -12,7 +12,7 @@ export default {
             <page-header></page-header>
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter"></mail-filter>
-                <nav-bar></nav-bar>
+                <nav-bar :countUnreadMails="countUnreadMails"></nav-bar>
                 <section class="main-mail-view">
                     <router-view :mails="mailsToShow"></router-view>
                 </section>
@@ -47,6 +47,10 @@ export default {
             
             return this.mails.filter(this.isMailMatchShowState)
                 .filter(this.isMailMatchSearchText);
+        },
+        countUnreadMails(){
+            let unreadMails = this.mails.filter(mail => mail.state === mailService.MAIL_STATE.unread);
+            return unreadMails.length;
         }
     },
     methods: {
@@ -67,7 +71,8 @@ export default {
                 return mail.subject.toLowerCase().includes(textToMatch) || mail.body.toLowerCase().includes(textToMatch);
             }
             return mail;
-        }
+        },
+    
     },
     watch:{
         '$route'(){

@@ -10,8 +10,15 @@ export default {
             <li @click="setMailsDirectory('draft', $event)">Draft</li>
             <li @click="setMailsDirectory('stared', $event)">Stared</li>
         </ul>
+        <h4>You Have <span class="unread-mails-count">{{countUnreadMails}}</span> Unread Mails</h4>
 </section>
     `,
+    props:['countUnreadMails'],
+    data(){
+        return{
+            unreadmails:null
+        }
+    },
     methods:{
      
         setMailsDirectory(mailsDirectory,ev){

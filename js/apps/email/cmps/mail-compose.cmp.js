@@ -66,7 +66,7 @@ export default {
             this.mail.state = mailService.MAIL_STATE.draft;
             mailService.addMail(this.mail)
             .then((savedMail) => {
-                console.log('The mail saved to drafts', JSON.stringify(savedMail));
+                console.log('The mail saved to drafts', savedMail.subject);
                 this.mail = mailService.getEmptyMail();
                 this.$router.push('/mail')
             });
