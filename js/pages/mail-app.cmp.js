@@ -4,7 +4,7 @@ import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
 import navBar from '../apps/email/cmps/nav-bar.cmp.js'
 import pageHeader from '../apps/email/cmps/page-header.cmp.js';
 import pageFooter from '../apps/email/cmps/page-footer.cmp.js';
-import {eventBus} from '../services/event-bus-service.js';
+import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `
@@ -26,42 +26,47 @@ export default {
             mails: null,
             compose: true,
             filterBy: null,
-            mailsDirectoryToShow:'inbox'
+            mailsStateToShow: 'inbox'
         }
     },
     created() {
         mailService.getMails()
             .then(mails => this.mails = mails);
-        
-        eventBus.$on('isRead', mail =>{
+
+        eventBus.$on('isRead', mail => {
             mail.state = mailService.MAIL_STATE.read;
             mailService.updateMail(mail)
-            .then(() => console.log('Mail is read'))
+                .then(() => console.log('Mail is read'))
         })
-        eventBus.$on('onRemoveMail', mailId =>{
+        eventBus.$on('onRemoveMail', mailId => {
             mailService.removeMail(mailId)
-            .then(() => console.log('Mail has been removed!'))
+                .then(() => console.log('Mail has been removed!'))
         })
     },
-
     computed: {
         mailsToShow() {
-            let mails = this.mails.filter(mail => {
-             if(mail.state === 'read' || mail.state === 'unread') mail.state = 'inbox';
-                return mail.state === this.mailsDirectoryToShow
-            })
-            if (this.filterBy && this.filterBy.mailTxt) {
-                let textToMatch = this.filterBy.mailTxt.toLowerCase();
-                let filteredMails = mails.filter(mail => mail.subject.toLowerCase().includes(textToMatch) || mail.body.toLowerCase().includes(textToMatch));
-                return filteredMails;
-            }
-            return mails; 
+            return this.mails.filter(this.isMailMatchShowState)
+                .filter(this.isMailMatchSearchText);
         }
     },
     methods: {
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
+        isMailMatchShowState(mail) {
+            let currComputedMailState = mail.state;
+            if (mail.state === mailService.MAIL_STATE.read || mail.state === mailService.MAIL_STATE.unread) {
+                currComputedMailState = 'inbox';
+            }
+            return currComputedMailState === this.mailsStateToShow;
+        },
+        isMailMatchSearchText(mail) {
+            if (this.filterBy && this.filterBy.mailTxt) {
+                let textToMatch = this.filterBy.mailTxt.toLowerCase();
+                return mail.subject.toLowerCase().includes(textToMatch) || mail.body.toLowerCase().includes(textToMatch);
+            }
+            return mail;
+        }
     },
     watch:{
         '$route'(){
@@ -69,11 +74,10 @@ export default {
             else this.mailsDirectoryToShow = 'inbox'
         }
     },
-   
     components: {
         mailFilter,
-        navBar, 
+        navBar,
         pageHeader,
         pageFooter
-    },
+    }
 }
