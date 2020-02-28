@@ -4,18 +4,19 @@ import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     template: `
-    <section class="mail-preview-container flex align-center space-between" @click="onReadMail" :class="{read: isRead}">
+    <section class="mail-preview-container flex align-center space-between" @click="onReadMail" :class="{read: isUnread}">
         <h1>{{mail.subject}}</h1>
         <p>{{shortBody}}</p>
         <div class="buttons">
-            <button class="expend-mail" @click.stop="onExpendMail">&#9744;</button>
+            <button class="reply-mail" @click.stop="onReplyMail">↺</button>
+            <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
             <button class="remove-mail" @click.stop="onRemoveMail">X</button>
         </div>
     </section>
     `,
     data(){
         return{
-            isRead:false,
+            isUnread:false,
             preview:false
         }
     },
@@ -31,8 +32,10 @@ export default {
     },
     methods:{
         onReadMail(){
-            this.isRead = true;
-            eventBus.$emit('isRead', this.mail);
+            if(this.mail.state === 'unread'){
+                this.isUnread = false;
+                eventBus.$emit('isRead', this.mail);
+            }
             this.preview = !this.preview
 
         },
@@ -41,6 +44,15 @@ export default {
         },
         onExpendMail(){
             this.$router.push('mail/details/'+this.mail.id)
+        },
+        onReplyMail(){
+            this.$router.push('compose/'+this.mail.id)
+
         }
+    },
+    created(){
+        console.log('this.mail.state',this.mail.state);
+        if(this.mail.state === 'unread')this.isUnread =true
+        
     }   
 }

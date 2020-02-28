@@ -46,7 +46,10 @@ export default {
                 });
             } else {
                 mailService.getEmptyMail()
-                .then(emptyMail => this.mail = emptyMail);
+                .then(emptyMail => {
+                    console.log('EMPTY MAIL')
+                return this.mail = emptyMail
+                });
             }
         },
         submitMail() {
