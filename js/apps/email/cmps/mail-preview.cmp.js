@@ -8,6 +8,7 @@ export default {
      <section class="shortContent flex align-center space-between" :class="{read: !isRead}">
          <h1>{{mail.subject}}</h1>
              <p>{{shortContent}}</p>
+             {{mail.state}}
              <div class="tool-btns flex">
                  <router-link :to="'mail/compose/' + mail.id ">↺</router-link>   
                  <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
@@ -37,7 +38,7 @@ export default {
     methods:{
         onReadMail(){
             if(this.mail.state === 'unread'){
-                this.isRead = false;
+                this.isRead = true;
                 eventBus.$emit('isRead', this.mail);
             }
             this.preview = !this.preview
@@ -51,7 +52,7 @@ export default {
         }
     },
     created(){
-        if(this.mail.state === 'unread')this.isRead =true
+        if(this.mail.state === 'unread')this.isRead = false
         
     }   
 }
