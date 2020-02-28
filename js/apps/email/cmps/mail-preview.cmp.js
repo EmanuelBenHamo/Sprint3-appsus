@@ -8,7 +8,6 @@ export default {
         <h1>{{mail.subject}}</h1>
         <p>{{shortBody}}</p>
         <div class="buttons">
-            <!-- <button class="reply-mail" @click.stop="onReplyMail">↺</button> -->
             <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
             <button class="remove-mail" @click.stop="onRemoveMail">X</button>
             <router-link :to="'mail/compose/' + mail.id ">↺</router-link> 
@@ -45,10 +44,6 @@ export default {
         },
         onExpendMail(){
             this.$router.push('mail/details/'+this.mail.id)
-        },
-        onReplyMail(){
-            this.$router.push('compose/'+this.mail.id)
-
         }
     },
     created(){

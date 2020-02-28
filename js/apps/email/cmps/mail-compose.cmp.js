@@ -68,6 +68,7 @@ export default {
             .then((savedMail) => {
                 console.log('The mail saved to drafts', JSON.stringify(savedMail));
                 this.mail = mailService.getEmptyMail();
+                this.$router.push('/mail')
             });
         }
     },
