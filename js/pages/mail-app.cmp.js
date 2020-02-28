@@ -12,7 +12,7 @@ export default {
             <page-header></page-header>
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter"></mail-filter>
-                <!-- <nav-bar @setMailsStateToShow="setMailsStateToShow"></nav-bar> -->
+                <!-- <nav-bar @setmailsDirectoryToShow="setmailsDirectoryToShow"></nav-bar> -->
                 <nav-bar></nav-bar>
                 <section class="main-mail-view">
                     <router-view :mails="mailsToShow"></router-view>
@@ -26,7 +26,7 @@ export default {
             mails: null,
             compose: true,
             filterBy: null,
-            mailsStateToShow:'inbox'
+            mailsDirectoryToShow:'inbox'
         }
     },
     created() {
@@ -48,7 +48,7 @@ export default {
         mailsToShow() {
             let mails = this.mails.filter(mail => {
              if(mail.state === 'read' || mail.state === 'unread') mail.state = 'inbox';
-                return mail.state === this.mailsStateToShow
+                return mail.state === this.mailsDirectoryToShow
             })
             if (this.filterBy && this.filterBy.mailTxt) {
                 let textToMatch = this.filterBy.mailTxt.toLowerCase();
@@ -64,11 +64,9 @@ export default {
         },
     },
     watch:{
-        '$route.params'(to,from){
-            console.log(to.state)
-            
-            this.mailsStateToShow = to.state
-            console.log('!!!',this.mailsStateToShow)
+        '$route'(){
+        if(this.$route.query.folder) this.mailsDirectoryToShow = this.$route.query.folder;
+            else this.mailsDirectoryToShow = 'inbox'
         }
     },
    

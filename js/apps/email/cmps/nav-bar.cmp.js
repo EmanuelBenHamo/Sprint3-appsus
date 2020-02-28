@@ -3,24 +3,22 @@
 export default {
     template:`
     <section class="mail-nav-bar-container">
-    <router-link to="/mail/compose">Compose</router-link>
+    <router-link to="/mail/compose" exact>Compose</router-link>
         <ul ref="navList" class="nav-bar clean-list flex column">
-            <li @click="setMailsStateToShow('mail/inbox'), setActive($event)">Inbox</li>
-            <li @click="setMailsStateToShow('mail/sent'), setActive($event)">Sent</li>
-            <li @click="setMailsStateToShow('mail/draft'), setActive($event)">Draft</li>
-            <li @click="setMailsStateToShow('mail/stared'), setActive($event)">Stared</li>
-            </ul>
+            <li @click="setMailsDirectory('inbox', $event)">Inbox</li>
+            <li @click="setMailsDirectory('sent',$event)">Sent</li>
+            <li @click="setMailsDirectory('draft', $event)">Draft</li>
+            <li @click="setMailsDirectory('stared', $event)">Stared</li>
+        </ul>
 </section>
     `,
-    data(){
-        return{
-          
-        }
-    },
     methods:{
-        setMailsStateToShow(mailStatus){
-            this.$emit('setMailsStateToShow',mailStatus)
-            // this.$router.push(mailStatus)
+     
+        setMailsDirectory(mailsDirectory,ev){
+            this.setActive(ev)
+            // TODO - disable the already pushed button
+            this.$router.push({ path: '/mail', query: { directory: mailsDirectory} }).catch(err => {})
+
         },
         setActive(ev){
          [...this.$refs.navList.children].forEach(li => li.className = "");
