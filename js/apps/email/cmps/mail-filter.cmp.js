@@ -16,6 +16,9 @@ export default {
             filterBy: {mailTxt: '', mailReadState: null}
         }
     },
+    mounted(){
+        this.$refs.input.focus();
+    },
     methods: {
         onSearchInputChange(){
             this.$emit('filtered', {...this.filterBy});

@@ -1,15 +1,26 @@
 .filter-container{
     margin-left: 20%;
 }
+.mail-filter-container>*, .mail-sort-container>* {
+    /* background-color: red; */
+    height: 2.25rem;
+    border: none;
+    background-color: #dddddd33;
+}
 
 .mail-filter-container{
     width: 100%;
 }
 .mail-filter-container input{
     width: 80%;
+    padding-left: 1rem;
+    margin-right: 0.5rem;
+    min-width: 250px;
 }
 .mail-filter-container select{
     font-size: 1rem;
+    padding-left: 0.5rem;
+    border-right: 1px solid #aaaaaa33;
 
 }
 .mail-sort-container{
@@ -21,4 +32,5 @@
 
 .mail-sort-select{
      font-size: 1rem;
+     padding-left: 0.5rem;
 }

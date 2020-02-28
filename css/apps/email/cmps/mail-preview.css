@@ -1,25 +1,32 @@
-.mail-preview-container .shortContent{
+/* .mail-preview-container{
+} */
+.mail-preview-container .short-content{
+    display: grid;
+    grid-template-columns:1fr 3fr 1fr ;
     background-color: #eee;
     border-top:1px solid #ddd;
     padding: 10px 5px;
 }
-.mail-preview-container .shortContent h1{
+.mail-preview-container .short-content h1{
     display: inline;
-    font-size: 0.8em;
-    margin-right: 20px;
+    font-size: 1em;
+    padding: 0 10%;
 }
-.mail-preview-container .shortContent p{
+.mail-preview-container .short-content>p {
     margin: 0;
+    padding: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
 }
-.mail-preview-container .shortContent .tool-btns>*{
+.mail-preview-container .short-content .tool-btns>*{
     background-color: inherit;
     padding: 0 5px;
 }
-.mail-preview-container .extendedContent{
+.mail-preview-container .extended-content{
     background-color: #fff;
-    padding: 10px;
+    padding: 1.5rem;
 }
 
-.mail-preview-container .shortContent.read{
+.mail-preview-container .short-content.read{
     background-color: #aaa ;
 }
