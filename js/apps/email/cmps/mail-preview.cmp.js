@@ -10,7 +10,9 @@ export default {
              <p>{{shortContent}}</p>
              {{mail.state}}
              <div class="tool-btns flex">
+
                  <router-link :to="'mail/compose/' + mail.id ">↺</router-link>   
+                 <!-- <button class="unread-mail" @click.stop="setAsUnread"><></button> -->
                  <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
                  <button class="remove-mail" @click.stop="onRemoveMail">X</button>
      

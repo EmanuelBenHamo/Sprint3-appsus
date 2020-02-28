@@ -7,12 +7,14 @@ import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `
-        <section v-if="mails" class="mail-app-container">
-            <section class="main-app-section">
+        <section v-if="mails" class="mail-app-container flex column">
+            <section class="filter-container flex">
                 <mail-filter @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
-                <nav-bar :countUnreadMails="countUnreadMails"></nav-bar>
                 <mail-sort @sorted="setSort"></mail-sort>
-                <section class="main-mail-view">
+            </section>
+            <section class="main-app-section">
+                <nav-bar class="nav-bar flex column grow 1" :countUnreadMails="countUnreadMails"></nav-bar>
+                <section class="main-mail-view flex grow-3">
                     <router-view :mails="mailsToShow"></router-view>
                 </section>
             </section>

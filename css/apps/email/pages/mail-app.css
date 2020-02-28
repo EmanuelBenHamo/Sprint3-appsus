@@ -1,3 +1,12 @@
-.main-mail-view{
-    border:1px solid black;
+.mail-list-container{
+    width:100%
+}
+.main-app-section{
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: ;
+    grid-template-columns: 1fr 4fr ;
+}
+.main-app-section .nav-bar{
+    margin-right: 3%;
 }
