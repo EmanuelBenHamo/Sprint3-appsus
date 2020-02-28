@@ -4,6 +4,7 @@ import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
 import navBar from '../apps/email/cmps/nav-bar.cmp.js'
 import pageHeader from '../apps/email/cmps/page-header.cmp.js';
 import pageFooter from '../apps/email/cmps/page-footer.cmp.js';
+import mailSort from '../apps/email/cmps/mail-sort.cmp.js';
 import { eventBus } from '../services/event-bus-service.js';
 
 export default {
@@ -13,6 +14,7 @@ export default {
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
                 <nav-bar :countUnreadMails="countUnreadMails"></nav-bar>
+                <mail-sort @sorted="setSort"></mail-sort>
                 <section class="main-mail-view">
                     <router-view :mails="mailsToShow"></router-view>
                 </section>
@@ -25,6 +27,7 @@ export default {
             mails: null,
             compose: true,
             filterBy: null,
+            sortBy: null,
             mailsDirectoryToShow: 'inbox',
             showReadStateFilter: true
         }
@@ -46,16 +49,32 @@ export default {
     computed: {
         mailsToShow() {
             return this.mails.filter(this.isMailMatchShowState)
-            .filter(this.isMailMatchSearchText)
-            .filter(this.isMailMatchReadState);
+                .filter(this.isMailMatchSearchText)
+                .filter(this.isMailMatchReadState)
+                .sort(this.compareMails);
         },
-        countUnreadMails(){
+        countUnreadMails() {
             let unreadMails = this.mails.filter(mail => mail.state === mailService.MAIL_STATE.unread);
             return unreadMails.length;
-               
         }
     },
     methods: {
+        compareMails(firstMail, secondMail) {
+            if (!this.sortBy) {
+                return 0;
+            }
+
+            if (this.sortBy === 'time') {
+                return firstMail.sentAt - secondMail.sentAt;
+            } else if (this.sortBy === 'subject') {
+                return firstMail.subject.toLowerCase().localeCompare(secondMail.subject.toLowerCase());
+            } else {
+                return 0;
+            }
+        },
+        setSort(sortBy) {
+            this.sortBy = sortBy;
+        },
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
@@ -64,7 +83,7 @@ export default {
             if (mail.state === mailService.MAIL_STATE.read || mail.state === mailService.MAIL_STATE.unread) {
                 currComputedMailDirectory = 'inbox';
             }
-            
+
             return currComputedMailDirectory === this.mailsDirectoryToShow;
         },
         isMailMatchSearchText(mail) {
@@ -78,7 +97,7 @@ export default {
             if (!this.filterBy || !this.filterBy.mailReadState || this.filterBy.mailReadState === 'all') {
                 return true;
             }
-            
+
             return mail.state === this.filterBy.mailReadState;
         }
     },
@@ -86,18 +105,19 @@ export default {
         '$route'() {
             if (this.$route.query.directory) {
                 this.mailsDirectoryToShow = this.$route.query.directory;
-            }  
+            }
             if (this.mailsDirectoryToShow === 'inbox' || this.mailsDirectoryToShow === 'starred') {
                 this.showReadStateFilter = true;
             } else {
                 this.showReadStateFilter = false;
-            }            
+            }
         }
     },
     components: {
         mailFilter,
         navBar,
         pageHeader,
-        pageFooter
+        pageFooter,
+        mailSort
     }
 }
