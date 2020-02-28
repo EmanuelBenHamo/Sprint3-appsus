@@ -18,7 +18,7 @@ export default {
                     <input class="bcc-input" type="text" v-model="mail.bcc">
                 </label>
                 <input class="subject-input" type="text" placeholder="Subject" v-model="mail.subject">
-                <textarea class="body-input" v-model="mail.body"></textarea>
+                <textarea class="body-input" v-model="mail.body" rows="10"></textarea>
                 <button type="submit">Send</button>
             </form>
             <button @click.prevent="saveAsDraft" class="draft-mail-btn">X</button>

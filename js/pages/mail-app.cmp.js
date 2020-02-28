@@ -8,7 +8,7 @@ import { eventBus } from '../services/event-bus-service.js';
 export default {
     template: `
         <section v-if="mails" class="mail-app-container flex column">
-            <section class="filter-container flex">
+            <section class="filter-container flex space-between align-center ">
                 <mail-filter @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
                 <mail-sort @sorted="setSort"></mail-sort>
             </section>

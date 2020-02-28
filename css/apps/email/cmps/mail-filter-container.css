@@ -1,0 +1,24 @@
+.filter-container{
+    margin-left: 20%;
+}
+
+.mail-filter-container{
+    width: 100%;
+}
+.mail-filter-container input{
+    width: 80%;
+}
+.mail-filter-container select{
+    font-size: 1rem;
+
+}
+.mail-sort-container{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.mail-sort-select{
+     font-size: 1rem;
+}
