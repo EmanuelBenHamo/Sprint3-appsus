@@ -31,6 +31,9 @@ export default {
             }) 
         },
     },
+    mounted(){
+        console.log('mailsProps',this.mails)
+    }
 
 
 }

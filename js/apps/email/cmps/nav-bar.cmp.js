@@ -8,7 +8,7 @@ export default {
             <li @click="setMailsDirectory('inbox', $event)" class="active">Inbox</li>
             <li @click="setMailsDirectory('sent',$event)">Sent</li>
             <li @click="setMailsDirectory('draft', $event)">Draft</li>
-            <li @click="setMailsDirectory('stared', $event)">Stared</li>
+            <li @click="setMailsDirectory('starred', $event)">Starred</li>
         </ul>
         <h4>You Have <span class="unread-mails-count">{{countUnreadMails}}</span> Unread Mails</h4>
 </section>
