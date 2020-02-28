@@ -12,7 +12,8 @@ export default {
             <page-header></page-header>
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter"></mail-filter>
-                <nav-bar @setMailsStateToShow="setMailsStateToShow"></nav-bar>
+                <!-- <nav-bar @setMailsStateToShow="setMailsStateToShow"></nav-bar> -->
+                <nav-bar></nav-bar>
                 <section class="main-mail-view">
                     <router-view :mails="mailsToShow"></router-view>
                 </section>
@@ -61,8 +62,13 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
-        setMailsStateToShow(mailState){
-            this.mailsStateToShow = mailState
+    },
+    watch:{
+        '$route.params'(to,from){
+            console.log(to.state)
+            
+            this.mailsStateToShow = to.state
+            console.log('!!!',this.mailsStateToShow)
         }
     },
    

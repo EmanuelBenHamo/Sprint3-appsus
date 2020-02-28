@@ -10,7 +10,7 @@ import mailCompose from './apps/email/cmps/mail-compose.cmp.js';
 const routes = [
     { path: '/', component: homePage },
     { path: '/keep', component: keepApp },
-    { path: '/mail', component: mailApp,
+    { path: '/mail/:state?', component: mailApp,
 children: [
         { path: '/', component: mailList },
         { path: 'details/:id', component: mailDetails },
