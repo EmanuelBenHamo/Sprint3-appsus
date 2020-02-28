@@ -1,5 +1,6 @@
 @import './helpers.css';
 @import './base.css';
-
+@import './header-page.css';
+@import './footer-page.css';
 @import './apps/keep/keep-main.css';
 @import './apps/email/email-main.css';

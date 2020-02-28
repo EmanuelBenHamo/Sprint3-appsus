@@ -2,14 +2,11 @@
 import mailService from '../apps/email/services/mail.service.js';
 import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
 import navBar from '../apps/email/cmps/nav-bar.cmp.js'
-import pageHeader from '../apps/email/cmps/page-header.cmp.js';
-import pageFooter from '../apps/email/cmps/page-footer.cmp.js';
 import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `
         <section v-if="mails" class="mail-app-container">
-            <page-header></page-header>
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
                 <nav-bar :countUnreadMails="countUnreadMails"></nav-bar>
@@ -17,7 +14,6 @@ export default {
                     <router-view :mails="mailsToShow"></router-view>
                 </section>
             </section>
-            <page-footer></page-footer>
         </section>
     `,
     data() {
@@ -44,6 +40,7 @@ export default {
         })
     },
     computed: {
+    
         mailsToShow() {
             return this.mails.filter(this.isMailMatchShowState)
             .filter(this.isMailMatchSearchText)
@@ -97,7 +94,5 @@ export default {
     components: {
         mailFilter,
         navBar,
-        pageHeader,
-        pageFooter
     }
 }

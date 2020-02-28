@@ -1,16 +1,26 @@
-.mail-preview-container{
+.mail-preview-container .shortContent{
     background-color: #eee;
     border-top:1px solid #ddd;
-    padding: 10px 0;
+    padding: 10px 5px;
 }
-.mail-preview-container h1{
+.mail-preview-container .shortContent h1{
     display: inline;
+    font-size: 0.8em;
     margin-right: 20px;
 }
-.mail-preview-container p{
+.mail-preview-container .shortContent p{
     margin: 0;
 }
+.mail-preview-container .shortContent .tool-btns>*{
+    background-color: inherit;
+    padding: 0 5px;
+}
+.mail-preview-container .extendedContent{
+    background-color: #fff;
+    padding: 10px;
+}
 
-.mail-preview-container.read{
+
+.mail-preview-container .shortContent.read{
     background-color: #aaa ;
 }

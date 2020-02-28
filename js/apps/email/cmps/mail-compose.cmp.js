@@ -24,6 +24,8 @@ export default {
             <button @click.prevent="saveAsDraft" class="draft-mail-btn">X</button>
         </section>
     `,
+    // TODO - ADD A FROM FIELD TO BE FILLED AUTOMATICLY
+
     data() {
         return {
             mail: null

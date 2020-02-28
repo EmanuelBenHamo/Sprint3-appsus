@@ -4,36 +4,40 @@ import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     template: `
-    <section class="mail-preview-container flex align-center space-between" @click="onReadMail" :class="{read: isUnread}">
-        <h1>{{mail.subject}}</h1>
-        <p>{{shortBody}}</p>
-        <div class="buttons">
-            <router-link :to="'mail/compose/' + mail.id ">↺</router-link>   
-            <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
-            <button class="remove-mail" @click.stop="onRemoveMail">X</button>
-        </div>
+    <section class="mail-preview-container flex column " @click="onReadMail">
+     <section class="shortContent flex align-center space-between" :class="{read: !isRead}">
+         <h1>{{mail.subject}}</h1>
+             <p>{{shortContent}}</p>
+             <div class="tool-btns flex">
+                 <router-link :to="'mail/compose/' + mail.id ">↺</router-link>   
+                 <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
+                 <button class="remove-mail" @click.stop="onRemoveMail">X</button>
+     
+             </div>
+     </section>  
+        <p class="extendedContent" v-if="preview" >{{extendedContent}}</p>
     </section>
     `,
     data(){
         return{
-            isUnread:false,
+            isRead:true,
             preview:false
         }
     },
     props:['mail'],
     computed:{
-        shortBody(){
-            if(!this.preview){
-                return this.mail.body.substring(0,100); 
-            }else{
-                return this.mail.body
-            }
+        shortContent(){
+            return this.mail.body.substring(0,100); 
+          
         },
+        extendedContent(){
+            return this.mail.body.substring(0,1000)
+        }
     },
     methods:{
         onReadMail(){
             if(this.mail.state === 'unread'){
-                this.isUnread = false;
+                this.isRead = false;
                 eventBus.$emit('isRead', this.mail);
             }
             this.preview = !this.preview
@@ -47,8 +51,7 @@ export default {
         }
     },
     created(){
-        console.log('this.mail.state',this.mail.state);
-        if(this.mail.state === 'unread')this.isUnread =true
+        if(this.mail.state === 'unread')this.isRead =true
         
     }   
 }
