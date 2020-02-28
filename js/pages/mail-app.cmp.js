@@ -12,7 +12,6 @@ export default {
             <page-header></page-header>
             <section class="main-app-section">
                 <mail-filter @filtered="setFilter"></mail-filter>
-                <!-- <nav-bar @setmailsDirectoryToShow="setmailsDirectoryToShow"></nav-bar> -->
                 <nav-bar></nav-bar>
                 <section class="main-mail-view">
                     <router-view :mails="mailsToShow"></router-view>
@@ -26,7 +25,7 @@ export default {
             mails: null,
             compose: true,
             filterBy: null,
-            mailsStateToShow: 'inbox'
+            mailsDirectoryToShow:'inbox'
         }
     },
     created() {
@@ -45,6 +44,7 @@ export default {
     },
     computed: {
         mailsToShow() {
+            
             return this.mails.filter(this.isMailMatchShowState)
                 .filter(this.isMailMatchSearchText);
         }
@@ -54,11 +54,12 @@ export default {
             this.filterBy = filterBy;
         },
         isMailMatchShowState(mail) {
-            let currComputedMailState = mail.state;
+            let currComputedMailDirectory = mail.state;
             if (mail.state === mailService.MAIL_STATE.read || mail.state === mailService.MAIL_STATE.unread) {
-                currComputedMailState = 'inbox';
+                currComputedMailDirectory = 'inbox';
             }
-            return currComputedMailState === this.mailsStateToShow;
+        
+            return currComputedMailDirectory === this.mailsDirectoryToShow;
         },
         isMailMatchSearchText(mail) {
             if (this.filterBy && this.filterBy.mailTxt) {
@@ -70,7 +71,7 @@ export default {
     },
     watch:{
         '$route'(){
-        if(this.$route.query.folder) this.mailsDirectoryToShow = this.$route.query.folder;
+        if(this.$route.query.directory) this.mailsDirectoryToShow = this.$route.query.directory;
             else this.mailsDirectoryToShow = 'inbox'
         }
     },
