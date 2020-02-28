@@ -8,7 +8,7 @@ export default {
             <li @click="setMailsDirectory('inbox', $event)">Inbox</li>
             <li @click="setMailsDirectory('sent',$event)">Sent</li>
             <li @click="setMailsDirectory('draft', $event)">Draft</li>
-            <li @click="setMailsDirectory('stared', $event)">Stared</li>
+            <li @click="setMailsDirectory('starred', $event)">Starred</li>
         </ul>
 </section>
     `,
