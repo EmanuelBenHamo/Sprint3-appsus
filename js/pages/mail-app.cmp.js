@@ -25,8 +25,7 @@ export default {
             filterBy: null,
             sortBy: null,
             mailsDirectoryToShow: 'inbox',
-            showReadStateFilter: true,
-            unwatchMailReadState: null
+            showReadStateFilter: true
         }
     },
     created() {
@@ -34,21 +33,9 @@ export default {
             .then(mails => this.mails = mails);
 
         eventBus.$on('isRead', mail => {
-            if (this.unwatchMailReadState) {
-                this.unwatchMailReadState();
-            };
-            if (this.filterBy && this.filterBy.mailReadState === 'all') {
-                mail.state = mailService.MAIL_STATE.read;
-                mailService.updateMail(mail)
-                    .then(() => console.log('Mail is read'));
-            } else {
-                this.unwatchMailReadState = this.$watch('filterBy.mailReadState', (newMailReadState) => {
-                    this.unwatchMailReadState();
-                    mail.state = newMailReadState;
-                    mailService.updateMail(mail)
-                        .then(() => console.log('Mail is read'));
-                });
-            }
+            mail.state = mailService.MAIL_STATE.read;
+            mailService.updateMail(mail)
+                .then(() => console.log('Mail is read'))
         })
         eventBus.$on('onRemoveMail', mailId => {
             mailService.removeMail(mailId)
