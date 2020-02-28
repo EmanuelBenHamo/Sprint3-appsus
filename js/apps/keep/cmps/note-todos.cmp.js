@@ -26,7 +26,7 @@ export default {
         setDone(idx) {
             this.isTodoDone = !this.isTodoDone
             this.setStyle(idx)
-            this.$emit('setTodoDone', { noteId: this.note.id, todoIdx: idx })
+            eventBus.$emit('onNoteTodoStateChange', { noteId: this.note.id, todoIdx: idx })
         },
         setStyle(idx){
             this.$refs[idx][0].style = (!this.note.info.todos[idx].doneAt)?'text-decoration: line-through' : 'text-decoration: none';

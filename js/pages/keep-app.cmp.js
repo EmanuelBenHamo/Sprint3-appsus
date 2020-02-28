@@ -16,7 +16,7 @@ export default {
         <note-input @addedNote="onAddNote"></note-input>
         <section class="pinnedNotes">
             <h2>Pinned</h2>
-            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemoveNote" @pinNote="onNotePinStateChange" @changeColor="onChangeColor" @setTodoDone="onNoteTodoStateChange"></note-list>
+            <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemoveNote" @pinNote="onNotePinStateChange" @changeColor="onChangeColor"></note-list>
         </section>
         <section class="unpinnedNotes">
             <h2>Unpinned</h2>
@@ -48,6 +48,8 @@ export default {
         .then(notes => this.notes = notes);
         eventBus.$on('noteUpdate', note => keepService.updateNote(note));
         eventBus.$on('addNewTodo', note => keepService.addNewTodo(note));
+        eventBus.$on('onNoteTodoStateChange',({ noteId, todoIdx })=> keepService.setNoteTodoState({ noteId, todoIdx }));
+
     },
     methods: {
         onRemoveNote(noteId) {
@@ -63,11 +65,7 @@ export default {
         },
         onChangeColor({ noteId, color }) {
             keepService.changeColor({ noteId, color });
-        },
-        onNoteTodoStateChange({ noteId, todoIdx }) {
-            //TODO: send the todo id instead of todo index
-            keepService.setNoteTodoState({ noteId, todoIdx });
-        },
+        }, 
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },

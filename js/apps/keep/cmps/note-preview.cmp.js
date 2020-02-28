@@ -12,7 +12,7 @@ import { eventBus } from '../../../services/event-bus-service.js'
 export default {
     template: `
     <section class="note-preview-container" :style="{'background-color': color}"> 
-        <component :is="note.type" :note="note" @setTodoDone="$emit('setTodoDone', $event)"></component>
+        <component :is="note.type" :note="note"></component>
         <div class="tool-bar">
             <button class="remove-note" @click="$emit('remove',note.id)">X</button>    
             <button class="pin-note" @click="$emit('pinNote',note.id)">📌</button>
