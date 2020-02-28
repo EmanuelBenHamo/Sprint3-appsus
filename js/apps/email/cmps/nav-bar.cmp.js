@@ -9,6 +9,7 @@ export default {
             <li @click="setMailsStateToShow('mail/sent'), setActive($event)">Sent</li>
             <li @click="setMailsStateToShow('mail/draft'), setActive($event)">Draft</li>
             <li @click="setMailsStateToShow('mail/stared'), setActive($event)">Stared</li>
+            </ul>
 </section>
     `,
     data(){
