@@ -1,8 +1,6 @@
 .mail-sort-container>* {
-    /* background-color: red; */
     height: 2.25rem;
     border: none;
-    background-color: #dddddd33;
 }
 
 .mail-sort-container {

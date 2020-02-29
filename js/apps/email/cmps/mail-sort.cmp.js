@@ -17,5 +17,5 @@ export default {
             this.sortBy = sort.target.value;
             this.$emit('sorted', JSON.parse(JSON.stringify(this.sortBy)));
         }
-    }
+    } 
 }
