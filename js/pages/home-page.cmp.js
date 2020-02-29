@@ -4,7 +4,7 @@ export default {
             <h1>Welcome To The Home Page</h1>
             <router-link to="/keep">Keep</router-link>
             |
-            <router-link to="/mail">Mail</router-link>
+            <router-link to="/mail?directory=inbox">Mail</router-link>
         </section>
     `
 }
