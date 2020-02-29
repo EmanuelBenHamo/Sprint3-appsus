@@ -2,21 +2,27 @@
 
 export default {
     template: `
-    <section class="mail-nav-bar-container">
-    <router-link to="/mail/compose" exact>Compose</router-link>
-        <ul ref="navList" class="nav-bar clean-list flex column">
-            <li @click="setMailsDirectory('inbox', $event)" class="active">Inbox</li>
+    <section class="mail-side-nav-bar-container">
+        <router-link class="mail-compose-router-link" to="/mail/compose" exact>Compose</router-link>
+        <ul ref="navList" class="directories-container clean-list flex column">
+            <li @click="setMailsDirectory('inbox', $event)" class="flex space-between active">
+                <span>Inbox</span>
+                <span class="unread-mails-count">{{unreadMailsCount}}</span>
+            </li>
             <li @click="setMailsDirectory('sent',$event)">Sent</li>
             <li @click="setMailsDirectory('draft', $event)">Draft</li>
             <li @click="setMailsDirectory('starred', $event)">Starred</li>
         </ul>
-        <h4>You Have <span class="unread-mails-count">{{countUnreadMails}}</span> Unread Mails</h4>
 </section>
     `,
     props: ['countUnreadMails'],
-    data() {
-        return {
-            unreadmails: null
+    computed: {
+        unreadMailsCount(){
+            if(!this.countUnreadMails){
+                return '';
+            } else {
+                return this.countUnreadMails;
+            }
         }
     },
     methods: {
@@ -26,8 +32,8 @@ export default {
             this.$router.push({ path: '/mail', query: { directory: mailsDirectory } }).catch(err => { })
         },
         setActive(ev) {
-            [...this.$refs.navList.children].forEach(li => li.className = "");
-            ev.target.className = 'active';
+            [...this.$refs.navList.children].forEach(li => li.classList.remove('active'));
+            ev.target.classList.add('active');
         }
     }
 }

@@ -1,14 +1,14 @@
 'use strict';
 import mailService from '../apps/email/services/mail.service.js';
 import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
-import navBar from '../apps/email/cmps/mail-nav-bar.cmp.js'
+import mailNavBar from '../apps/email/cmps/mail-nav-bar.cmp.js'
 import mailSort from '../apps/email/cmps/mail-sort.cmp.js';
 import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `
         <section class="mail-app-container flex" v-if="mails">
-            <nav-bar class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></nav-bar>
+            <mail-nav-bar class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
             <section class="main-mail-view flex column">
                 <section class="mail-custom-display-container flex">
                     <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
@@ -136,7 +136,7 @@ export default {
     },
     components: {
         mailFilter,
-        navBar,
+        mailNavBar,
         mailSort
     }
 }

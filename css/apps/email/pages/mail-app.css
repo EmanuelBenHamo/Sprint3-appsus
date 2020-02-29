@@ -1,19 +1,20 @@
-.mail-app-container{
+.mail-app-container {
     background-color: red;
 }
 
-.mail-side-nav-bar{
-    background-color: lightgreen;
+.mail-side-nav-bar {
+    /* background-color: lightgreen; */
     margin-inline-end: 10px;
 }
 
-.main-mail-view{
+.main-mail-view {
     background-color: cyan;
     width: 100%;
 }
 
-.mail-custom-display-container{
+.mail-custom-display-container {
     background-color: pink;
+    margin-block-end: 10px;
 }
 
 .mail-filter {
