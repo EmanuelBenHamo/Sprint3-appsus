@@ -2,7 +2,7 @@
 
 export default {
     template: `
-    <section class="mail-side-nav-bar-container">
+    <section :class="{'mail-side-nav-bar-container': true, 'mobile-display': showMobileNavBar}">
         <router-link class="mail-compose-router-link" to="/mail/compose" exact>Compose</router-link>
         <ul ref="navList" class="directories-container clean-list flex column">
             <li @click="setMailsDirectory('inbox', $event)" class="flex space-between active">
@@ -15,7 +15,7 @@ export default {
         </ul>
 </section>
     `,
-    props: ['countUnreadMails'],
+    props: ['countUnreadMails', 'showMobileNavBar'],
     computed: {
         unreadMailsCount(){
             if(!this.countUnreadMails){

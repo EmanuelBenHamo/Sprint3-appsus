@@ -14,7 +14,7 @@ export default {
             <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
         </section>
         <section class="main-mail-view flex">
-            <mail-nav-bar :class="{'mobile-display': showMobileNavBar}" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
+            <mail-nav-bar :showMobileNavBar="showMobileNavBar" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
             <router-view class="mail-router-view" :mails="mailsToShow"></router-view>
         </section>
     </section>
