@@ -1,0 +1,17 @@
+.mail-sort-container>* {
+    /* background-color: red; */
+    height: 2.25rem;
+    border: none;
+    background-color: #dddddd33;
+}
+
+.mail-sort-container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mail-sort-select {
+    font-size: 1rem;
+    padding-left: 0.5rem;
+}
