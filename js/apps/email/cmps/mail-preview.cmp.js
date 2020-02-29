@@ -8,7 +8,7 @@ export default {
              <p>{{shortContent}}</p>
              <div class="tool-btns flex space-around">
 
-                 <router-link :to="'mail/compose/' + mail.id ">↺</router-link>   
+                 <router-link v-if="preview" :to="'mail/compose/' + mail.id ">↺</router-link>   
                  <!-- <button class="unread-mail" @click.stop="setAsUnread"><></button> -->
                  <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
                  <button class="remove-mail" @click.stop="onRemoveMail">X</button>

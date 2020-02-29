@@ -122,10 +122,11 @@ export default {
             } else {
                 this.showReadStateFilter = false;
             }
+                this.currentWatchedMail = null;
         },
-        'mailsDirectoryToShow'() {
-            this.currentWatchedMail = null;
-        }
+        'filterBy'() {
+                this.currentWatchedMail = null;
+            }
     },
     components: {
         mailFilter,
