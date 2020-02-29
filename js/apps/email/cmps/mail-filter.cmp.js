@@ -32,6 +32,8 @@ export default {
     watch:{
         '$route'(){
             this.$refs.input.focus();
+            this.filterBy.mailTxt ='';
+            this.onSearchInputChange()
         }
     }
 

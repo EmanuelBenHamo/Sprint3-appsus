@@ -13,5 +13,6 @@ export default {
         onSearchInputChange() {
             this.$emit('filtered', { ...this.filterBy });
         }
-    }
+    },
+    
 }
