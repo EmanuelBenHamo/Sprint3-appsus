@@ -3,13 +3,12 @@
 }
 
 .mail-side-nav-bar {
-    /* background-color: lightgreen; */
     margin-inline-end: 10px;
 }
 
 .main-mail-view {
-    background-color: cyan;
     width: 100%;
+    height: 70vh;
 }
 
 .mail-custom-display-container {
