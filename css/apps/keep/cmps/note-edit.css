@@ -1,12 +1,14 @@
 .long-text-container{
     width: 60%;
     min-height: 80%;
-    position: absolute;
+    position: fixed;
     left: 50%;
-    top:60%;
+    top:50%;
+    padding:25px;
     background-color: #bbb;
     box-shadow: 0 0 15px 0 #222;
     transform: translate(-50%,-50%);
+    border-radius: 0.5rem;
     
 }
 
@@ -14,6 +16,13 @@
     all:unset;
     padding-top: 20%;
     font-size: 1.5rem;
+    height: 400px;
+    width: 80%;
+    white-space: normal;
+    overflow-wrap: normal;
+    overflow-x: hidden;
+    
+    
 }
 .long-text-container .note-edit{
     margin-top: 30px;
@@ -23,4 +32,10 @@
     background-color: #ccc;
     margin: 10px 0;
     font-size: 1.25rem;
+}
+
+
+.long-text-container button{
+    font-size: 2rem;
+    background-color: inherit;
 }

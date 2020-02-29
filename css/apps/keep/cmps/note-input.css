@@ -1,0 +1,33 @@
+.note-bar {
+    font-size: 1.5rem;
+}
+
+.note-bar input {
+    border: none;
+    padding-left: 10px;
+    background-color: #ffffff99;
+    border-radius: 0.25rem;
+}
+
+.note-main-input-container {
+    padding: 10px;
+    background-color: #eee;
+    width: fit-content;
+    border-radius: 0.5rem;
+    margin: auto;
+}
+
+.note-main-input-container .note-input-container .note-input {
+    width: 400px;
+}
+
+.note-main-input-container .note-input-container .note-type-btn {
+    background-color: inherit;
+}
+
+.note-filter-container {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 0.5rem;
+}

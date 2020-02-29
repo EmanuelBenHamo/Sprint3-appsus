@@ -2,15 +2,17 @@ import { keepService } from '../services/keep.service.js';
 
 export default {
     template: `
-        <section class="note-input-container">
-            <input type="text" :placeholder="inputPlaceholder" v-model="input" @change="onAddedNote">
-            <section class="note-type-option-btns-container">
-                <button class="note-type-option-btn note-type-txt-btn" @click="onSetInputType(noteTypes.text)">text</button>
-                <button class="note-type-option-btn note-type-img-btn" @click="onSetInputType(noteTypes.image)">img</button>
-                <button class="note-type-option-btn note-type-video-btn" @click="onSetInputType(noteTypes.video)">video</button>
-                <button class="note-type-option-btn note-type-audio-btn" @click="onSetInputType(noteTypes.audio)">audio</button>
-                <button class="note-type-option-btn note-type-todos-btn" @click="onSetInputType(noteTypes.todoList)">todos</button>
-                <button class="note-type-option-btn note-type-map-btn" @click="onSetInputType(noteTypes.map)">map</button>
+        <section class="note-main-input-container">
+            <section class="note-input-container flex justify-center">
+                <input class="note-input" type="text" :placeholder="inputPlaceholder" v-model="input" @change="onAddedNote">
+                <section class="note-type-btns-container">
+                    <button class="note-type-btn note-type-txt-btn fa fa-font" @click="onSetInputType(noteTypes.text)"></button>
+                    <button class="note-type-btn note-type-img-btn fa fa-image" @click="onSetInputType(noteTypes.image)"></button>
+                    <button class="note-type-btn note-type-video-btn fa fa-youtube-play" @click="onSetInputType(noteTypes.video)"></button>
+                    <button class="note-type-btn note-type-todos-btn fa fa-list-ul" @click="onSetInputType(noteTypes.todoList)"></button>
+                    <!-- <button class="note-type-btn note-type-audio-btn fa fa-volume-up" @click="onSetInputType(noteTypes.audio)"></button> -->
+                    <!-- <button class="note-type-btn note-type-map-btn fa fa-map-marker" @click="onSetInputType(noteTypes.map)"></button> -->
+                </section>
             </section>
         </section>
     `,

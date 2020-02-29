@@ -1,6 +1,5 @@
 .notes-container{
     column-width: 300px;
-    /* column-gap: 20px; */
     padding: 10px;
     column-fill:balance;
 

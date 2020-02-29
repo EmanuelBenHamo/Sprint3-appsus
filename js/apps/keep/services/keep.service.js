@@ -82,8 +82,8 @@ function addNewTodo(note){
     let noteId = note.id;
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
     console.log('Add TODO',noteIdx)
-    
-    note.info.todos.push(_createTodo());
+    let newTodo = _createTodo()
+    note.info.todos.push(newTodo);
     let updatedNote = notesDB[noteIdx]
     return updateNote(updatedNote)
 }

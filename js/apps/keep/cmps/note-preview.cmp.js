@@ -11,13 +11,13 @@ import { eventBus } from '../../../services/event-bus-service.js'
 
 export default {
     template: `
-    <section class="note-preview-container" :style="{'background-color': color}"> 
-        <component :is="note.type" :note="note"></component>
+    <section class="note-preview-container flex column align-center justify-center" :style="{'background-color': color}"> 
+        <component :is="note.type" :note="note" ></component>
         <div class="tool-bar">
-            <button class="remove-note" @click="$emit('remove',note.id)">X</button>    
-            <button class="pin-note" @click="$emit('pinNote',note.id)">📌</button>
-            <button class="edit-note" @click="onNoteEdit">✎</button>
-            <input type="color" v-model="color" @change="$emit('changeColor', {noteId:note.id, color:color})"/>   
+            <button class="remove-note fa fa-trash" @click="$emit('remove',note.id)"></button>    
+            <button class="pin-note fa fa-thumb-tack    " @click="$emit('pinNote',note.id)"></button>
+            <button class="edit-note fa fa-edit" @click="onNoteEdit"></button>
+            <button class="color-note fa fa-paint-brush"><input type="color" v-model="color" @change="$emit('changeColor', {noteId:note.id, color:color})" hidden/></button>   
             
         </div>
     </section>

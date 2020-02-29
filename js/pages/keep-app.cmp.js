@@ -1,5 +1,4 @@
 import { keepService } from '../apps/keep/services/keep.service.js';
-import userMsg from '../apps/keep/cmps/user-msg.cmp.js';
 import noteFilter from '../apps/keep/cmps/note-filter.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
@@ -9,11 +8,10 @@ import { eventBus } from '../services/event-bus-service.js';
 export default {
     template: `
     <section class='keep-app-container'>
-        <user-msg></user-msg>
-        <h1>Keep App!</h1>
-        <router-link to="/">Home</router-link>
-        <note-filter @filtered="setFilter"></note-filter>
-        <note-input @addedNote="onAddNote"></note-input>
+        <div class="note-bar flex">
+            <note-filter @filtered="setFilter"></note-filter>
+            <note-input @addedNote="onAddNote"></note-input>
+        </div>
         <section class="pinnedNotes">
             <h2>Pinned</h2>
             <note-list v-if="notes && pinnedNotes" :notes="pinnedNotes" @remove="onRemoveNote" @pinNote="onNotePinStateChange" @changeColor="onChangeColor"></note-list>
@@ -110,6 +108,5 @@ export default {
         noteFilter,
         noteList,
         noteEdit,
-        userMsg
     }
 }
