@@ -1,12 +1,11 @@
 .mail-side-nav-bar-container {
-    background-color: lightgreen;
+    background-color: #5edfff;
     height: fit-content;
     width: 25%;
     border-radius: 1rem;
 }
 
 .mail-compose-router-link {
-    background-color: pink;
     width: fit-content;
     padding: 0.1rem 0.5rem;
     margin-inline-start: 0.5rem;
@@ -18,7 +17,7 @@
 }
 
 .mail-compose-router-link:hover {
-    background-color: cyan;
+    background-color:#b2fcff ;
 }
 
 .mail-side-nav-bar-container> :first-child {
@@ -44,12 +43,13 @@
 }
 
 .mail-side-nav-bar-container .directories-container>li:hover {
-    background-color: #ccc;
+    background-color: #b2fcff44;
     cursor: pointer;
 }
 
 .mail-side-nav-bar-container .directories-container>li.active {
-    background-color: #cca;
+    background-color: #ecfcff77   ;
+    color: #3e64ff;
     font-family: assistant-semi-bold;
 }
 

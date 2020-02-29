@@ -1,5 +1,5 @@
 .mail-app-container {
-    background-color: red;
+    background-color: #ecfcff;
 }
 
 .mail-side-nav-bar {
@@ -12,18 +12,18 @@
 }
 
 .mail-custom-display-container {
-    background-color: pink;
+    background-color: #fff;
     margin-block-end: 10px;
 }
 
 .mail-filter {
-    background-color: yellow;
+    background-color: #fff;
 }
 
 .mail-sort {
-    background-color: orange;
+    background-color: #fff;
 }
 
 .mail-router-view {
-    background-color: pink;
+    background-color: #fff;
 }

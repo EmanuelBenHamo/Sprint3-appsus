@@ -5,10 +5,12 @@
     left: 50%;
     top:50%;
     padding:25px;
-    background-color: #bbb;
-    box-shadow: 0 0 15px 0 #222;
+    background-color: #eee;
+    border: 4px solid #3e64ff22;
+    box-shadow: 0 0 15px 0 #3e64ff22;
     transform: translate(-50%,-50%);
     border-radius: 0.5rem;
+    color:#2e279d;
     
 }
 
@@ -29,7 +31,7 @@
 }
 .long-text-container .note-todo-edit input{
     all:unset;
-    background-color: #ccc;
+    background-color: #ecfcff;
     margin: 10px 0;
     font-size: 1.25rem;
 }
