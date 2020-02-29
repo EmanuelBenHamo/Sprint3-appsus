@@ -8,10 +8,10 @@ export default {
              <p>{{shortContent}}</p>
              <div class="tool-btns flex space-around">
 
-                 <router-link v-if="preview" :to="'mail/compose/' + mail.id ">↺</router-link>   
-                 <button v-if="isRead && mailsDirectoryToShow === 'inbox'" class="unread-mail" @click.stop="setAsUnread"><></button>
-                 <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
-                 <button class="remove-mail" @click.stop="onRemoveMail">X</button>
+                 <router-link v-if="preview" :to="'mail/compose/' + mail.id " class="fa fa-reply"></router-link>   
+                 <button v-if="isRead && mailsDirectoryToShow === 'inbox'" class="unread-mail fa fa-envelope" @click.stop="setAsUnread"></button>
+                 <button class="expend-mail fa fa-expand" @click.stop="onExpendMail"></button>
+                 <button class="remove-mail fa fa-trash" @click.stop="onRemoveMail"></button>
      
              </div>
      </section>  

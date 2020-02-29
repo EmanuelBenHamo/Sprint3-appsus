@@ -12,3 +12,7 @@
     padding: 0 120px;
     line-height: 1.5s;
 }
+
+.mail-details-container button{
+    background-color: inherit;
+}
