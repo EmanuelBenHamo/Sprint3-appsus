@@ -32,34 +32,22 @@ export default {
         }
     },
     created() {
-        mailService.getMails()
-            .then(mails => this.mails = mails);
-
-        eventBus.$on('isRead', mail => {
-            this.currentWatchedMail = mail;
-            mail.state = mailService.MAIL_STATE.read;
-            mailService.updateMail(mail)
-                .then(() => console.log('Mail is read'))
-        })
-        eventBus.$on('onRemoveMail', mailId => {
-            this.currentWatchedMail = null;
-            mailService.removeMail(mailId)
-                .then(() => console.log('Mail has been removed!'))
-        })
+        this.loadMails();
+        this.addIsReadEventListener();
+        this.addRemoveMailEventListener();
     },
     computed: {
-    
         mailsToShow() {
             let filteredMails = this.mails.filter(this.isMailMatchShowState)
                 .filter(this.isMailMatchSearchText)
                 .filter(this.isMailMatchReadState);
-            
-                if(this.currentWatchedMail && !filteredMails.find(mail => mail.id === this.currentWatchedMail.id)){
-                    filteredMails.push(this.currentWatchedMail);
-                }
 
-                filteredMails = filteredMails.sort(this.compareMails);
-                return filteredMails;
+            if (this.currentWatchedMail && !filteredMails.find(mail => mail.id === this.currentWatchedMail.id)) {
+                filteredMails.push(this.currentWatchedMail);
+            }
+
+            filteredMails = filteredMails.sort(this.compareMails);
+            return filteredMails;
         },
         countUnreadMails() {
             let unreadMails = this.mails.filter(mail => mail.state === mailService.MAIL_STATE.unread);
@@ -67,6 +55,25 @@ export default {
         }
     },
     methods: {
+        addRemoveMailEventListener() {
+            eventBus.$on('onRemoveMail', mailId => {
+                this.currentWatchedMail = null;
+                mailService.removeMail(mailId)
+                    .then(() => console.log('Mail has been removed!'))
+            });
+        },
+        addIsReadEventListener() {
+            eventBus.$on('isRead', mail => {
+                this.currentWatchedMail = mail;
+                mail.state = mailService.MAIL_STATE.read;
+                mailService.updateMail(mail)
+                    .then(() => console.log('Mail is read'))
+            });
+        },
+        loadMails() {
+            mailService.getMails()
+                .then(mails => this.mails = mails);
+        },
         compareMails(firstMail, secondMail) {
             if (!this.sortBy || this.sortBy === 'time') {
                 return firstMail.sentAt - secondMail.sentAt;
@@ -115,7 +122,7 @@ export default {
             } else {
                 this.showReadStateFilter = false;
             }
-        }, 
+        },
         'mailsDirectoryToShow'() {
             this.currentWatchedMail = null;
         }

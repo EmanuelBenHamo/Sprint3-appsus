@@ -1,7 +1,7 @@
 'use strict';
 
 export default {
-    template:`
+    template: `
     <section class="mail-nav-bar-container">
     <router-link to="/mail/compose" exact>Compose</router-link>
         <ul ref="navList" class="nav-bar clean-list flex column">
@@ -13,24 +13,21 @@ export default {
         <h4>You Have <span class="unread-mails-count">{{countUnreadMails}}</span> Unread Mails</h4>
 </section>
     `,
-    props:['countUnreadMails'],
-    data(){
-        return{
-            unreadmails:null
+    props: ['countUnreadMails'],
+    data() {
+        return {
+            unreadmails: null
         }
     },
-    methods:{
-     
-        setMailsDirectory(mailsDirectory,ev){
-            this.setActive(ev)
+    methods: {
+        setMailsDirectory(mailsDirectory, ev) {
+            this.setActive(ev);
             // TODO - disable the already pushed button
-            this.$router.push({ path: '/mail', query: { directory: mailsDirectory} }).catch(err => {})
-
+            this.$router.push({ path: '/mail', query: { directory: mailsDirectory } }).catch(err => { })
         },
-        setActive(ev){
-         [...this.$refs.navList.children].forEach(li => li.className = "");
+        setActive(ev) {
+            [...this.$refs.navList.children].forEach(li => li.className = "");
             ev.target.className = 'active';
         }
     }
-
 }

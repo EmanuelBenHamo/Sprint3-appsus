@@ -1,6 +1,4 @@
-import mailService from "../services/mail.service.js"
 import { eventBus } from '../../../services/event-bus-service.js';
-
 
 export default {
     template: `
@@ -15,28 +13,28 @@ export default {
             <p class="mail-details-body">{{mail.body}}</p>
         </section>
     `,
-    data(){
-        return{
-            currId :this.$route.params.id
+    data() {
+        return {
+            currId: this.$route.params.id
         }
     },
-    props:['mails'],
-    computed:{
-        reformattedTime(){
+    props: ['mails'],
+    computed: {
+        reformattedTime() {
             var time = this.mail.sentAt;
-            var formattedTime = new Date(time).toLocaleDateString("en-US")
-            return formattedTime
+            var formattedTime = new Date(time).toLocaleDateString("en-US");
+            return formattedTime;
         },
-        mail(){
+        mail() {
             return this.mails.find(mail => {
-                return mail.id === this.currId
-            }) 
+                return mail.id === this.currId;
+            })
         },
     },
-    methods:{
-        onRemoveMail(){
-            eventBus.$emit('onRemoveMail',this.mail.id)
-            this.$router.push('/mail')
+    methods: {
+        onRemoveMail() {
+            eventBus.$emit('onRemoveMail', this.mail.id);
+            this.$router.push('/mail');
         },
     },
 }
