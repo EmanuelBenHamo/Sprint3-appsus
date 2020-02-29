@@ -1,0 +1,26 @@
+/* Typography */
+
+@font-face {
+    font-family: 'assistant-light';
+    src: url('../fonts/Assistant-Light.ttf');
+}
+
+@font-face {
+    font-family: 'assistant';
+    src: url('../fonts/Assistant-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'assistant-semi-bold';
+    src: url('../fonts/Assistant-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'assistant-bold';
+    src: url('../fonts/Assistant-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'assistant-extra-bold';
+    src: url('../fonts/Assistant-ExtraBold.ttf');
+}

@@ -3,4 +3,5 @@
 @import './pages/mail-app.css';
 @import './cmps/mail-compose.css';
 @import './cmps/mail-nav-bar.css';
-@import './cmps/mail-filter-container.css'
+@import './cmps/mail-filter-container.css';
+@import './cmps/mail-list.css';

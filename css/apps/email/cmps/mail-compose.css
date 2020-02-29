@@ -1,16 +1,13 @@
-/* .mail-compose-container {
-} */
-
-.new-msg-header{
+.new-msg-header {
     background-color: #414141;
     color: white;
-    
 }
 
-.mail-compose-container{
+.mail-compose-container {
     width: 100%;
 }
-.new-msg-form{
+
+.new-msg-form {
     width: 100%;
 }
 
@@ -19,13 +16,15 @@
     padding: 5px;
 }
 
-.mail-compose-container .body-input{
+.mail-compose-container .body-input {
     height: 40vh;
 }
+
 .new-msg-form label input {
     width: 90%;
     border: none;
 }
-.mail-compose-container .new-msg-form>*{
+
+.mail-compose-container .new-msg-form>* {
     margin: 5px 0;
 }

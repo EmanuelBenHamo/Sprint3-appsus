@@ -1,15 +1,58 @@
-.mail-nav-bar-container .nav-bar>li:hover{
+.mail-side-nav-bar-container {
+    background-color: lightgreen;
+    height: fit-content;
+    width: 25%;
+    border-radius: 1rem;
+}
+
+.mail-compose-router-link {
+    background-color: pink;
+    width: fit-content;
+    padding: 0.1rem 0.5rem;
+    margin-inline-start: 0.5rem;
+    margin-block-start: 0.2rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: assistant-semi-bold;
+    border-radius: 100vh;
+}
+
+.mail-compose-router-link:hover {
+    background-color: cyan;
+}
+
+.mail-side-nav-bar-container> :first-child {
+    margin-bottom: 0.7rem;
+}
+
+.directories-container {
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.mail-side-nav-bar-container .directories-container>li {
+    border-radius: 100vh;
+    padding: 0 1rem;
+}
+
+.mail-side-nav-bar-container .directories-container>li:not(:last-of-type) {
+    margin-block-end: 0.2rem;
+}
+
+.mail-side-nav-bar-container .directories-container>li:last-of-type {
+    margin-block-end: 0.5rem;
+}
+
+.mail-side-nav-bar-container .directories-container>li:hover {
     background-color: #ccc;
     cursor: pointer;
 }
-.mail-nav-bar-container .nav-bar>li.active{
-    background-color:#cca;
+
+.mail-side-nav-bar-container .directories-container>li.active {
+    background-color: #cca;
+    font-family: assistant-semi-bold;
 }
-.mail-nav-bar-container> :first-child   {
-    margin-bottom: 2rem;
-}
-.mail-nav-bar-container> :last-child   {
-    margin-top: 2rem;
-    background-color: #eee;
-    padding: 1.5rem 0;
+
+.unread-mails-count {
+    font-family: assistant-semi-bold;
 }
