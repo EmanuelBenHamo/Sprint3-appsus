@@ -1,6 +1,4 @@
-'use strict';
 import { eventBus } from '../../../services/event-bus-service.js';
-
 
 export default {
     template: `
@@ -20,40 +18,39 @@ export default {
         <p class="extended-content" v-if="preview" >{{extendedContent}}</p>
     </section>
     `,
-    data(){
-        return{
-            isRead:true,
-            preview:false
+    data() {
+        return {
+            isRead: true,
+            preview: false
         }
     },
-    props:['mail'],
-    computed:{
-        shortContent(){
-            return this.mail.body.substring(0,100); 
-          
+    props: ['mail'],
+    computed: {
+        shortContent() {
+            return this.mail.body.substring(0, 100);
         },
-        extendedContent(){
-            return this.mail.body.substring(0,1000)
+        extendedContent() {
+            return this.mail.body.substring(0, 1000);
         }
     },
-    methods:{
-        onReadMail(){
-            if(this.mail.state === 'unread'){
+    methods: {
+        onReadMail() {
+            if (this.mail.state === 'unread') {
                 this.isRead = true;
                 eventBus.$emit('isRead', this.mail);
             }
-            this.preview = !this.preview
-
+            this.preview = !this.preview;
         },
-        onRemoveMail(){
-            eventBus.$emit('onRemoveMail',this.mail.id)
+        onRemoveMail() {
+            eventBus.$emit('onRemoveMail', this.mail.id);
         },
-        onExpendMail(){
-            this.$router.push('mail/details/'+this.mail.id)
+        onExpendMail() {
+            this.$router.push('mail/details/' + this.mail.id);
         }
     },
-    created(){
-        if(this.mail.state === 'unread')this.isRead = false
-        
-    }   
+    created() {
+        if (this.mail.state === 'unread') {
+            this.isRead = false
+        };
+    }
 }

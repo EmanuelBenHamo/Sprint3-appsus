@@ -28,7 +28,8 @@ export default {
 
     data() {
         return {
-            mail: null
+            mail: null,
+            isNewMail: null
         }
     },
     created() {
@@ -39,6 +40,7 @@ export default {
             let mailId = this.$route.params.id;
          
             if(mailId) {
+                this.isNewMail = false;
                 mailService.getMailById(mailId)
                 .then((mail) => {
                     if(mail.state === mailService.MAIL_STATE.read) {
@@ -47,6 +49,7 @@ export default {
                     this.mail = mail;
                 });
             } else {
+                this.isNewMail = true;
                 mailService.getEmptyMail()
                 .then(emptyMail => {
                     console.log('EMPTY MAIL')
@@ -57,21 +60,39 @@ export default {
         submitMail() {
             this.mail.sentAt = Date.now();
             this.mail.state = mailService.MAIL_STATE.sent;
-            mailService.addMail(this.mail)
-            .then((savedMail) => {
-                console.log('The mail sent successfully', JSON.stringify(savedMail));
-                mailService.getEmptyMail()
-                .then(emptyMail => this.mail = emptyMail);
-            });
+            if(this.isNewMail){
+                mailService.addMail(this.mail)
+                .then((savedMail) => {
+                    console.log('The mail sent successfully', JSON.stringify(savedMail));
+                    mailService.getEmptyMail()
+                    .then(emptyMail => this.mail = emptyMail);
+                });
+            } else {
+                mailService.updateMail(this.mail)
+                .then((savedMail) => {
+                    console.log('The mail sent successfully', JSON.stringify(savedMail));
+                    mailService.getEmptyMail()
+                    .then(emptyMail => this.mail = emptyMail);
+                });
+            }
         },
         saveAsDraft() {
             this.mail.state = mailService.MAIL_STATE.draft;
-            mailService.addMail(this.mail)
-            .then((savedMail) => {
-                console.log('The mail saved to drafts', savedMail.subject);
-                this.mail = mailService.getEmptyMail();
-                this.$router.push('/mail')
-            });
+            if(this.isNewMail){
+                mailService.addMail(this.mail)
+                .then((savedMail) => {
+                    console.log('The mail saved to drafts', savedMail.subject);
+                    this.mail = mailService.getEmptyMail();
+                    this.$router.push('/mail')
+                });
+            } else {
+                mailService.updateMail(this.mail)
+                .then((savedMail) => {
+                    console.log('The mail saved to drafts', savedMail.subject);
+                    this.mail = mailService.getEmptyMail();
+                    this.$router.push('/mail')
+                });
+            }
         }
     },
     watch: {

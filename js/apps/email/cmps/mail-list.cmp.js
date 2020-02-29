@@ -7,12 +7,8 @@ export default {
             <mail-preview v-for="mail in mails" :key="mail.id" :mail="mail"></mail-preview>
         </section>
         `,
-        props:['mails'],
-        data(){
-            return{
-            }
-        },
-        components:{
-            mailPreview
-        }
+    props: ['mails'],
+    components: {
+        mailPreview
+    }
 }
