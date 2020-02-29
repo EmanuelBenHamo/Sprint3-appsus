@@ -6,8 +6,8 @@ export default {
      <section class="short-content flex align-center space-between" :class="{read: !isRead}">
          <h1>{{mail.subject}}</h1>
              <p>{{shortContent}}</p>
-             <div class="tool-btns flex space-around">
-
+             <div class="tool-btns flex justify-end">
+                
                  <router-link v-if="preview" :to="'mail/compose/' + mail.id " class="fa fa-reply"></router-link>   
                  <button v-if="isRead && mailsDirectoryToShow === 'inbox'" class="unread-mail fa fa-envelope" @click.stop="setAsUnread"></button>
                  <button class="expend-mail fa fa-expand" @click.stop="onExpendMail"></button>
