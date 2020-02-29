@@ -8,7 +8,8 @@ import { eventBus } from '../services/event-bus-service.js';
 export default {
     template: `
         <section class="mail-app-container flex grow-1 column" v-if="mails">
-            <section class="mail-custom-display-container flex">
+        <button class="hamburger-btn fa fa-bars"></button>    
+        <section class="mail-custom-display-container flex">
                 <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
                 <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
             </section>

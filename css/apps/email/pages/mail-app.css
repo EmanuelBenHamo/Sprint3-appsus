@@ -2,6 +2,13 @@
     background-color: #ecfcff;
 }
 
+.hamburger-btn {
+    width: fit-content;
+    font-size: 20px;
+    background-color: inherit;
+    color: red;
+}
+
 .mail-side-nav-bar {
     margin-inline-end: 10px;
 }
