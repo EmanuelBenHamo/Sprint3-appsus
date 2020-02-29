@@ -3,10 +3,11 @@
 }
 
 .hamburger-btn {
+    display: none !important;
     width: fit-content;
     font-size: 20px;
     background-color: inherit;
-    color: red;
+    color: blue;
 }
 
 .mail-side-nav-bar {
@@ -34,4 +35,10 @@
 
 .mail-router-view {
     background-color: #fff;
+}
+
+@media screen and (max-width: 740px) {
+    .hamburger-btn {
+        display: block !important;
+    }
 }

@@ -17,7 +17,7 @@
 }
 
 .mail-compose-router-link:hover {
-    background-color:#b2fcff ;
+    background-color: #b2fcff;
 }
 
 .mail-side-nav-bar-container> :first-child {
@@ -48,7 +48,7 @@
 }
 
 .mail-side-nav-bar-container .directories-container>li.active {
-    background-color: #ecfcff77   ;
+    background-color: #ecfcff77;
     color: #3e64ff;
     font-family: assistant-semi-bold;
 }
@@ -57,22 +57,20 @@
     font-family: assistant-semi-bold;
 }
 
-@media screen and (max-width: 600px){
-    .mail-app-container{
-        padding-left: 0;
+@media screen and (max-width: 740px) {
+    .mail-app-container {
+        padding-inline-start: 0;
     }
-    .mail-side-nav-bar-container{
-        /* display: none; */
+    .mail-side-nav-bar-container {
         position: absolute;
-        transform: translateX(-500px);
+        transform: translateX(-100vw);
         width: 70vw;
-        height: 80vh;
+        height: 70vh;
         box-shadow: 10px 0 15px 10px rgba(0, 0, 0, 0.623);
+        border-radius: 0 1rem 1rem 0;
     }
-    .mail-side-nav-bar-container.mobile-display{
+    .mail-side-nav-bar-container.mobile-display {
         transition: all 0.8s;
         transform: translateX(0);
-
     }
-    
 }
