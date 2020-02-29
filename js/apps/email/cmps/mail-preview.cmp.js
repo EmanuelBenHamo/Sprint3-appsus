@@ -5,18 +5,19 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     template: `
     <section class="mail-preview-container flex column " @click="onReadMail">
-     <section class="shortContent flex align-center space-between" :class="{read: !isRead}">
+     <section class="short-content flex align-center space-between" :class="{read: !isRead}">
          <h1>{{mail.subject}}</h1>
              <p>{{shortContent}}</p>
-             {{mail.state}}
-             <div class="tool-btns flex">
+             <div class="tool-btns flex space-around">
+
                  <router-link :to="'mail/compose/' + mail.id ">↺</router-link>   
+                 <!-- <button class="unread-mail" @click.stop="setAsUnread"><></button> -->
                  <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
                  <button class="remove-mail" @click.stop="onRemoveMail">X</button>
      
              </div>
      </section>  
-        <p class="extendedContent" v-if="preview" >{{extendedContent}}</p>
+        <p class="extended-content" v-if="preview" >{{extendedContent}}</p>
     </section>
     `,
     data(){

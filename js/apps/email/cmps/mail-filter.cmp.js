@@ -1,6 +1,6 @@
 export default {
     template: `
-        <section class="mail-filter-container">
+        <section class="mail-filter-container flex space-between">
             <input ref="input" type="text" class="mail-filter-input" placeholder="search mail" v-model="filterBy.mailTxt" @input="onSearchInputChange">
             <select v-if="showReadStateFilter" @change="onMailStateFilterChange">
                 Filter:
@@ -15,6 +15,9 @@ export default {
         return {
             filterBy: {mailTxt: '', mailReadState: null}
         }
+    },
+    mounted(){
+        this.$refs.input.focus();
     },
     methods: {
         onSearchInputChange(){

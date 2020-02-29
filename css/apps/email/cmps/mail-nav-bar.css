@@ -5,3 +5,11 @@
 .mail-nav-bar-container .nav-bar>li.active{
     background-color:#cca;
 }
+.mail-nav-bar-container> :first-child   {
+    margin-bottom: 2rem;
+}
+.mail-nav-bar-container> :last-child   {
+    margin-top: 2rem;
+    background-color: #eee;
+    padding: 1.5rem 0;
+}

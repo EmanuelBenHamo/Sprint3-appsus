@@ -151,6 +151,7 @@ function _getFormattedTodoListNote(note) {
     return {
         type: note.type,
         isPinned: false,
+        title: note.title,
         info: {
             todos: splitedtodos.map(todo => {
                 return {
