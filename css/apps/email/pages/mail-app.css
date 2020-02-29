@@ -14,6 +14,7 @@
 .mail-custom-display-container {
     background-color: pink;
     margin-block-end: 10px;
+    margin-inline-start: 20.7%;
 }
 
 .mail-filter {
