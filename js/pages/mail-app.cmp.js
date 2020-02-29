@@ -34,6 +34,7 @@ export default {
     created() {
         this.loadMails();
         this.addIsReadEventListener();
+        this.addIsUnreadEventListener();
         this.addRemoveMailEventListener();
     },
     computed: {
@@ -67,8 +68,15 @@ export default {
                 this.currentWatchedMail = mail;
                 mail.state = mailService.MAIL_STATE.read;
                 mailService.updateMail(mail)
-                    .then(() => console.log('Mail is read'))
+                .then(() => console.log('Mail is read'))
             });
+        },
+        addIsUnreadEventListener(){
+            eventBus.$on('isUnread', mail => {
+                mail.state = mailService.MAIL_STATE.unread;
+                mailService.updateMail(mail)
+                .then(() => console.log('Mail is unread'))
+            })
         },
         loadMails() {
             mailService.getMails()

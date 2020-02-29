@@ -9,7 +9,7 @@ export default {
              <div class="tool-btns flex space-around">
 
                  <router-link v-if="preview" :to="'mail/compose/' + mail.id ">↺</router-link>   
-                 <!-- <button class="unread-mail" @click.stop="setAsUnread"><></button> -->
+                 <button v-if="isRead" class="unread-mail" @click.stop="setAsUnread"><></button>
                  <button class="expend-mail" @click.stop="onExpendMail">⛶</button>
                  <button class="remove-mail" @click.stop="onRemoveMail">X</button>
      
@@ -41,12 +41,16 @@ export default {
             }
             this.preview = !this.preview;
         },
+        setAsUnread(){
+            this.isRead = false;
+            eventBus.$emit('isUnread', this.mail) 
+        },
         onRemoveMail() {
             eventBus.$emit('onRemoveMail', this.mail.id);
         },
         onExpendMail() {
             this.$router.push('mail/details/' + this.mail.id);
-        }
+        },
     },
     created() {
         if (this.mail.state === 'unread') {
