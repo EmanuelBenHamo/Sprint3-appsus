@@ -1,7 +1,7 @@
 export default {
     template: `
-        <section class="mail-filter-container flex space-between">
-            <input ref="input" type="text" class="mail-filter-input" placeholder="search mail" v-model="filterBy.mailTxt" @input="onSearchInputChange">
+        <section class="mail-filter-container flex space-between"> 
+            <input ref="input" type="text" class="mail-filter-input" placeholder="Search mail" v-model="filterBy.mailTxt" @input="onSearchInputChange">
             <select v-if="showReadStateFilter" @change="onMailStateFilterChange">
                 Filter:
                 <option value="all">All</option>
