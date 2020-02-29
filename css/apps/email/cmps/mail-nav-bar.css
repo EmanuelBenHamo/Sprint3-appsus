@@ -56,3 +56,23 @@
 .unread-mails-count {
     font-family: assistant-semi-bold;
 }
+
+@media screen and (max-width: 600px){
+    .mail-app-container{
+        padding-left: 0;
+    }
+    .mail-side-nav-bar-container{
+        /* display: none; */
+        position: absolute;
+        transform: translateX(-200px);
+        width: 70vw;
+        height: 80vh;
+        box-shadow: 10px 0 15px 10px rgba(0, 0, 0, 0.623);
+    }
+    .mail-side-nav-bar-container.mobile-display{
+        transition: all 0.8s;
+        transform: translateX(0);
+
+    }
+    
+}

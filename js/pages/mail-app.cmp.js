@@ -8,19 +8,20 @@ import { eventBus } from '../services/event-bus-service.js';
 export default {
     template: `
         <section class="mail-app-container flex grow-1 column" v-if="mails">
-        <button class="hamburger-btn fa fa-bars"></button>    
+        <button class="hamburger-btn fa fa-bars" @click="isDisplay =!isDisplay"></button>    
         <section class="mail-custom-display-container flex">
                 <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
                 <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
             </section>
             <section class="main-mail-view flex">
-                <mail-nav-bar class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
+                <mail-nav-bar :class="{'mobile-display': isDisplay  }" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
                 <router-view class="mail-router-view" :mails="mailsToShow"></router-view>
             </section>
         </section>
     `,
     data() {
         return {
+            isDisplay: false,
             mails: null,
             currentWatchedMail: null,
             compose: true,
