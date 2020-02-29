@@ -23,6 +23,7 @@ export default {
     data() {
         return {
             mails: null,
+            currentWatchedMail: null,
             compose: true,
             filterBy: null,
             sortBy: null,
@@ -35,11 +36,13 @@ export default {
             .then(mails => this.mails = mails);
 
         eventBus.$on('isRead', mail => {
+            this.currentWatchedMail = mail;
             mail.state = mailService.MAIL_STATE.read;
             mailService.updateMail(mail)
                 .then(() => console.log('Mail is read'))
         })
         eventBus.$on('onRemoveMail', mailId => {
+            this.currentWatchedMail = null;
             mailService.removeMail(mailId)
                 .then(() => console.log('Mail has been removed!'))
         })
@@ -47,10 +50,16 @@ export default {
     computed: {
     
         mailsToShow() {
-            return this.mails.filter(this.isMailMatchShowState)
+            let filteredMails = this.mails.filter(this.isMailMatchShowState)
                 .filter(this.isMailMatchSearchText)
-                .filter(this.isMailMatchReadState)
-                .sort(this.compareMails);
+                .filter(this.isMailMatchReadState);
+            
+                if(this.currentWatchedMail && !filteredMails.find(mail => mail.id === this.currentWatchedMail.id)){
+                    filteredMails.push(this.currentWatchedMail);
+                }
+
+                filteredMails = filteredMails.sort(this.compareMails);
+                return filteredMails;
         },
         countUnreadMails() {
             let unreadMails = this.mails.filter(mail => mail.state === mailService.MAIL_STATE.unread);
@@ -59,11 +68,7 @@ export default {
     },
     methods: {
         compareMails(firstMail, secondMail) {
-            if (!this.sortBy) {
-                return 0;
-            }
-
-            if (this.sortBy === 'time') {
+            if (!this.sortBy || this.sortBy === 'time') {
                 return firstMail.sentAt - secondMail.sentAt;
             } else if (this.sortBy === 'subject') {
                 return firstMail.subject.toLowerCase().localeCompare(secondMail.subject.toLowerCase());
@@ -110,6 +115,9 @@ export default {
             } else {
                 this.showReadStateFilter = false;
             }
+        }, 
+        'mailsDirectoryToShow'() {
+            this.currentWatchedMail = null;
         }
     },
     components: {
