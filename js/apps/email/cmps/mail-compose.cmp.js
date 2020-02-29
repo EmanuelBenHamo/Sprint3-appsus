@@ -65,13 +65,19 @@ export default {
             });
         },
         saveAsDraft() {
-            this.mail.state = mailService.MAIL_STATE.draft;
-            mailService.addMail(this.mail)
-            .then((savedMail) => {
-                console.log('The mail saved to drafts', savedMail.subject);
+            if(this.mail.state === mailService.MAIL_STATE.draft){
+                console.log('mail has been saved once')
                 this.mail = mailService.getEmptyMail();
                 this.$router.push('/mail')
-            });
+            }else{
+                this.mail.state = mailService.MAIL_STATE.draft;
+                mailService.addMail(this.mail)
+                .then((savedMail) => {
+                    console.log('The mail saved to drafts', savedMail.subject);
+                    this.mail = mailService.getEmptyMail();
+                    this.$router.push('/mail')
+                });
+            }
         }
     },
     watch: {
