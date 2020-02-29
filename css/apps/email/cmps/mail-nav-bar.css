@@ -64,7 +64,7 @@
     .mail-side-nav-bar-container{
         /* display: none; */
         position: absolute;
-        transform: translateX(-200px);
+        transform: translateX(-500px);
         width: 70vw;
         height: 80vh;
         box-shadow: 10px 0 15px 10px rgba(0, 0, 0, 0.623);
