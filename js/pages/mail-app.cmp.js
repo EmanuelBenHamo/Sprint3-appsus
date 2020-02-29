@@ -1,22 +1,20 @@
 'use strict';
 import mailService from '../apps/email/services/mail.service.js';
 import mailFilter from '../apps/email/cmps/mail-filter.cmp.js';
-import navBar from '../apps/email/cmps/nav-bar.cmp.js'
+import navBar from '../apps/email/cmps/mail-nav-bar.cmp.js'
 import mailSort from '../apps/email/cmps/mail-sort.cmp.js';
 import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `
-        <section v-if="mails" class="mail-app-container flex column">
-            <section class="filter-container flex space-between align-center ">
-                <mail-filter @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
-                <mail-sort @sorted="setSort"></mail-sort>
-            </section>
-            <section class="main-app-section">
-                <nav-bar class="nav-bar flex column grow 1" :countUnreadMails="countUnreadMails"></nav-bar>
-                <section class="main-mail-view flex grow-3">
-                    <router-view :mails="mailsToShow"></router-view>
+        <section class="mail-app-container flex" v-if="mails">
+            <nav-bar class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></nav-bar>
+            <section class="main-mail-view flex column">
+                <section class="mail-custom-display-container flex">
+                    <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
+                    <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
                 </section>
+                <router-view class="mail-router-view" :mails="mailsToShow"></router-view>
             </section>
         </section>
     `,
@@ -68,14 +66,14 @@ export default {
                 this.currentWatchedMail = mail;
                 mail.state = mailService.MAIL_STATE.read;
                 mailService.updateMail(mail)
-                .then(() => console.log('Mail is read'))
+                    .then(() => console.log('Mail is read'))
             });
         },
-        addIsUnreadEventListener(){
+        addIsUnreadEventListener() {
             eventBus.$on('isUnread', mail => {
                 mail.state = mailService.MAIL_STATE.unread;
                 mailService.updateMail(mail)
-                .then(() => console.log('Mail is unread'))
+                    .then(() => console.log('Mail is unread'))
             })
         },
         loadMails() {
@@ -130,11 +128,11 @@ export default {
             } else {
                 this.showReadStateFilter = false;
             }
-                this.currentWatchedMail = null;
+            this.currentWatchedMail = null;
         },
         'filterBy'() {
-                this.currentWatchedMail = null;
-            }
+            this.currentWatchedMail = null;
+        }
     },
     components: {
         mailFilter,
