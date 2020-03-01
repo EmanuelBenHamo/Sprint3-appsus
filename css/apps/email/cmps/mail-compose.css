@@ -4,26 +4,53 @@
 
 .mail-compose-container {
     width: 100%;
+    padding: 0.5rem;
 }
 
 .new-msg-form {
     width: 100%;
 }
 
-.draft-mail-btn {
-    width: fit-content;
-    padding: 5px;
+.new-msg-form  input {
+    margin-bottom: 0.5rem;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding-left: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.mail-compose-container .subject-input{
+    padding-left: 0;
+    width: 93%;
+    
+    /* margin-left: 0.8rem; */
+    /* background-color: lawngreen; */
+    
 }
 
 .mail-compose-container .body-input {
     height: 40vh;
-}
-
-.new-msg-form label input {
-    width: 90%;
+    resize: none;
     border: none;
+    padding-left: 1rem;
 }
 
+/* 
 .mail-compose-container .new-msg-form>* {
     margin: 5px 0;
+} */
+.mail-compose-container .mail-compose-btns{
+    padding: 0 20px;
+}
+
+.mail-compose-container  .send-mail-btn {
+    background-color:#5edfff;
+    border-radius: 0.5rem;
+    padding: 10px;  
+}
+
+.mail-compose-container  .draft-mail-btn {
+    background-color: inherit;
+    /* width: fit-content; */
+    padding: 5px;
 }

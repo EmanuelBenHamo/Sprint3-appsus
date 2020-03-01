@@ -3,15 +3,15 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     template: `
     <section class="mail-preview-container flex column " @click="onReadMail">
-     <section class="short-content flex align-center space-between" :class="{read: !isRead}">
+     <section class="short-content flex align-center space-between" :class="{unread: !isRead}">
          <h1>{{mail.subject}}</h1>
              <p>{{shortContent}}</p>
              <div class="tool-btns flex justify-end">
                 
-                 <router-link v-if="preview" :to="'mail/compose/' + mail.id " class="fa fa-reply"></router-link>   
-                 <button v-if="isRead && mailsDirectoryToShow === 'inbox'" class="unread-mail fa fa-envelope" @click.stop="setAsUnread"></button>
-                 <button class="expend-mail fa fa-expand" @click.stop="onExpendMail"></button>
-                 <button class="remove-mail fa fa-trash" @click.stop="onRemoveMail"></button>
+                 <router-link v-if="preview" :to="'mail/compose/' + mail.id " class="fa fa-reply" title="Reply"></router-link>   
+                 <button v-if="isRead && mailsDirectoryToShow === 'inbox'" class="unread-mail fa fa-envelope" @click.stop="setAsUnread" title="Unread"></button>
+                 <button class="expend-mail fa fa-expand" @click.stop="onExpendMail" title="Expand"></button>
+                 <button class="remove-mail fa fa-trash" @click.stop="onRemoveMail" title="Remove"></button>
      
              </div>
      </section>  

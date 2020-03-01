@@ -2,9 +2,9 @@ import mailService from '../services/mail.service.js';
 
 export default {
     template: `
-        <section v-if="mail" class="flex column align-start mail-compose-container">
+        <section v-if="mail" class="mail-compose-container flex column align-start ">
             <h2 class="new-msg-header">New Message</h2>
-            <form @submit.prevent="submitMail" class="flex column new-msg-form">
+            <form @submit.prevent="submitMail" class="new-msg-form flex column">
                 <label class="to-label">
                     To:
                     <input class="to-input" type="text" v-model="mail.to">
@@ -19,9 +19,11 @@ export default {
                 </label>
                 <input class="subject-input" type="text" placeholder="Subject" v-model="mail.subject">
                 <textarea class="body-input" v-model="mail.body" rows="10"></textarea>
-                <button type="submit">Send</button>
+                <div class="mail-compose-btns flex space-between">
+                    <button class="send-mail-btn" type="submit">Send</button>
+                    <button @click.prevent="saveAsDraft" class="draft-mail-btn fa fa-times"></button>
+                </div>
             </form>
-            <button @click.prevent="saveAsDraft" class="draft-mail-btn">X</button>
         </section>
     `,
     // TODO - ADD A FROM FIELD TO BE FILLED AUTOMATICLY
