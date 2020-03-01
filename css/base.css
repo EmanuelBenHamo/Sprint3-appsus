@@ -42,3 +42,10 @@ button:hover {
 .page-content {
     padding: 10px;
 }
+
+
+@media screen and (max-width : 530px){
+    .page-content{
+        padding: 0;
+    }
+}

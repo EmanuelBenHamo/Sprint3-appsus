@@ -1,0 +1,29 @@
+.note-filter-container {
+    display: flex;
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 0.5rem;
+    width: fit-content;
+}
+
+
+
+@media screen and (max-width: 820px){
+    .note-filter-container{
+        margin: auto;
+        margin-bottom: 10px;
+        
+    }
+    .note-filter-container input{
+        width: 480px;
+        line-height: 3;
+    }
+}
+
+@media screen and (max-width: 530px){
+    .note-filter-container input{
+        width: 100vw;
+
+    }
+    
+}

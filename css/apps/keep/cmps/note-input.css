@@ -25,9 +25,28 @@
     background-color: inherit;
 }
 
-.note-filter-container {
-    display: flex;
-    background-color: #eeeeee;
-    padding: 10px;
-    border-radius: 0.5rem;
+
+
+@media screen and (max-width: 800px){
+    .note-bar{
+        flex-direction: column;
+    }
+    .note-input-container{
+        flex-direction: column;
+    }
+    .note-main-input-container .note-input-container .note-input    {
+        line-height: 3;
+        width: 480px
+    }
+    .note-type-btns-container{
+        margin-top: 0.3rem;
+    }
+}
+
+@media screen and (max-width: 530px){
+    .note-main-input-container .note-input-container .note-input{
+        width: 100vw;
+
+    }
+    
 }
