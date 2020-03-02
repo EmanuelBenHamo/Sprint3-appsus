@@ -12,7 +12,8 @@ export default {
                     <button v-if="isRead && mailsDirectoryToShow === 'inbox'" class="unread-mail fa fa-envelope" @click.stop="setAsUnread" title="Unread"></button>
                     <button class="expend-mail fa fa-expand" @click.stop="onExpendMail" title="Expand"></button>
                     <button class="remove-mail fa fa-trash" @click.stop="onRemoveMail" title="Remove"></button>
-        
+                    <button :class="{'star-mail':true, fa:true, 'fa-star-o': !mail.starred, 'fa-star': mail.starred}" @click.stop="onStarMail" title="Star"></button>
+
                 </div>
         </section>  
         <p class="extended-content" v-if="preview" >{{extendedContent}}</p>
@@ -22,7 +23,7 @@ export default {
         return {
             isRead: true,
             preview: false,
-            mailsDirectoryToShow: this.$route.query.directory,
+            mailsDirectoryToShow: this.$route.query.directory
         }
     },
     props: ['mail'],
@@ -55,10 +56,13 @@ export default {
         onExpendMail() {
             this.$router.push('mail/details/' + this.mail.id);
         },
+        onStarMail() {
+            this.mail.starred = !this.mail.starred;
+        }
     },
     created() {
         if (this.mail.state === 'unread') {
-            this.isRead = false
+            this.isRead = false;
         };
 
     }
