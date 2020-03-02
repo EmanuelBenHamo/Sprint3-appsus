@@ -26,7 +26,6 @@
 }
 
 .mail-compose-container .body-input {
-    height: 40vh;
     resize: none;
     border: none;
     padding-left: 1rem;
@@ -54,6 +53,8 @@
 
 .mail-compose-container  .draft-mail-btn {
     background-color: inherit;
-    /* width: fit-content; */
     padding: 5px;
+}
+.mail-compose-container  .draft-mail-btn:hover {
+    font-size: 1.2rem;
 }

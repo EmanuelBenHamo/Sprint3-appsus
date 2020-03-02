@@ -1,4 +1,5 @@
 .note-bar {
+    margin: 2rem;
     font-size: 1.5rem;
 }
 
@@ -6,14 +7,14 @@
     border: none;
     padding-left: 10px;
     background-color: #ffffff99;
-    border-radius: 0.25rem;
+    /* border-radius: 0.25rem; */
 }
 
 .note-main-input-container {
     padding: 10px;
-    background-color: #eee;
+    background-color: #ccc;
     width: fit-content;
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
     margin: auto;
 }
 

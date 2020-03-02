@@ -32,6 +32,7 @@ function getMailById(mailId){
 function getEmptyMail(){
     let emptyMail =  {
         subject: '',
+        from: 'me@gmail.com',
         to: '',
         cc: '',
         bcc: '',
