@@ -1,8 +1,12 @@
-.mail-side-nav-bar-container {
+.mail-side-nav-bar{
     background-color: inherit;
     height: fit-content;
-    width: 25%;
+    min-width: 200px;  
+    margin-top: 100px;
+    padding-right: 20px;
 }
+
+
 
 .mail-compose-router-link {
     padding: 0.5rem 0.5rem;
@@ -15,6 +19,7 @@
 }
 
 .mail-compose-router-link:hover {
+    transition: 0.3s;
     box-shadow: 2px 2px 6px #666;
 }
 
@@ -33,6 +38,7 @@
 
 
 .mail-side-nav-bar-container .directories-container>li:hover {
+    transition: 0.5s;
     background-color: #ffa41b44;
     cursor: pointer;
 }

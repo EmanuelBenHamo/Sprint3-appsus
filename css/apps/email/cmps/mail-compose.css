@@ -23,9 +23,6 @@
     padding-left: 0;
     width: 93%;
     
-    /* margin-left: 0.8rem; */
-    /* background-color: lawngreen; */
-    
 }
 
 .mail-compose-container .body-input {
@@ -35,18 +32,24 @@
     padding-left: 1rem;
 }
 
-/* 
-.mail-compose-container .new-msg-form>* {
-    margin: 5px 0;
-} */
+
 .mail-compose-container .mail-compose-btns{
     padding: 0 20px;
 }
 
 .mail-compose-container  .send-mail-btn {
-    background-color:#5edfff;
-    border-radius: 0.5rem;
-    padding: 10px;  
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: assistant-semi-bold;
+    border-radius: .3rem;
+    box-shadow: 1px 1px 2px #666;
+    margin-bottom: 2rem;
+}
+
+.mail-compose-container  .send-mail-btn:hover {
+    transition: 0.3s;
+    box-shadow: 2px 2px 6px #666;
 }
 
 .mail-compose-container  .draft-mail-btn {

@@ -1,19 +1,8 @@
 .mail-app-container {
     background-color: #eee;
+    
 }
 
-.hamburger-btn {
-    display: none !important;
-    width: fit-content;
-    font-size: 20px;
-    background-color: inherit;
-    color: blue;
-}
-
-.mail-side-nav-bar {
-    margin-top: 100px;
-    margin-right: 3rem;
-}
 
 .main-mail-view {
     width: 100%;
@@ -21,11 +10,9 @@
 }
 
 .mail-custom-display-container {
+    
     background-color: #fff;
     margin: 2rem 0;
-
-
-    margin-left: ;
 }
 
 .mail-filter {
@@ -40,6 +27,13 @@
     background-color: #fff;
 }
 
+.hamburger-btn {
+    display: none !important;
+    width: fit-content;
+    font-size: 20px;
+    background-color: inherit;
+    color: blue;
+}
 @media screen and (max-width: 740px) {
     .hamburger-btn {
         display: block !important;

@@ -42,9 +42,9 @@ button:hover {
 }
 
 .main-container {
-    max-width: 1200px;
+    width: 1200px;
     padding:0 20px;
-    margin:0 30px;
+    margin:0 auto;
 }
 
 

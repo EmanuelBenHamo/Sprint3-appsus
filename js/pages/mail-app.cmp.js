@@ -8,7 +8,7 @@ import { eventBus } from '../services/event-bus-service.js';
 export default {
     template: `
     <section class="mail-app-container flex column grow-1" v-if="mails">
-        <section class="main-mail-view flex ">
+        <section class="main-mail-view flex space-between">
             <button class="hamburger-btn fa fa-bars" @click="showMobileNavBar = !showMobileNavBar"></button>
             <mail-nav-bar :showMobileNavBar="showMobileNavBar" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
                 <section class="main-mail-list-view flex column ">
