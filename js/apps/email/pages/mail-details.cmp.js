@@ -4,6 +4,7 @@ export default {
     template: `
         <section class="mail-details-container">
             <h1 class="text-center"> {{mail.subject}}</h1>
+            <button class="save-mail-as-keep fa fa-sticky-note" @click.stop="onSaveAsKeep"></button> 
             <button class="remove-mail fa fa-trash" @click.stop="onRemoveMail"></button> 
             <div class="top-bar flex space-around">
                 <h3>From: {{mail.from}}</h3>
@@ -36,5 +37,8 @@ export default {
             eventBus.$emit('onRemoveMail', this.mail.id);
             this.$router.push('/mail');
         },
+        onSaveAsKeep(){
+            this.$router.push(`/keep/${JSON.stringify(this.mail)}`)
+        }
     },
 }
