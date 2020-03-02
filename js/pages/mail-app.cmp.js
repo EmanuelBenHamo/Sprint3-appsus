@@ -7,15 +7,17 @@ import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: `
-    <section class="mail-app-container flex grow-1 column" v-if="mails">
-        <button class="hamburger-btn fa fa-bars" @click="showMobileNavBar = !showMobileNavBar"></button>
-        <section class="mail-custom-display-container flex">
-            <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
-            <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
-        </section>
-        <section class="main-mail-view flex">
+    <section class="mail-app-container flex column grow-1" v-if="mails">
+        <section class="main-mail-view flex ">
+            <button class="hamburger-btn fa fa-bars" @click="showMobileNavBar = !showMobileNavBar"></button>
             <mail-nav-bar :showMobileNavBar="showMobileNavBar" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
-            <router-view class="mail-router-view" :mails="mailsToShow"></router-view>
+                <section class="main-mail-list-view flex column ">
+                    <section class="mail-custom-display-container flex">
+                        <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
+                        <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
+                    </section>
+                    <router-view class="mail-router-view" :mails="mailsToShow"></router-view>
+            </section>
         </section>
     </section>
     `,

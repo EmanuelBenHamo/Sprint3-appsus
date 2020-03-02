@@ -2,7 +2,7 @@
     width: 100%;
     overflow: auto;
 }
-.mail-list-container::-webkit-scrollbar {
+/* .mail-list-container::-webkit-scrollbar {
     width: 0.85em;
   }
    
@@ -13,4 +13,4 @@
   .mail-list-container::-webkit-scrollbar-thumb {
     background-color: #3e64ff44;
     outline: 1px solid slategrey;
-  }
+  } */

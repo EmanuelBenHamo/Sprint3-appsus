@@ -1,5 +1,5 @@
 .mail-app-container {
-    background-color: #ecfcff;
+    background-color: #eee;
 }
 
 .hamburger-btn {
@@ -11,7 +11,8 @@
 }
 
 .mail-side-nav-bar {
-    margin-inline-end: 10px;
+    margin-top: 100px;
+    margin-right: 3rem;
 }
 
 .main-mail-view {
@@ -21,8 +22,10 @@
 
 .mail-custom-display-container {
     background-color: #fff;
-    margin-block-end: 10px;
-    margin-inline-start: 20.7%;
+    margin: 2rem 0;
+
+
+    margin-left: ;
 }
 
 .mail-filter {

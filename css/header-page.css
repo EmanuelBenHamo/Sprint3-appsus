@@ -1,15 +1,28 @@
 .header-container {
-    background-color: #5edfff;
-    height: 60px;
-    padding: 10px 0 10px 20px;
+    color: #fff;
+    background-color: #333333;
+    
+    padding:20px 0;
+}
+.header-container .logo{
+    font-size: 2rem;
+}
+.header-container .logo span{
+    text-decoration: underline #ffa41b;
+    
 }
 
-.header-container .header-nav>*{
+
+.header-container .header-nav>a{
     padding: 1rem;
     border-left: 1px solid #eee;
 }
+.header-container .header-nav>a:last-child{
+    padding: 1rem;
+    border-right: 1px solid #eee;
+}
 
 .header-container .header-nav>a:hover{
-    background-color: #ffffff44;
+    background-color: #ffa41b;
 
 }

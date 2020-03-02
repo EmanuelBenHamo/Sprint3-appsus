@@ -8,7 +8,7 @@ new Vue({
     template:
     `<section class="main-app-container flex column">
         <page-header></page-header>
-        <router-view class="page-content"></router-view>
+        <router-view class="main-container"></router-view>
         <page-footer></page-footer>
     </section>
         `,

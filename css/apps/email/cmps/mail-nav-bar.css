@@ -1,61 +1,49 @@
 .mail-side-nav-bar-container {
-    background-color: #5edfff;
+    background-color: inherit;
     height: fit-content;
     width: 25%;
-    border-radius: 1rem;
 }
 
 .mail-compose-router-link {
-    width: fit-content;
-    padding: 0.1rem 0.5rem;
-    margin-inline-start: 0.5rem;
-    margin-block-start: 0.2rem;
+    padding: 0.5rem 0.5rem;
     text-align: center;
     font-size: 1.3rem;
     font-family: assistant-semi-bold;
-    border-radius: 100vh;
+    border-radius: .3rem;
+    box-shadow: 1px 1px 2px #666;
+    margin-bottom: 2rem;
 }
 
 .mail-compose-router-link:hover {
-    background-color: #b2fcff;
+    box-shadow: 2px 2px 6px #666;
 }
 
-.mail-side-nav-bar-container> :first-child {
-    margin-bottom: 0.7rem;
-}
 
 .directories-container {
-    width: 100%;
     font-size: 1.2rem;
 }
 
-.mail-side-nav-bar-container .directories-container>li {
-    border-radius: 100vh;
-    padding: 0 1rem;
+
+
+.mail-side-nav-bar-container .directories-container>li{
+    margin-bottom: 0.2rem;
+    padding: 0 0.9rem;
 }
 
-.mail-side-nav-bar-container .directories-container>li:not(:last-of-type) {
-    margin-block-end: 0.2rem;
-}
 
-.mail-side-nav-bar-container .directories-container>li:last-of-type {
-    margin-block-end: 0.5rem;
-}
 
 .mail-side-nav-bar-container .directories-container>li:hover {
-    background-color: #b2fcff44;
+    background-color: #ffa41b44;
     cursor: pointer;
 }
 
 .mail-side-nav-bar-container .directories-container>li.active {
-    background-color: #ecfcff77;
-    color: #3e64ff;
+    background-color: #ffa41b;
+    color: #fff;
     font-family: assistant-semi-bold;
 }
 
-.unread-mails-count {
-    font-family: assistant-semi-bold;
-}
+
 
 @media screen and (max-width: 740px) {
     .mail-app-container {

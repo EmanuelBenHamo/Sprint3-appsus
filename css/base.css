@@ -12,7 +12,8 @@ html {
 
 body {
     margin: 0;
-    background-color: #ecfcff;
+    background-color: #eee;
+    
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -36,16 +37,20 @@ button:hover {
 }
 
 .main-app-container {
+    
     height: 100vh;
 }
 
-.page-content {
-    padding: 10px;
+.main-container {
+    max-width: 1200px;
+    padding:0 20px;
+    margin:0 30px;
 }
 
 
+
 @media screen and (max-width : 530px){
-    .page-content{
+    .main-container{
         padding: 0;
     }
 }
