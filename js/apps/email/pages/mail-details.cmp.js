@@ -38,7 +38,8 @@ export default {
             this.$router.push('/mail');
         },
         onSaveAsKeep(){
-            this.$router.push(`/keep/${JSON.stringify(this.mail)}`)
+            // this.$router.push(`/keep/${JSON.stringify(this.mail)}`)
+            this.$router.push({path: '/keep', query: {mail: JSON.stringify(this.mail)}});
         }
     },
 }
