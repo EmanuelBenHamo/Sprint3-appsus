@@ -98,12 +98,15 @@ export default {
             this.filterBy = filterBy;
         },
         isMailMatchShowState(mail) {
-            let currComputedMailDirectory = mail.state;
-            if (mail.state === mailService.MAIL_STATE.read || mail.state === mailService.MAIL_STATE.unread) {
-                currComputedMailDirectory = 'inbox';
+            if (this.mailsDirectoryToShow === 'starred') {
+                return mail.starred;
+            } else {
+                let currComputedMailDirectory = mail.state;
+                if (mail.state === mailService.MAIL_STATE.read || mail.state === mailService.MAIL_STATE.unread) {
+                    currComputedMailDirectory = 'inbox';
+                }
+                return currComputedMailDirectory === this.mailsDirectoryToShow;
             }
-
-            return currComputedMailDirectory === this.mailsDirectoryToShow;
         },
         isMailMatchSearchText(mail) {
             if (this.filterBy && this.filterBy.mailTxt) {
