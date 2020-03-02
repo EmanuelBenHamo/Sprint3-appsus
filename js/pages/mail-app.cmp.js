@@ -11,7 +11,7 @@ export default {
         <section class="main-mail-view flex space-between">
             <button class="hamburger-btn fa fa-bars" @click="showMobileNavBar = !showMobileNavBar"></button>
             <mail-nav-bar :showMobileNavBar="showMobileNavBar" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
-                <section class="main-mail-list-view flex column ">
+                <section class="main-mail-list-view flex grow-1 column ">
                     <section class="mail-custom-display-container flex">
                         <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
                         <mail-sort class="mail-sort" @sorted="setSort"></mail-sort>
