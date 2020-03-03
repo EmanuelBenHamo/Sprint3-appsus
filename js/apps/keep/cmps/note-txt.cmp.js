@@ -1,21 +1,25 @@
+import { eventBus } from '../../../services/event-bus-service.js'
+
 export default {
     template: `
-        <section class="note-text-container" v-if="txt">
-            <p>{{txt}}</p>
+        <section class="note-text-container" v-if="text">
+            <textarea v-model="text" @input="onNoteUpdate" >{{text}}</textarea>  
         </section>
     `,
     data(){
         return{
-            txt: '',
+            text: '',
         }
     },
     props:['note'],
-    watch:{
-        'note.info.txt'(to, from){
-            this.txt = to
-        }
-    },
+
     created(){
-        this.txt = this.note.info.txt;
+        this.text = this.note.info.txt;
+    },
+    methods:{
+        onNoteUpdate() {
+            this.note.info.txt = this.text;        
+            eventBus.$emit('noteUpdate',this.note)
+        },
     }
 }

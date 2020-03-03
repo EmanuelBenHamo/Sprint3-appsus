@@ -81,14 +81,13 @@ function setNoteTodoState({ noteId, todoIdx }) {
 function addNewTodo(note){
     let noteId = note.id;
     let noteIdx = notesDB.findIndex(note => note.id === noteId);
-    console.log('Add TODO',noteIdx)
     let newTodo = _createTodo()
     note.info.todos.push(newTodo);
     let updatedNote = notesDB[noteIdx]
     return updateNote(updatedNote)
 }
 function _createTodo(){
-    return { id:utilService.getRandomInt(1,10000) , txt: '', doneAt: null }
+    return { id:utilService.getRandomInt(1,10000) , txt: '', doneAt: null ,edit: false }
 }
 
 function _formatNoteByType(note) {
@@ -157,7 +156,8 @@ function _getFormattedTodoListNote(note) {
                 return {
                     id: utilService.getRandomInt(1, 10000),
                     txt: todo,
-                    doneAt: null
+                    doneAt: null,
+                    edit: false
                 }
             })
         },

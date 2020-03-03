@@ -2,7 +2,6 @@ import { keepService } from '../apps/keep/services/keep.service.js';
 import noteFilter from '../apps/keep/cmps/note-filter.cmp.js';
 import noteInput from '../apps/keep/cmps/note-input.cmp.js';
 import noteList from '../apps/keep/cmps/note-list.cmp.js';
-import noteEdit from '../apps/keep/cmps/note-edit.cmp.js';
 import { eventBus } from '../services/event-bus-service.js';
 
 export default {
@@ -20,7 +19,6 @@ export default {
             <h2>Unpinned</h2>
             <note-list v-if="notes && unpinnedNotes" :notes="unpinnedNotes" @remove="onRemoveNote" @pinNote="onNotePinStateChange" @changeColor="onChangeColor"></note-list>
         </section>
-        <note-edit></note-edit>
     </section>
     `,
     data() {
@@ -107,6 +105,5 @@ export default {
         noteInput,
         noteFilter,
         noteList,
-        noteEdit,
     }
 }

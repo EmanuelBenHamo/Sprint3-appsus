@@ -2,13 +2,14 @@
     margin-left: 15px;
     margin-bottom: 10px;
 }
+
 .todo-list-container h1{
     font-size: 1rem;
-    padding: 0.5rem 0 1.5rem 1.25rem;
+    text-align: center;
+    margin-bottom: 1.25rem;
 }
 
 .todo-list-container .todo-list li {
-    /* max-width: fit-content; */
     padding: 0 5px;
     margin-bottom: 5px;
 }
@@ -16,4 +17,10 @@
 .todo-list-container .todo-list li:hover {
     cursor: pointer;
     background-color: azure;
+}
+.todo-list-container .todo-list li.display{
+    text-decoration: line-through;
+}
+.todo-list-container .todo-list input{
+    border: none;
 }

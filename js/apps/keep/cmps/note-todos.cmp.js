@@ -5,7 +5,14 @@ export default {
         <section class="todo-list-container">
             <h1>{{note.title}}</h1>
             <ul class="todo-list clean-list flex column" >
-                <li  v-for="(todo, idx) in textLength" @click="setDone(idx)" :style="{'display': todo.display}" :key="todo.id" :ref="idx">{{todo.txt}}</li>
+                <li  v-for="(todo, idx) in textLength"  :key="todo.id" :ref="idx">
+                    <input type="checkbox" @click="setDone(idx,$event)"/>
+                    <input type="text" v-if="todo.edit" v-model="todo.txt"
+                    :style="{'display': todo.display}"
+                    @blur= "onNoteUpdate(idx)"
+                    @keyup.enter="addNewTodo"/>
+                    <label v-else="!todo.edit" @click = "todo.edit = true;">{{todo.txt}} </label>
+                </li>
             </ul>
             <span v-if="todoCount > 7">Read More...</span>
         </section>
@@ -13,7 +20,6 @@ export default {
     props:['note'],
     data(){
         return{
-            isTodoDone:false,
             todoCount:this.note.info.todos.length,
         }
     },
@@ -24,15 +30,25 @@ export default {
         },
     },
     methods: {
-        setDone(idx) {
-            this.isTodoDone = !this.isTodoDone
-            this.setStyle(idx)
+        setDone(idx, ev) {
+            this.setStyle(idx,ev)
             eventBus.$emit('onNoteTodoStateChange', { noteId: this.note.id, todoIdx: idx })
         },
-        setStyle(idx){
-            this.$refs[idx][0].style = (!this.note.info.todos[idx].doneAt)?'text-decoration: line-through' : 'text-decoration: none';
+        setStyle(idx,ev){
+            if(ev.target.checked){
+                this.$refs[idx][0].classList.add('display') 
+            }else{
+                this.$refs[idx][0].classList.remove('display') 
+            }
+
         },
-        // TODO - set class instead of inline style
+        onNoteUpdate(idx) {
+            this.note.info.todos[idx].edit = false
+            eventBus.$emit('noteUpdate',this.note)
+        },
+        addNewTodo(){
+            eventBus.$emit('addNewTodo',this.note);
+        }
     },
 }
 

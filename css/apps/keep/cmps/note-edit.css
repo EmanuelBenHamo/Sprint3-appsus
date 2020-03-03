@@ -22,9 +22,7 @@
     width: 80%;
     white-space: normal;
     overflow-wrap: normal;
-    overflow-x: hidden;
-    
-    
+    overflow-x: hidden;  
 }
 .long-text-container .note-edit{
     margin-top: 30px;

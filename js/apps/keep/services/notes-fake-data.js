@@ -48,8 +48,8 @@ export const fakeNotes = [
         title:'Todo List',
         info: {
             todos: [
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Cook', doneAt: null },
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Clean house', doneAt: null },
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Cook', doneAt: null, edit: false},
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Clean house', doneAt: null , edit: false},
             ]
         },
         style:null
@@ -61,12 +61,12 @@ export const fakeNotes = [
         title:'Shoping List',
         info: {
             todos: [
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Tomatos', doneAt: null },
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Milk', doneAt: null },
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Bread', doneAt: null },
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Cheese', doneAt: null },
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Apples', doneAt: null },
-                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Beer', doneAt: null },
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Tomatos', doneAt: null ,edit: false},
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Milk', doneAt: null , edit: false},
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Bread', doneAt: null , edit: false},
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Cheese', doneAt: null , edit: false},
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Apples', doneAt: null , edit: false},
+                { id: utilService.makeId(utilsService.getRandomInt(5, 10)), txt: 'Beer', doneAt: null , edit: false},
             ]
         },
         style:null

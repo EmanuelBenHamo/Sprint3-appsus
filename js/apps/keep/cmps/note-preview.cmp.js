@@ -16,7 +16,6 @@ export default {
         <div class="tool-bar">
             <button class="remove-note fa fa-trash" @click="$emit('remove',note.id)"></button>    
             <button class="pin-note fa fa-thumb-tack" @click="$emit('pinNote',note.id)"></button>
-            <button class="edit-note fa fa-edit" @click="onNoteEdit"></button>
             <button class="color-note fa fa-paint-brush" @click="onNoteChangeColorClick"></button>   
             <input type="color" ref="colorInput" v-model="color" @change="$emit('changeColor', {noteId:note.id, color:color})" hidden/>
             
