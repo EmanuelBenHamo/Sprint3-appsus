@@ -2,7 +2,6 @@
     display: flex;
     background-color: #ccc;
     padding: 10px;
-    /* border-radius: 0.5rem; */
     width: fit-content;
 }
 
@@ -21,9 +20,11 @@
 }
 
 @media screen and (max-width: 530px){
-    .note-filter-container input{
-        width: 100vw;
 
+    .note-filter-container input    {
+        display: block;
+        /* width: initial; */
+        width: 95vw
     }
     
 }

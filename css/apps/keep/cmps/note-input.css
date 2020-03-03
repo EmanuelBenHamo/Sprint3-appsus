@@ -45,9 +45,12 @@
 }
 
 @media screen and (max-width: 530px){
-    .note-main-input-container .note-input-container .note-input{
-        width: 100vw;
-
+    .note-bar{
+        margin: 2rem 0;
+    }
+    .note-main-input-container .note-input-container .note-input    {
+        width: 95vw
+        /* max-width: 480px */
     }
     
 }

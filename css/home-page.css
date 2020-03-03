@@ -1,0 +1,7 @@
+.home-page-container>*{
+    margin: 60px;
+    font-size: 5rem;
+}
+.home-page-container .fa {
+    font-size: 5rem;
+}

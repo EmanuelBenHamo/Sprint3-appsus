@@ -12,11 +12,12 @@ import { eventBus } from '../../../services/event-bus-service.js'
 export default {
     template: `
     <section class="note-preview-container flex column align-center justify-center" :style="{'background-color': color}"> 
+        <span v-if="pinned">📌</span>
         <component :is="note.type" :note="note" ></component>
         <div class="tool-bar">
-            <button class="remove-note fa fa-trash" @click="$emit('remove',note.id)"></button>    
-            <button class="pin-note fa fa-thumb-tack" @click="$emit('pinNote',note.id)"></button>
-            <button class="color-note fa fa-paint-brush" @click="onNoteChangeColorClick"></button>   
+            <button class="remove-note fa fa-trash" @click="$emit('remove', note.id)" title="Remove"></button>    
+            <button class="pin-note fa fa-thumb-tack" @click="onNotePinned" title="Pin"></button>
+            <button class="color-note fa fa-paint-brush" @click="onNoteChangeColorClick" title="Choose Color"></button>   
             <input type="color" ref="colorInput" v-model="color" @change="$emit('changeColor', {noteId:note.id, color:color})" hidden/>
             
         </div>
@@ -24,7 +25,8 @@ export default {
     `,
     data() {
         return {
-            color: '#ddd'
+            color: '#ddd',
+            // pinned: null
         }
     },
     props: ['note'],
@@ -38,6 +40,7 @@ export default {
     },
     created() {
         this.color = this.note.style
+        this.pinned = this.note.isPinned
     },
     methods: {
         onNoteEdit() {
@@ -46,7 +49,9 @@ export default {
         onNoteChangeColorClick(){
             let elColorInput =  this.$refs.colorInput;
             elColorInput.click();
-
+        },
+        onNotePinned(){
+            this.$emit('pinNote',this.note.id)
         }
     }
 }

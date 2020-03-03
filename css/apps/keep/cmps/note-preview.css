@@ -3,7 +3,7 @@
     height: 100%;
     border-radius: 0.5rem;
     margin-bottom: 30px;
-    padding: 30px 60px; 
+    padding: 30px 40px; 
     background-color: #fff;
     break-inside: avoid;
     box-shadow: -2px 2px 8px lightgrey; 
@@ -11,4 +11,10 @@
 }
 .tool-bar>*{
     background-color: inherit;
+}
+
+.note-preview-container span{
+    align-self: flex-start;
+    margin: 5px;
+
 }

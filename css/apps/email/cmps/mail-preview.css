@@ -43,3 +43,16 @@
     padding: 1.5rem;
 }
 
+@media (max-width: 540px){
+    .mail-preview-container .short-content{
+        /* max-height: 60px; */
+        overflow: hidden;
+    }
+    .mail-preview-container .short-content h1 {
+        padding: 0 1rem
+    }
+    .mail-preview-container .short-content .tool-btns>* {
+        padding: 0 .5rem;
+    }
+}
+
