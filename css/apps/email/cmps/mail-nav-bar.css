@@ -52,19 +52,19 @@
 
 
 @media screen and (max-width: 740px) {
-    .mail-app-container {
-        padding-inline-start: 0;
-    }
+    
     .mail-side-nav-bar-container {
         position: absolute;
+        padding: 30px;
+        background-color: #fff;
         transform: translateX(-100vw);
         width: 70vw;
         height: 70vh;
         box-shadow: 10px 0 15px 10px rgba(0, 0, 0, 0.623);
-        border-radius: 0 1rem 1rem 0;
+        z-index: 30;
+        transition: all 0.8s;
     }
     .mail-side-nav-bar-container.mobile-display {
-        transition: all 0.8s;
         transform: translateX(0);
     }
 }

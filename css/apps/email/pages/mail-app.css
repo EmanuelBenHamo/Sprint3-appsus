@@ -2,8 +2,6 @@
     background-color: #eee;
     
 }
-
-
 .main-mail-view {
     width: 100%;
     height: 70vh;
@@ -28,14 +26,18 @@
 }
 
 .hamburger-btn {
-    display: none !important;
-    width: fit-content;
-    font-size: 20px;
+    display: none;
+    padding: 30px 0 0 30px;
+    align-self: flex-start;
+    justify-self: flex-start;
     background-color: inherit;
-    color: blue;
+}
+
+.hamburger-btn.fa.fa-bars{
+    font-size: 2rem;
 }
 @media screen and (max-width: 740px) {
     .hamburger-btn {
-        display: block !important;
+        display: block;
     }
 }

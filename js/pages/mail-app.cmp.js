@@ -8,9 +8,9 @@ import { eventBus } from '../services/event-bus-service.js';
 export default {
     template: `
     <section class="mail-app-container flex column grow-1" v-if="mails">
+        <button class="hamburger-btn fa fa-bars" @click="showMobileNavBar = !showMobileNavBar"></button>
         <section class="main-mail-view flex space-between">
-            <button class="hamburger-btn fa fa-bars" @click="showMobileNavBar = !showMobileNavBar"></button>
-            <mail-nav-bar :showMobileNavBar="showMobileNavBar" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
+            <mail-nav-bar :showMobileNavBar="showMobileNavBar" @hideMobileNavBar="hideMobileNavBar" class="mail-side-nav-bar flex column" :countUnreadMails="countUnreadMails"></mail-nav-bar>
                 <section class="main-mail-list-view flex grow-1 column ">
                     <section class="mail-custom-display-container flex">
                         <mail-filter class="mail-filter" @filtered="setFilter" :showReadStateFilter="showReadStateFilter"></mail-filter>
@@ -123,6 +123,9 @@ export default {
             }
 
             return mail.state === this.filterBy.mailReadState;
+        },
+        hideMobileNavBar(){
+            this.showMobileNavBar = !this.showMobileNavBar
         }
     },
     watch: {

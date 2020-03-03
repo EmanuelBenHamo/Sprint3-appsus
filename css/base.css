@@ -49,8 +49,22 @@ button:hover {
 
 
 
-@media screen and (max-width : 530px){
+@media screen and (max-width : 1210px){
     .main-container{
+        width: 900px;
+    }
+}
+@media screen and (max-width : 910px){
+    .main-container{
+        width: 740px;
+    }
+}
+@media screen and (max-width : 740px){
+    .main-container{
+        width: unset;
+        max-width: 740px;
         padding: 0;
+        margin: 0;
+        /* width: 740px; */
     }
 }

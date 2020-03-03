@@ -1,7 +1,6 @@
 .header-container {
     color: #fff;
     background-color: #333333;
-    
     padding:20px 0;
 }
 .header-container .logo{
@@ -30,4 +29,9 @@
     transition: 0.5s;
     background-color: #ffa41b;
 
+}
+@media (max-width: 740px){
+    .header-container{
+        padding: 20px;
+    }
 }

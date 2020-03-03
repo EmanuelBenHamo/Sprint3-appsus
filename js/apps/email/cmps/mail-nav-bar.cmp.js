@@ -3,8 +3,9 @@
 export default {
     template: `
     <section :class="{'mail-side-nav-bar-container': true, 'mobile-display': showMobileNavBar}">
-        <router-link class="mail-compose-router-link" to="/mail/compose" exact>Compose</router-link>
+        <router-link class="mail-compose-router-link" to="/mail/compose"  exact><span @click="closeNavbar">Compose</span></router-link>
         <ul ref="navList" class="directories-container clean-list flex column">
+           
             <li @click="setMailsDirectory('inbox', $event)" class="flex space-between active">
                 <span>Inbox</span>
                 <span class="unread-mails-count">{{unreadMailsCount}}</span>
@@ -23,13 +24,16 @@ export default {
             } else {
                 return this.countUnreadMails;
             }
-        }
+        },   
     },
     methods: {
         setMailsDirectory(mailsDirectory, ev) {
+            this.closeNavbar()
             this.setActive(ev);
-            // TODO - disable the already pushed button
             this.$router.push({ path: '/mail', query: { directory: mailsDirectory } }).catch(err => { })
+        },
+        closeNavbar(){
+            this.$emit('hideMobileNavBar')
         },
         setActive(ev) {
             [...this.$refs.navList.children].forEach(li => li.classList.remove('active'));
